@@ -1,0 +1,117 @@
+@import "./root.scss";
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+
+  main{
+    margin-top: 116px;
+    height: calc(100vh - 160px);
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  label, a, button{
+    cursor: pointer;
+  }
+}
+
+
+/* font-size */
+.btn-large{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.btn-small{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.subtitle{
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+};
+
+.body-small{
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.body-large{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+/* Buttons */
+.btn{
+  width: 201px;
+  height: 40px;
+  border-radius: 6px;
+}
+.primary-btn{
+  background-color: $emphasis;
+  color: $primary2;
+  border: none;
+
+  &:hover{
+    background-color: $secundary1;
+  }
+}
+
+.secondary-btn{
+  background-color: $primary2;
+  color: $white;
+  border-color: transparent;
+  &:hover{
+    background-color: $emphasis;
+    border: 3px $grey4 solid;
+    color: $primary2;
+  }
+}
+
+.tertiary-btn{
+  background-color: $white;
+  color: $emphasis;
+  border: 3px solid $emphasis;
+  &:hover{
+    background-color: $secundary1;
+    color: $white ;
+  }
+}
+
+.success-btn{
+  background-color: $green;
+  color: $primary2;
+  &:hover{
+    background-color: $secundary3;
+  }
+}
+
+label, .error{
+  display: block;
+}
+
+input, textarea{
+  border-radius: 8px;
+  border: none; 
+  background-color: $white;
+  height: 38px;
+  padding-left: 18px;
+
+  &::placeholder{
+    font-size: 14px;
+    line-height: 21px;
+    color: $grey3;
+  }
+}

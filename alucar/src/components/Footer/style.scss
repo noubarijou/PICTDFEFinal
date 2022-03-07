@@ -1,0 +1,30 @@
+@import "../../root.scss";
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: $emphasis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .footer__brand{
+        margin-left: 50px;
+    }
+
+    .footer__redes{
+        margin-right: 50px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-evenly;
+        width: 210px;
+    }
+}
+
+@media (max-width: 700px) {
+    .footer__redes{
+        display: none;
+    }
+}

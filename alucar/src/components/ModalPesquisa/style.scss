@@ -1,0 +1,53 @@
+@import "../../root.scss";
+
+.modal__pesquisa{
+    width: 100%;
+    text-align: center;
+    background-color: $emphasis;
+    padding: 20px 0;
+
+    .pesquisa__form{
+        text-align: left;
+        font-size: 14px;
+        line-height: 21px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1000px) {
+    .pesquisa__form{
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        div{
+            margin: 0 auto 18px;
+
+            input{
+                min-width: 280px;
+                max-width: 400px;
+            }
+        }
+
+        button{
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (min-width: 1001px) {
+    .pesquisa__form{
+        align-items: flex-end;
+
+        div, button{
+            margin: 0 18px;
+        }
+
+
+        input{
+            min-width: 400px;
+            max-width: 532px;
+        }
+    }
+
+}

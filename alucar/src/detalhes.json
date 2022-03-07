@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 2,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 3,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 4,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 5,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 6,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    },
+    {
+        "id": 7,
+        "img": "http://placehold.it/",
+        "categoria": "compacto",
+        "disponibilidade": "disponível",
+        "modelo": "fiat uno",
+        "combustivel": "flex",
+        "descricao": "http://random.com" 
+    }
+]

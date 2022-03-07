@@ -1,0 +1,36 @@
+@import "../../root.scss";
+
+.modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 320px;
+    background-color: $white;
+    text-align: right;
+    z-index: 1;
+    
+    .menu__title{
+        width: 100%;
+        height: 165px;
+        background-color: $emphasis;
+        margin-bottom: 24px;
+
+        div{
+            text-align: left;
+            padding: 5px 10px;
+        }
+
+    }
+    
+    .linha{
+        width: 273px;
+        height: 2px;
+        background-color: $grey2;
+        margin: 12px auto;
+        text-align: center;
+    }
+
+    .menu__redes{
+    }
+}
