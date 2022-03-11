@@ -1,7 +1,7 @@
 import './style.scss'
 
 /* icones - font awesome */
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' */
 import {  } from '@fortawesome/free-solid-svg-icons'
 
 

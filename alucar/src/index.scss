@@ -7,9 +7,13 @@ body {
   font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
 
+  li {
+    list-style: none;
+  }
   main{
     margin-top: 116px;
-    height: calc(100vh - 160px);
+    min-height: calc(100vh - 120px);
+    margin-bottom: 10px;
   }
   
   a{

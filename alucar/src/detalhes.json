@@ -1,65 +1,74 @@
 [
     {
         "id": 1,
-        "img": "http://placehold.it/",
+        "img": "https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png",
         "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "disponibilidade": "Indisponível",
+        "modelo": "Chevrolet Onix",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 2,
-        "img": "http://placehold.it/",
+        "img": "https://static.rentcars.com/imagens/carros/peugeot_208-2020-2021.png",
         "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "disponibilidade": "Disponível",
+        "modelo": "Peugeot 2089",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 3,
-        "img": "http://placehold.it/",
-        "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "img": "https://static.rentcars.com/imagens/carros/renault_kwid-2020-2021.png",
+        "categoria": "econômico",
+        "disponibilidade": "Disponível",
+        "modelo": "Renault Kwid",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 4,
-        "img": "http://placehold.it/",
-        "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "img": "https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png",
+        "categoria": "econômico",
+        "disponibilidade": "Disponível",
+        "modelo": "WV Gol",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 5,
-        "img": "http://placehold.it/",
-        "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "img": "https://static.rentcars.com/imagens/carros/peugeot-2008.png",
+        "categoria": "SUV",
+        "disponibilidade": "Disponível",
+        "modelo": "Peugeot 2008",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 6,
-        "img": "http://placehold.it/",
-        "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "img": "https://static.rentcars.com/imagens/carros/jeep-compass.jpg",
+        "categoria": "SUV",
+        "disponibilidade": "Disponível",
+        "modelo": "Jeep Compass",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 7,
-        "img": "http://placehold.it/",
-        "categoria": "compacto",
-        "disponibilidade": "disponível",
-        "modelo": "fiat uno",
-        "combustivel": "flex",
-        "descricao": "http://random.com" 
+        "img": "https://static.rentcars.com/imagens/carros/doblo_cargo.png",
+        "categoria": "Cargo",
+        "disponibilidade": "Disponível",
+        "modelo": "Fiat Doblô",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
+    },
+    {
+        "id": 8,
+        "img": "https://static.rentcars.com/imagens/carros/fiat-fiorino.png",
+        "categoria": "Cargo",
+        "disponibilidade": "Disponível",
+        "modelo": "Fiat Fiorino",
+        "combustivel": "Flex",
+        "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     }
 ]

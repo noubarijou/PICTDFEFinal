@@ -10,12 +10,12 @@ export const ModalPesquisa = () => {
             <h2>Os melhores veículos, pelo melhor preço!</h2>
             <form className="pesquisa__form">
                 <div>
-                    <label for="where"><FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:</label>
+                    <label htmlFor="where"><FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:</label>
                     <input type="text" id="where" placeholder="Informe uma cidade" required />
                 </div>
                 <div>
-                    <label for="when"><FontAwesomeIcon icon={faCalendarDay} /> Quando quer retirar o carro:</label>
-                    <input type="date" id="when" placeholder="Selecione o período de locação" required />
+                    <label htmlFor="whenStart"><FontAwesomeIcon icon={faCalendarDay} /> Período de locação:</label>
+                    <input type="date" id="whenStart" placeholder="Selecione a data inicial de locação" required />
                 </div>
                 <button type="submit" className="btn secondary-btn btn-large">Pesquisar</button>
             </form>

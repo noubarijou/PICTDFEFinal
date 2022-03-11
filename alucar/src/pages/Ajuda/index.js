@@ -1,7 +1,7 @@
 import "../form.scss"
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import { TextField } from "../../components/TextField";

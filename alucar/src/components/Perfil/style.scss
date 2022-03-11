@@ -1,0 +1,38 @@
+h2{
+    text-align: center;
+}
+section#section-profile{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:2rem;
+    padding-bottom: 3rem;
+    & article{
+        display: flex;
+        gap:2rem;
+        div.perfil-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #img-photo {
+                width: 3rem;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                margin: 0.5rem;
+                filter: drop-shadow(0 5px 5px rgba(90, 65, 65, 0.5));
+            }
+    
+            div.icones{
+                display: flex;
+                gap:1rem;
+                img{
+                    max-width: 2rem;
+                    
+                }
+            }      
+        }      
+    }    
+}

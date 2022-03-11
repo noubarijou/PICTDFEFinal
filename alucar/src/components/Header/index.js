@@ -36,7 +36,6 @@ export const Header = () => {
                     </nav>
                     :
                     <nav>
-                         <a href="/categorias" className="subtitle">Categorias</a>
                         <a href="/sobre" className="subtitle">Sobre</a>
                         <a href="/ajuda" className="subtitle">Ajuda</a>
                         <a href="/criarconta" className="subtitle">Criar conta</a>
