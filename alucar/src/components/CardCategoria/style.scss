@@ -1,18 +1,17 @@
 @import "../../root.scss";
 
 .card__categoria{
-    min-width: 200px;
-    max-width: 313px;
+    width: 17.5rem;
     border: 1px solid #8AB5CA;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     flex: none;
-    margin: 0 20px;
+    margin: 0 1.25rem;
     text-align: center;
 
     .card__img{
-        width: 235px;
-        height: 126px;
-        margin: 20px auto;
+        width: 17rem;
+        height: 8rem;
+        margin: 1.25rem auto;
         img{
             width: 100%;
             height: 100%;
@@ -23,16 +22,20 @@
     .card__info{
         h2{
             color: $grey3;
-            font-size: 28px;
+            font-size: 1.75rem;
+            margin: 0.5rem;
+        }
+        p{
+            margin: 0.5rem;
         }
         .info__preco{
             font-weight: 700;
-            font-size: 32px;
+            font-size: 2rem;
             margin: 0;  
         }
     }
 
     button{
-        margin: 20px 0;
+        margin: 1.25rem 0;
     }
 }

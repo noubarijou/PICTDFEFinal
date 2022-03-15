@@ -1,19 +1,41 @@
+@import "../../root.scss";
+
 .card__carro{
-    flex: none;
-    min-width: 200px;
-    max-width: 313px;
+    width: 17.5rem;
     border: 1px solid #8AB5CA;
-    border-radius: 8px;
-    margin: 0 20px;
+    border-radius: 0.5rem;
+    flex: none;
+    margin: 0 1.25rem;
     .card__img{
-        width: 313px;
-        height: 226px;
+        width: 17.5rem;
+        height: 14rem;
         img{
-            border-radius: 8px 8px 0px 0px;
+            border-radius: 0.5rem 0.5rem 0 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
     }
-    .card__info{}
+    .card__info{
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+
+        .info__principal{
+            p{
+                margin: 0.25rem 0;
+            }
+        }
+
+        .info__adicional{
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            a{
+                color: $secundary3;
+            }
+        }
+    }
 }

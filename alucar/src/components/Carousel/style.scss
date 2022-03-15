@@ -20,3 +20,9 @@
         margin: 0 5px;
     }
 }
+
+@media (max-width: 700px){
+    .carousel__btn{
+        display: none;
+    }
+}

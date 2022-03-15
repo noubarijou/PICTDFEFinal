@@ -46,10 +46,10 @@ export const Home = () => {
 
                 <h2>Principais Modelos</h2>
                 <Carousel>
-                    <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
-                    <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
-                    <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
-                    <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
+                    <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
+                    <CardCarro id={2} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={3} />
+                    <CardCarro id={3} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
+                    <CardCarro id={4} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={2} />
                 </Carousel>
 
                 {/* modelo.map((item) => {

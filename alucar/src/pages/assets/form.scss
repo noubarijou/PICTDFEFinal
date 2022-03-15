@@ -1,4 +1,4 @@
-@import "../root.scss";
+@import "../../root.scss";
 
 .container{
     display: flex;
@@ -43,10 +43,6 @@
         
         .linkcriarconta, .linklogin{
             color: $emphasis;
-
-            &:hover{
-                text-decoration: underline;
-            }
         }
     }
 }

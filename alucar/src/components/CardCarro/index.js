@@ -1,6 +1,8 @@
 /* import Detalhes from "../../detalhes.json" */
 import { Link } from "react-router-dom"
+import { Rating } from "./components/Rating";
 import './style.scss';
+
 
 export const CardCarro = ({ id, imagem, modelo, descricao, rating }) => {
 
@@ -13,10 +15,14 @@ export const CardCarro = ({ id, imagem, modelo, descricao, rating }) => {
                     </div>
                 </Link>
                 <div className="card__info">
-                    <div>{rating}</div>
-                    <p className="subtitle">{modelo}</p>
-                    <p className="body">{descricao}</p>
-                    <Link className="body-large" to={`/${id}`}>Ver mais</Link>
+                    <div className="info__principal">
+                        <p className="subtitle">{modelo}</p>
+                        <p className="body">{descricao}</p>
+                    </div>
+                    <div className="info__adicional">
+                        <Rating rating={rating} />
+                        <Link className="body-large" to={`/${id}`}>Ver mais</Link>
+                    </div>
                 </div>
 
             </article>
