@@ -1,0 +1,22 @@
+.container__carousel{
+    max-width: 95vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .carousel__item{
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        transition: ease .3s;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    .carousel__btn{
+        background-color: transparent;
+        border: none;
+        margin: 0 5px;
+    }
+}

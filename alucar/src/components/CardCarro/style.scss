@@ -1,30 +1,19 @@
-.categorias {
-    .btn {
-
-        margin-bottom: 20px;
-    }
-    .cardCategorias {
-        display: grid;
-/*         justify-content: space-between;
- */        text-align: center;
-        margin: 0 6px;
-
-        gap: 10px;
-        grid-template-columns: repeat(1, 365px);
-        .divCard {
-            box-shadow:  0px 1px 5px rgba(0, 0, 0, 0.25);
-            padding: 20px 0;
-            button {
-                margin: 0 auto;
-            }
+.card__carro{
+    flex: none;
+    min-width: 200px;
+    max-width: 313px;
+    border: 1px solid #8AB5CA;
+    border-radius: 8px;
+    margin: 0 20px;
+    .card__img{
+        width: 313px;
+        height: 226px;
+        img{
+            border-radius: 8px 8px 0px 0px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
-}
-@media (min-width: 568px) {
-    .categorias{
-    .cardCategorias{
-        
-        grid-template-columns: repeat(2, auto);
-    }
-}
+    .card__info{}
 }

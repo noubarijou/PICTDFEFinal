@@ -67,7 +67,8 @@ body {
   background-color: $emphasis;
   color: $primary2;
   border: none;
-
+  transition: ease .2s;
+  
   &:hover{
     background-color: $secundary1;
   }
@@ -97,6 +98,8 @@ body {
 .success-btn{
   background-color: $green;
   color: $primary2;
+  border: none;
+  transition: ease .2s;
   &:hover{
     background-color: $secundary3;
   }
