@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-import useAxios from '../../hooks/useAxios';
+/* import useAxios from '../../hooks/useAxios'; */
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 
@@ -11,7 +11,8 @@ import { CardMontadora } from '../../components/CardMontadora';
 export const Home = () => {
 
     /* const categoria = useAxios("");
-    const modelo = useAxios(""); */
+    const modelo = useAxios("");
+    const montadora = useAxios(""); */
     const modelo = require("../../assets/detalhes.json");
     const montadora = require("../../assets/montadora.json");
 
@@ -30,7 +31,6 @@ export const Home = () => {
                 <h1>Bem vindx à AluCar</h1>
                 <article className='container__cateogria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
-                    {/* carrossel - categoria para liberar quando a api estiver pronta */}
                     <Carousel>
                         <CardCategoria id={1} imagem="https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png" categoria="Compactos" preco="40,00" />
                         <CardCategoria id={2} imagem="https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png" categoria="Econômicos" preco="40,00" />
@@ -49,15 +49,6 @@ export const Home = () => {
                 </article>
                 <article className='container__modelos' id='container__modelos'>
                     <h2>Principais Modelos</h2>
-                    {/* <Carousel>
-                        <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
-                        <CardCarro id={2} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={3} />
-                        <CardCarro id={3} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
-                        <CardCarro id={4} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={2} />
-                        <CardCarro id={5} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
-                        <CardCarro id={6} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
-                    </Carousel> */}
-
                     <Carousel>
                         {modelo.map((item) => {
                             return (
@@ -86,9 +77,6 @@ export const Home = () => {
                             )
                         })}
                     </Carousel>
-                    {/* montadora.map((item) => {
-                                return (<CardMontadora id={item.id} imagem={item.imagem} nome={item.montadora} />)
-                            }) */}
                 </article>
             </main>
 
