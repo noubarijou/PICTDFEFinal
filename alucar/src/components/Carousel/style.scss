@@ -1,3 +1,5 @@
+@import "../../root.scss";
+
 .container__carousel{
     max-width: 95vw;
     margin: 0 auto;
@@ -18,6 +20,14 @@
         background-color: transparent;
         border: none;
         margin: 0 5px;
+
+        .carousel__chevron{
+            color: $grey3;
+
+            &:hover{
+                color: $grey4;
+            }
+        }
     }
 }
 

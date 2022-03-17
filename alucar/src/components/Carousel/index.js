@@ -23,13 +23,13 @@ export const Carousel = ({ children }) => {
     return (
         <div className="container__carousel">
             <button className="carousel__btn" onClick={(e) => { handleLeftClick(e) }}>
-                <FontAwesomeIcon icon={faChevronLeft} size="3x" />
+                <FontAwesomeIcon className="carousel__chevron" icon={faChevronLeft} size="2x" />
             </button>
             <div className="carousel__item" ref={carousel}>
-                {children}
+                { children }
             </div>
             <button className="carousel__btn" onClick={(e) => { handleRightClick(e) }}
-            ><FontAwesomeIcon icon={faChevronRight} size="3x" />
+            ><FontAwesomeIcon className="carousel__chevron" icon={faChevronRight} size="2x" />
             </button>
         </div>
     )

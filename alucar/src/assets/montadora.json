@@ -1,0 +1,57 @@
+[
+    {
+        "id": 1,
+        "montadora": "Toyota",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823381222981632/logo-toyota-512.png"
+    },
+    {
+        "id": 2,
+        "montadora": "Volkswagen",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823380723875910/logo-volkswagen-512.png"
+    },
+    {
+        "id": 3,
+        "montadora": "Reault",
+        "imagem": "https://media.discordapp.net/attachments/946067287021092905/953819663517753424/logo-renault-512.png?width=468&height=468"
+    },
+    {
+        "id": 4,
+        "montadora": "Peugeot",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823382468710400/logo-peugeot-512.png"
+    },
+    {
+        "id": 5,
+        "montadora": "Nissan",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823381004886066/logo-nissan-antigo-512.png"
+    },
+    {
+        "id": 6,
+        "montadora": "Chevrolet (GM)",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823382279970846/chevrolet-512.png"
+    },
+    {
+        "id": 7,
+        "montadora": "Hyundai",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823382070239242/logo-hyundai-vertical-512.png"
+    },
+    {
+        "id": 8,
+        "montadora": "Ford",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823381604667392/logo-ford-512.png"
+    },
+    {
+        "id": 9,
+        "montadora": "Fiat",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823381889892392/logo-fiat-512.png"
+    },
+    {
+        "id": 10,
+        "montadora": "Honda",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953826139758034965/honda-logo-png-44812.png"
+    },
+    {
+        "id": 11,
+        "montadora": "Mitsubishi",
+        "imagem": "https://media.discordapp.net/attachments/953823167284138024/953823381424332810/logo-mitsubishi-512.png"
+    }
+]

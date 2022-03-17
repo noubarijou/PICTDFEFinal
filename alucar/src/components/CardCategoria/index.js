@@ -3,7 +3,7 @@ import "./style.scss";
 export const CardCategoria = ({ id, imagem, categoria, preco }) => {
   return (
     <>
-      <article className="card__categoria" key={id}>
+      <article className="card__categoria">
         <div className="card__img" >
           <img src={imagem} alt={categoria} />
         </div>

@@ -8,7 +8,7 @@ export const CardCarro = ({ id, imagem, modelo, descricao, rating }) => {
 
     return (
         <>
-            <article className="card__carro" key={id}>
+            <article className="card__carro">
                 <Link to="/">
                     <div className="card__img">
                         <img src={imagem} alt={modelo} />

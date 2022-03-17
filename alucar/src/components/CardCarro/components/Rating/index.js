@@ -12,7 +12,7 @@ export const Rating = ({ rating }) => {
     return (
         <div className="info__rating">
             {[1, 2, 3, 4, 5].map((e) => {
-                return (e <= rating) ? (<FontAwesomeIcon className="rating__star" icon={faStarSolid} />) : (<FontAwesomeIcon className="rating__star" icon={faStarRegular} />)
+                return (e <= rating) ? (<FontAwesomeIcon className="rating__star" key={e} icon={faStarSolid} />) : (<FontAwesomeIcon className="rating__star" key={e} icon={faStarRegular} />)
             })}
         </div>
     )
