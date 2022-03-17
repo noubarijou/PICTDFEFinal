@@ -4,7 +4,7 @@ import { Rating } from "./components/Rating";
 import './style.scss';
 
 
-export const CardCarro = ({ id, imagem, modelo, descricao, rating }) => {
+export const CardCarro = ({ id, imagem, categoria, modelo, descricao, rating }) => {
 
     return (
         <>
@@ -17,6 +17,7 @@ export const CardCarro = ({ id, imagem, modelo, descricao, rating }) => {
                 <div className="card__info">
                     <div className="info__principal">
                         <p className="subtitle">{modelo}</p>
+                        <p className="body">{categoria}</p>
                         <p className="body">{descricao}</p>
                     </div>
                     <div className="info__adicional">

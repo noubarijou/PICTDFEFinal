@@ -10,12 +10,13 @@ import { CardMontadora } from '../../components/CardMontadora';
 
 export const Home = () => {
 
-    const categoria = useAxios("");
-    const modelo = useAxios("");
+    /* const categoria = useAxios("");
+    const modelo = useAxios(""); */
+    const modelo = require("../../assets/detalhes.json");
     const montadora = require("../../assets/montadora.json");
 
-    if (!categoria || !categoria.length) return null;
-    if (!modelo || !modelo.length) return null;
+    /* if (!categoria || !categoria.length) return null; */
+    /* if (!modelo || !modelo.length) return null; */
     /* if (!montadora || !montadora.length) return null; */
 
 
@@ -48,24 +49,24 @@ export const Home = () => {
                 </article>
                 <article className='container__modelos' id='container__modelos'>
                     <h2>Principais Modelos</h2>
-                    <Carousel>
+                    {/* <Carousel>
                         <CardCarro id={1} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
                         <CardCarro id={2} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={3} />
                         <CardCarro id={3} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
                         <CardCarro id={4} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={2} />
                         <CardCarro id={5} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={5} />
                         <CardCarro id={6} imagem="https://www.toyotafd.com/wp-content/uploads/2020/08/2023-Toyota-Corolla-Exterior-1.png" modelo="Corolla" descricao="Motor 1.8 Hybrid Flex" rating={4} />
-                    </Carousel>
+                    </Carousel> */}
 
-                    {/* <Carousel>
+                    <Carousel>
                         {modelo.map((item) => {
                             return (
-                                <div key={id}>
-                                <CardCarro id={item.id} imagem={item.imagem} modelo={item.modelo} descricao={item.descricao} rating={item.rating} />
+                                <div key={item.id}>
+                                    <CardCarro id={item.id} imagem={item.img} modelo={item.modelo} categoria={item.categoria} descricao={item.combustivel} rating={item.rating} />
                                 </div>
                             )
                         })}
-                    </Carousel> */}
+                    </Carousel>
                 </article>
                 <article className='container__destinos' id='container__destinos'>
                     <h2>Aluguel de Carros nos <span>Destinos mais Populares do Brasil</span></h2>
@@ -77,13 +78,13 @@ export const Home = () => {
                         <p>Nossos veículos inspecionados pelas próprias montadoras para garantir performance, qualidade e segurança, para você utilizar com tranquilidade e comodidade em quaisquer situações.</p>
                     </div>
                     <Carousel>
-                            {montadora.map((item) => {
-                                return (
-                                    <div className="montadora__div" key={item.id}>
-                                        <CardMontadora id={item.id} imagem={item.imagem} nome={item.montadora} />
-                                    </div>
-                                )
-                            })}
+                        {montadora.map((item) => {
+                            return (
+                                <div className="montadora__div" key={item.id}>
+                                    <CardMontadora id={item.id} imagem={item.imagem} nome={item.montadora} />
+                                </div>
+                            )
+                        })}
                     </Carousel>
                     {/* montadora.map((item) => {
                                 return (<CardMontadora id={item.id} imagem={item.imagem} nome={item.montadora} />)
