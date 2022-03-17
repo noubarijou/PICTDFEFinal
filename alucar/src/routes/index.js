@@ -7,7 +7,7 @@ import { Login } from "../pages/Login";
 import { CriarConta } from "../pages/CriarConta";
 import { Sobre } from "../pages/Sobre";
 import { Ajuda } from "../pages/Ajuda";
-import { Detalhe } from "../pages/Produto";
+import { Detalhes } from "../pages/Produto";
 import {MinhasReservas} from "../pages/MinhasReservas"
 /* import {Categorias} from "../pages/Categorias"; */
 
@@ -22,7 +22,7 @@ const RouteList = () => {
                 <Route path="/criarconta" element={<CriarConta />} />
                 <Route path="/sobre" element={<Sobre />} />
                 <Route path="/ajuda" element={<Ajuda />} />
-                <Route path="/detalhes" element={<Detalhe />} />
+                <Route path="/detalhes" element={<Detalhes />} />
                 <Route path="/reservas" element={<MinhasReservas />} />
                 {/* <Route path="/categorias" element={<Categorias />} /> */}
             </Routes>

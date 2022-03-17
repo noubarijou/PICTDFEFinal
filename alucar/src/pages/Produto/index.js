@@ -1,9 +1,7 @@
 import './style.scss';
-
-import React from 'react'
 import { Helmet } from 'react-helmet-async';
 
-export const Detalhe = () => {
+export const Detalhes = () => {
     return (
         <>
             <Helmet>
