@@ -1,0 +1,61 @@
+@import "../../root.scss";
+
+.container__categoria, .container__modelos, .container__montadora{
+    margin: 40px 20px;
+    color: $primary2;
+
+    h3{
+        text-decoration: underline;
+    }
+}
+
+.container__categoria{
+    .container__carousel{
+        margin: 0 auto;
+        justify-content: center;
+        .carousel__btn{
+            display: none !important;
+        }
+    }
+}
+
+.container__destinos, .container__montadora{
+    h2 {
+        span{
+            color: $emphasis;
+        }
+    }
+}
+
+.container__destinos{
+    padding: 40px 20px;
+    background-color: $grey1;
+    .destinos__info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h2{
+            text-align: center;
+        }
+    }
+}
+
+@media (min-width: $screen-md-max) {
+    .container__linha{
+        height: 0.2rem;
+        min-width: 10rem;
+        max-width: 13.75rem;
+        margin: 0 1.75rem;
+        background-color: $primary2;
+    }
+}
+
+@media (min-width: $screen-lg-max) {
+    .container__montadora{
+        padding: 0 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 6.75rem;
+    }
+}

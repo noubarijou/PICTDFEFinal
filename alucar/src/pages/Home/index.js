@@ -28,9 +28,8 @@ export const Home = () => {
             </Helmet>
             <main>
                 <ModalPesquisa />
-                <h1>Bem vindx à AluCar</h1>
-                <article className='container__cateogria' id='container__categoria'>
-                    <h2>Principais Categorias</h2>
+                <article className='container__categoria' id='container__categoria'>
+                    <h3>Principais Categorias</h3>
                     <Carousel>
                         <CardCategoria id={1} imagem="https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png" categoria="Compactos" preco="40,00" />
                         <CardCategoria id={2} imagem="https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png" categoria="Econômicos" preco="40,00" />
@@ -48,7 +47,7 @@ export const Home = () => {
                     </Carousel> */}
                 </article>
                 <article className='container__modelos' id='container__modelos'>
-                    <h2>Principais Modelos</h2>
+                    <h3>Principais Modelos</h3>
                     <Carousel>
                         {modelo.map((item) => {
                             return (
@@ -60,23 +59,21 @@ export const Home = () => {
                     </Carousel>
                 </article>
                 <article className='container__destinos' id='container__destinos'>
-                    <h2>Aluguel de Carros nos <span>Destinos mais Populares do Brasil</span></h2>
+                    <div className='destinos__info'>
+                        <div className="container__linha"></div>
+                        <h2>Aluguel de Carros nos <span>Destinos mais Populares do Brasil</span></h2>
+                        <div className="container__linha"></div>
+                    </div>
 
                 </article>
                 <article className='container__montadora' id='container__montadora'>
-                    <div>
+                    <div className='montadora__info'>
                         <h2>Garantimos veículos de alta qualidade e segurança porque temos as <span>principais marcas</span> do mercado como nosso parceiros.</h2>
                         <p>Nossos veículos inspecionados pelas próprias montadoras para garantir performance, qualidade e segurança, para você utilizar com tranquilidade e comodidade em quaisquer situações.</p>
                     </div>
-                    <Carousel>
-                        {montadora.map((item) => {
-                            return (
-                                <div className="montadora__div" key={item.id}>
-                                    <CardMontadora id={item.id} imagem={item.imagem} nome={item.montadora} />
-                                </div>
-                            )
-                        })}
-                    </Carousel>
+                    <div className='montadora__card'>
+                        <CardMontadora slides={montadora} />
+                    </div>
                 </article>
             </main>
 

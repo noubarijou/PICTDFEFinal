@@ -65,9 +65,9 @@ export const Perfil = () => {
 
   return (
     <>
-      <h2>Equipe Alucar</h2>
       <section id='section-profile'>
-        
+        <h2>Equipe Alucar</h2>
+
         {Membros?.map(
           ({ id, nome, foto, github, githubImg, linkedin, linkedinImg }) => {
             return (

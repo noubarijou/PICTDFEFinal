@@ -8,7 +8,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 export const Carousel = ({ children }) => {
 
-    const carousel = useRef('');
+    const carousel = useRef("");
 
     const handleLeftClick = (e) => {
         e.preventDefault();
