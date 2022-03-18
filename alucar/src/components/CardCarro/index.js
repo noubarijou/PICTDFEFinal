@@ -22,7 +22,7 @@ export const CardCarro = ({ id, imagem, categoria, modelo, descricao, rating }) 
                     </div>
                     <div className="info__adicional">
                         <Rating rating={rating} />
-                        <Link className="body-large" to={`/${id}`}>Ver mais</Link>
+                        <Link className="body-large" to={`detalhes/${id}`}>Ver mais</Link>
                     </div>
                 </div>
 

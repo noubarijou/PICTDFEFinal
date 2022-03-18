@@ -13,6 +13,7 @@
         display: flex;
         justify-content: center;
     }
+    
 }
 
 @media (max-width: 1000px) {
@@ -24,14 +25,15 @@
             margin: 0 auto 18px;
 
             input{
-                min-width: 280px;
-                max-width: 400px;
+                min-width: 250px;
+                max-width: 350px;
             }
         }
 
         button{
             margin: 0 auto;
         }
+        
     }
 }
 

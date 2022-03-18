@@ -2,37 +2,61 @@
     {
         "id": 1,
         "img": "https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png",
-        "categoria": "compacto",
+        "categoria": "Compacto",
         "disponibilidade": "Indisponível",
         "modelo": "Chevrolet Onix",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": true,
+        "motor": "1.6",
+        "cambio": "manual/automático",
+        "rating": 1,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 2,
         "img": "https://static.rentcars.com/imagens/carros/peugeot_208-2020-2021.png",
-        "categoria": "compacto",
+        "categoria": "Compacto",
         "disponibilidade": "Disponível",
         "modelo": "Peugeot 2089",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": true,
+        "motor": "1.8",
+        "cambio": "manual/automático",
+        "rating": 3,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 3,
         "img": "https://static.rentcars.com/imagens/carros/renault_kwid-2020-2021.png",
-        "categoria": "econômico",
+        "categoria": "Econômico",
         "disponibilidade": "Disponível",
         "modelo": "Renault Kwid",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": false,
+        "motor": "1.0",
+        "cambio": "manual",
+        "rating": 5,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
         "id": 4,
         "img": "https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png",
-        "categoria": "econômico",
+        "categoria": "Econômico",
         "disponibilidade": "Disponível",
-        "modelo": "WV Gol",
+        "modelo": "VW Gol",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": false,
+        "motor": "1.0",
+        "cambio": "manual",
+        "rating": 2,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
@@ -42,6 +66,12 @@
         "disponibilidade": "Disponível",
         "modelo": "Peugeot 2008",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": true,
+        "motor": "2.0",
+        "cambio": "automático",
+        "rating": 5,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
@@ -51,6 +81,12 @@
         "disponibilidade": "Disponível",
         "modelo": "Jeep Compass",
         "combustivel": "Flex",
+        "quantidadePortas": 4,
+        "quantidadeAssentos": 5,
+        "arCondicionado": true,
+        "motor": "2.2",
+        "cambio": "automático",
+        "rating": 5,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
@@ -60,6 +96,12 @@
         "disponibilidade": "Disponível",
         "modelo": "Fiat Doblô",
         "combustivel": "Flex",
+        "quantidadePortas": 2,
+        "quantidadeAssentos": 2,
+        "arCondicionado": false,
+        "motor": "1.8",
+        "cambio": "manual",
+        "rating": 5,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     },
     {
@@ -69,6 +111,12 @@
         "disponibilidade": "Disponível",
         "modelo": "Fiat Fiorino",
         "combustivel": "Flex",
+        "quantidadePortas": 2,
+        "quantidadeAssentos": 2,
+        "arCondicionado": false,
+        "motor": "1.8",
+        "cambio": "manual",
+        "rating": 4,
         "descricao": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eos debitis ipsam minus, cum officiis?" 
     }
 ]
