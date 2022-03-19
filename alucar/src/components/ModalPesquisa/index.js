@@ -24,6 +24,7 @@ export const ModalPesquisa = () => {
       selectsRange={true}
       startDate={startDate}
       endDate={endDate}
+      monthsShown={2}
       onChange={(update) => {
         setDateRange(update);
       }}
