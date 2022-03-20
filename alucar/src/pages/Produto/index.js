@@ -7,6 +7,7 @@ import {useParams} from 'react-router-dom'
 import "react-datepicker/dist/react-datepicker.css";
 import { Spinner } from 'react-bootstrap';
 import {Mapa} from '../../components/Mapa/';
+import { Reservar } from "../../components/BotaoReserva";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -51,7 +52,7 @@ export const Detalhes = () => {
             <img src={e.img} alt={e.modelo} />
             <h3>
               Ideal para quem busca o aluguel de um carro com economia e
-              praticiidade
+              praticidade
             </h3>
             <p>
               *Este modelo é apenas uma sugestão do grupo que também possui as
@@ -94,7 +95,7 @@ export const Detalhes = () => {
       selectsRange
       inline
     />
-    <button className="btn success-btn btn-large">Reservar</button>
+    <Reservar className="btn success-btn btn-large" />
       <Mapa location={location} zoomLevel={17} />
       <h2>Requisitos para Alugar</h2>
       <p>Idade Mínima
