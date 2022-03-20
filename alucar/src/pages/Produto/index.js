@@ -2,12 +2,13 @@ import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom'
-import "react-datepicker/dist/react-datepicker.css";
 import { Spinner } from 'react-bootstrap';
 import {Mapa} from '../../components/Mapa/';
 import { Reservar } from "../../components/BotaoReserva";
+import { Link } from "react-router-dom";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -30,6 +31,7 @@ export const Detalhes = () => {
   const [detalhe, setDetalhe] = useState();
   useEffect(()=>{
     setDetalhe(detalhesId);
+    window.scrollTo(0, 0)
   },[detalhesId])
 
   return (
@@ -95,7 +97,9 @@ export const Detalhes = () => {
       selectsRange
       inline
     />
-    <Reservar className="btn success-btn btn-large" />
+    <Link to={`/disponibilidade`}>
+    <Reservar />
+    </Link>
       <Mapa location={location} zoomLevel={17} />
       <h2>Requisitos para Alugar</h2>
       <p>Idade Mínima

@@ -1,5 +1,6 @@
 import "./style.scss";
 import { Reservar } from "../BotaoReserva";
+import {Link} from "react-router-dom";
 export const CardCategoria = ({ id, imagem, categoria, preco }) => {
   return (
     <>
@@ -11,7 +12,9 @@ export const CardCategoria = ({ id, imagem, categoria, preco }) => {
           <h2>{categoria}</h2>
           <p className="subtitle">A partir de</p>
           <p className="info__preco">R$ {preco} / dia</p>
-          <Reservar className="btn success-btn btn-large" {...id} />
+          <Link to={`/disponibilidade`}>
+    <Reservar {...id}/>
+    </Link>
         </div>
 
       </article>
