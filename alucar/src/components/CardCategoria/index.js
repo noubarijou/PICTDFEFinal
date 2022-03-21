@@ -13,7 +13,6 @@ export const CardCategoria = ({ id, imagem, categoria, preco }) => {
           <p className="info__preco">R$ {preco} / dia</p>
           <button className="btn success-btn btn-large" {...id}>Reservar</button>
         </div>
-
       </article>
     </>
   )

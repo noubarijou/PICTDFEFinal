@@ -6,6 +6,7 @@ import { Carousel } from '../../components/Carousel';
 /* import useAxios from '../../hooks/useAxios'; */
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
+import { CardRegioes } from '../../components/CardRegioes';
 
 
 export const Home = () => {
@@ -70,6 +71,7 @@ export const Home = () => {
                     <div className='montadora__info'>
                         <h2>Garantimos veículos de alta qualidade e segurança porque temos as <span>principais marcas</span> do mercado como nosso parceiros.</h2>
                         <p>Nossos veículos inspecionados pelas próprias montadoras para garantir performance, qualidade e segurança, para você utilizar com tranquilidade e comodidade em quaisquer situações.</p>
+                        {/* <CardRegioes id={1} regiao="" estado="" imagem="" /> */}
                     </div>
                     <div className='montadora__card'>
                         <CardMontadora slides={montadora} />
