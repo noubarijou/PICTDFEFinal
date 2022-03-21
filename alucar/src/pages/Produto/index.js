@@ -2,14 +2,39 @@ import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import DatePicker from 'react-datepicker';
-import {useState} from 'react';
 import "react-datepicker/dist/react-datepicker.css";
-/* import CardCarro from "../../components/CardCarro";
- */
+import {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom'
+import { Spinner } from 'react-bootstrap';
+import {Mapa} from '../../components/Mapa/';
+import { Reservar } from "../../components/BotaoReserva";
+import { Link } from "react-router-dom";
+import addDays from 'date-fns/addDays';
+const location = {
+  address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
+  lat: -23.5329081,
+  lng: -46.774591,
+}
 export const Detalhes = () => {
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
+  
   const detalhes = require("../../assets/detalhes.json");
+  /* const detalhes = useAxios(`/caracteristicas`); */
+  
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const onChange = (dates) => {
+  const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+  
+  const {detalhesId} = useParams();
+  const [detalhe, setDetalhe] = useState();
+  useEffect(()=>{
+    setDetalhe(detalhesId);
+    window.scrollTo(0, 0)
+  },[detalhesId])
+
   return (
     <>
       <Helmet>
@@ -17,28 +42,20 @@ export const Detalhes = () => {
       </Helmet>
       <main>
          
-      <DatePicker
-      selectsRange={true}
-      startDate={startDate}
-      endDate={endDate}
-      onChange={(update) => {
-        setDateRange(update);
-      }}
-      isClearable={true}
-    />
-          
-      
-      {detalhes.map((item) => {
+     
+    {detalhes[detalhesId] ? (
+      <>
+      {detalhes.filter((item, index)=>item.id === parseInt(detalhe)).map((e) => {
         return (
-          <div key={item.id} id={item.id}>
-              <h1>{item.categoria}</h1>
+          <div key={e.id} id={e.id}>
+              <h1>{e.categoria}</h1>
             <span>
-              {item.modelo} ou similar <Rating rating={item.rating}/>
+              {e.modelo} ou similar <Rating rating={e.rating}/>
             </span>
-            <img src={item.img} alt={item.modelo} />
+            <img src={e.img} alt={e.modelo} />
             <h3>
               Ideal para quem busca o aluguel de um carro com economia e
-              praticiidade
+              praticidade
             </h3>
             <p>
               *Este modelo é apenas uma sugestão do grupo que também possui as
@@ -48,10 +65,13 @@ export const Detalhes = () => {
               **Garantimos reseva por grupo, não por modelo e final de placa de
               acordo com a disponibilidade da loja
             </p>
-            <h2>Categoria Econômica oferece</h2>
+            <h2>Categoria {e.categoria} oferece</h2>
             <div>
-              {item.cambio} {item.arCondicionado} {item.quantidadeAssentos}{" "}
-              {item.motor} {item.quantidadePortas}
+            {"Cambio: "}{e.cambio} {" "}
+            {"Ar Condicionado: "}{e.arCondicionado} {" "}
+            {"Assentos: "}{e.quantidadeAssentos} {" "}
+            {"Motor: "}{e.motor} {" "}
+            {"Portas: "}{e.quantidadePortas}
             </div>
             <div>
                 <h4>Proteção Básica</h4>
@@ -65,15 +85,42 @@ export const Detalhes = () => {
                 <p>R$24,90/Diária</p>
                 <button className="header__btn primary-btn btn-large">Adicionar</button>
             </div>
-            <button className="btn success-btn btn-large">Reservar</button>
           </div>
         );
       })}
-      {/* <article className="card__detalhes">
-                    <div className="card__img">
-                        <img src={imagem} alt={"aoba"}/>
-                    </div>
-                </article> */}
+      </>
+      ): (<Spinner />)}
+       <DatePicker 
+     selected={startDate}
+     onChange={onChange}
+     startDate={startDate}
+     endDate={endDate}
+     excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+     selectsRange
+     selectsDisabledDaysInRange
+     inline/>
+    <Link to={`/disponibilidade`}>
+    <Reservar />
+    </Link>
+      <Mapa location={location} zoomLevel={17} />
+      <h2>Requisitos para Alugar</h2>
+      <p>Idade Mínima
+O locatário/condutor deverá possuir idade mínima de 21 anos.
+
+Carteira de Habilitação Nacional (CNH)
+O locatário deverá apresentar seu documento de habilitação original, emitido há mais de 2 anos (CNH Definitiva), válido e dentro do prazo de vencimento.
+
+Documento de Identidade, CPF, Passaporte
+O locatário deverá apresentar seu documento RG e CPF originais e não poderá apresentar restrições de qualquer espécie junto aos órgãos de proteção ao crédito (SPC, SERASA) no momento da abertura de contrato junto a locadora. O locatário estrangeiro deverá apresentar seu documento Passaporte original e válido no momento da abertura de contrato junto a locadora.
+
+Cartão de Crédito
+O locatário deverá apresentar cartão de crédito válido, de sua titularidade, dentro do prazo de vencimento, emitido por uma instituição bancária e com limite de crédito disponível para pré-autorização da caução de garantia. Não serão aceitos cartões de crédito de terceiros ou cartões não vinculados a instituições bancárias. A aprovação do cartão de crédito é de única e exclusiva responsabilidade da locadora.
+
+Comprovante de Reserva
+O locatário deverá apresentar à locadora uma via impressa do seu comprovante Voucher de confirmação de reserva. Este documento de confirmação assegurará ao locatário o uso de todos de serviços pré-solicitados e confirmados, assim como a disponibilidade de veículo do grupo escolhido, condições de pagamento, tarifas e descontos.
+
+Importante
+As locadoras se reservam no direito de recusar a alugar veículos a menores de idade, pessoas sem a carteira de habilitação, pessoas incapazes de demonstrar crédito para pagamento ou ainda pessoas que, na opinião da locadora, constituam um risco.</p>
                 </main>
     </>
   );

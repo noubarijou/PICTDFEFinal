@@ -1,0 +1,170 @@
+[
+    {
+"id": 1,
+"cidade": "Rio Branco",
+"estado": "AC",
+"regiao": "Norte"
+},
+    {
+"id": 2,
+"cidade": "Maceió",
+"estado": "AL",
+"regiao": "Nordeste"
+},
+    {
+"id": 3,
+"cidade": "Macapá",
+"estado": "AP",
+"regiao": "Norte"
+},
+    {
+"id": 4,
+"cidade": "Manaus",
+"estado": "AM",
+"regiao": "Norte"
+},
+    {
+"id": 5,
+"cidade": "Salvador",
+"estado": "BA",
+"regiao": "Nordeste"
+},
+    {
+"id": 6,
+"cidade": "Fortaleza",
+"estado": "CE",
+"regiao": "Nordeste"
+},
+    {
+"id": 7,
+"cidade": "Brasília",
+"estado": "DF",
+"regiao": "Centro-Oeste"
+},
+    {
+"id": 8,
+"cidade": "Vitória",
+"estado": "ES",
+"regiao": "Sudeste"
+},
+    {
+"id": 9,
+"cidade": "Goiânia",
+"estado": "GO",
+"regiao": "Centro-Oeste"
+},
+    {
+"id": 10,
+"cidade": "São Luís",
+"estado": "MA",
+"regiao": "Nordeste"
+},
+    {
+"id": 11,
+"cidade": "Cuiabá",
+"estado": "MT",
+"regiao": "Centro-Oeste"
+},
+    {
+"id": 12,
+"cidade": "Campo Grande",
+"estado": "MS",
+"regiao": "Centro-Oeste"
+},
+    {
+"id": 13,
+"cidade": "Belo Horizonte",
+"estado": "MG",
+"regiao": "Sudeste"
+},
+    {
+"id": 14,
+"cidade": "Belém",
+"estado": "PA",
+"regiao": "Norte"
+},
+    {
+"id": 15,
+"cidade": "João Pessoa",
+"estado": "Paraíba",
+"regiao": "Nordeste"
+},
+    {
+"id": 16,
+"cidade": "Curitiba",
+"estado": "PR",
+"regiao": "Sul"
+},
+    {
+"id": 17,
+"cidade": "Recife",
+"estado": "PE",
+"regiao": "Nordeste"
+},
+    {
+"id": 18,
+"cidade": "Teresina",
+"estado": "PI",
+"regiao": "Nordeste"
+},
+    {
+"id": 19,
+"cidade": "Rio de Janeiro",
+"estado": "RJ",
+"regiao": "Sudeste"
+},
+    {
+"id": 20,
+"cidade": "Natal",
+"estado": "RN",
+"regiao": "Nordeste"
+},
+    {
+"id": 21,
+"cidade": "Porto Alegre",
+"estado": "RS",
+"regiao": "Sul"
+},
+    {
+"id": 22,
+"cidade": "Porto Velho",
+"estado": "RO",
+"regiao": "Norte"
+},
+    {
+"id": 23,
+"cidade": "Boa Vista",
+"estado": "RR",
+"regiao": "Norte"
+},
+    {
+"id": 24,
+"cidade": "Florianópolis",
+"estado": "SC",
+"regiao": "Sul"
+},
+    {
+"id": 25,
+"cidade": "São Paulo",
+"estado": "SP",
+"regiao": "Sudeste"
+},
+    {
+"id": 26,
+"cidade": "Aracaju",
+"estado": "SE",
+"regiao": "Nordeste"
+},
+    {
+"id": 27,
+"cidade": "Palmas",
+"estado": "TO",
+"regiao": "Norte"
+},
+    {
+"id": 1,
+"cidade": "Rio Branco",
+"estado": "AC",
+"regiao": "Norte"
+}
+]
