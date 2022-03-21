@@ -5,6 +5,8 @@ import {useState} from 'react';
 import {Reservar} from '../../components/BotaoReserva'
 import {Link} from 'react-router-dom';
 import addDays from 'date-fns/addDays'
+/* import Select from 'react-select';
+ *//* import 'react-select/dist/react-select.css'; */
 
 export const Disponibilidade = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -16,6 +18,7 @@ export const Disponibilidade = () => {
   };
     /* const detalhes = require("../../assets/detalhes.json"); */
   /* const detalhes = useAxios(`/caracteristicas`); */
+  const options = require('../../assets/cidades.json')
   return (
     <>
     <Helmet>
@@ -35,6 +38,8 @@ export const Disponibilidade = () => {
     <Link to={`/disponibilidade`}>
     <Reservar />
     </Link>
+    
+
     </main>
     </>
   )
