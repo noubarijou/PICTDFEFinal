@@ -43,7 +43,7 @@ export const CriarConta = () => {
 
             <div className="container">
               <h1>Criar Conta</h1>
-              <Form>
+              <Form method="post">
                 <TextField label="Nome" name="firstName" type="text" placeholder="Digite seu nome" required />
                 <TextField label="Sobrenome" name="lastName" type="text" placeholder="Digite seu sobrenome" required />
                 <TextField label="Email" name="email" type="email" placeholder="Digite seu email" required />
@@ -54,7 +54,7 @@ export const CriarConta = () => {
               <p className="criarconta btn-small">
                 Já tem conta?{" "}
                 <Link className="linklogin" to="/login">
-                  Entre uma aqui.
+                  Entre por aqui.
                 </Link>
               </p>
             </div>
