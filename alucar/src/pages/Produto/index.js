@@ -9,6 +9,7 @@ import { Spinner } from 'react-bootstrap';
 import {Mapa} from '../../components/Mapa/';
 import { Reservar } from "../../components/BotaoReserva";
 import { Link } from "react-router-dom";
+import addDays from 'date-fns/addDays';
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -22,7 +23,7 @@ export const Detalhes = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
-    const [start, end] = dates;
+  const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
   };
@@ -89,14 +90,15 @@ export const Detalhes = () => {
       })}
       </>
       ): (<Spinner />)}
-       <DatePicker
-      selected={startDate}
-      onChange={onChange}
-      startDate={startDate}
-      endDate={endDate}
-      selectsRange
-      inline
-    />
+       <DatePicker 
+     selected={startDate}
+     onChange={onChange}
+     startDate={startDate}
+     endDate={endDate}
+     excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+     selectsRange
+     selectsDisabledDaysInRange
+     inline/>
     <Link to={`/disponibilidade`}>
     <Reservar />
     </Link>

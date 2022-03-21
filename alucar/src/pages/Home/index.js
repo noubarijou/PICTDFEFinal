@@ -3,13 +3,14 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-/* import useAxios from '../../hooks/useAxios'; */
+import useAxios from '../../hooks/useAxios';
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 
 
 export const Home = () => {
-
+const teste = useAxios(`/categoria`);
+console.log(teste);
     /* const categoria = useAxios("");
     const modelo = useAxios("");
     const montadora = useAxios(""); */

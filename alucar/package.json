@@ -29,7 +29,8 @@
     "sass": "^1.49.9",
     "sweetalert2": "^11.4.4",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "yup-password": "^0.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
