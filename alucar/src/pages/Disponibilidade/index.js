@@ -5,8 +5,8 @@ import {useState} from 'react';
 import {Reservar} from '../../components/BotaoReserva'
 import {Link} from 'react-router-dom';
 import addDays from 'date-fns/addDays'
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+/* import Select from 'react-select';
+ *//* import 'react-select/dist/react-select.css'; */
 
 export const Disponibilidade = () => {
   const [startDate, setStartDate] = useState(new Date());
