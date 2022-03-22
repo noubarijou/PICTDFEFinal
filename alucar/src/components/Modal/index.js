@@ -1,16 +1,11 @@
 import "./style.scss";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faTwitter,
-  faLinkedin,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export const Modal = ({ children }) => {
-    
-const dados = require("../../assets/user.json");
+
+  const dados = require("../../assets/user.json");
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
   useEffect(() => {
     const loggedInUser = localStorage.getItem("credenciais");
@@ -21,19 +16,19 @@ const dados = require("../../assets/user.json");
   const handleLogout = () => {
     setIsSubmitSuccess(false);
     localStorage.clear();
-}
+  }
   return (
     <div className="modal">
       <div className="menu__title">{children}</div>
       {isSubmitSuccess ? (
         <>
           <div className="linha"></div>
-          <p className="body-large">{dados.map((dado)=>{
+          <p className="subtitle">
+            {dados.map((dado) => {
               return (
                 `Olá, ${dado.nome} ${dado.sobrenome}`
               )
-          })}
-           
+            })}
           </p>
           <div className="linha"></div>
           <a href="/sobre" className="body-large">
@@ -69,10 +64,10 @@ const dados = require("../../assets/user.json");
       )}
 
       <div className="menu__redes">
-        <FontAwesomeIcon icon={faFacebook} size="2x" />
-        <FontAwesomeIcon icon={faTwitter} size="2x" />
-        <FontAwesomeIcon icon={faLinkedin} size="2x" />
-        <FontAwesomeIcon icon={faInstagram} size="2x" />
+        <FontAwesomeIcon className="redes__icon" icon={faFacebook} size="2x" />
+        <FontAwesomeIcon className="redes__icon" icon={faTwitter} size="2x" />
+        <FontAwesomeIcon className="redes__icon" icon={faLinkedin} size="2x" />
+        <FontAwesomeIcon className="redes__icon" icon={faInstagram} size="2x" />
       </div>
     </div>
   );

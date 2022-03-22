@@ -32,5 +32,13 @@
     }
 
     .menu__redes{
+        position: absolute;
+        bottom: 0;
+        right: 24px;
+        cursor: pointer;
+
+        .redes__icon{
+            margin: 0.5rem;
+        }
     }
 }

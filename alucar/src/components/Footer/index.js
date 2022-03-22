@@ -20,7 +20,7 @@ export const Footer = () => {
             </div>
 
             {
-                width > 700 ?
+                width > 1000 ?
 
                     <div className="footer__redes">
                         <FontAwesomeIcon icon={faFacebook} size="2x" />
