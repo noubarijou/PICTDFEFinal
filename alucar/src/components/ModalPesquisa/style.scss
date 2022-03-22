@@ -14,10 +14,9 @@
         justify-content: center;
     }
 
-    .calendario{
-        z-index: 0;
+    .react-datepicker__input-container{
+        position: inherit !important;
     }
-    
 }
 
 @media (max-width: 1000px) {

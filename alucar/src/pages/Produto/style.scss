@@ -1,1 +1,8 @@
 @import "../../index.scss";
+.react-datepicker{
+    position: inherit !important;
+    
+    .react-datepicker__header{
+        position: inherit !important;
+    }
+}
