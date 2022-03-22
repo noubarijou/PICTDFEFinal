@@ -1,6 +1,6 @@
-import './style.scss'
+import './style.scss';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../Modal';
 
 /* icones - font awesome */
@@ -10,15 +10,20 @@ import { Link } from 'react-router-dom';
 
 
 export const Header = () => {
-
     const { width } = useWindowDimensions();
-
+    const [isSubmitSuccess, setIsSubmitSuccess] = useState();
     const [showModal, setShowModal] = useState(false);
-
+    const dados = require("../../assets/user.json")
     const handleClose = () => {
         setShowModal(!showModal);
     }
-
+    useEffect(() =>{
+        const loggedInUser = localStorage.getItem('credenciais');
+        if(loggedInUser) {
+            setIsSubmitSuccess(true)
+        }
+    },[]); 
+ 
     return (
         <header>
             <div className="header__txt">
@@ -33,7 +38,15 @@ export const Header = () => {
                 
                     <nav>
                         <FontAwesomeIcon icon={faBars} size="2x" style={{ cursor: "pointer" }} onClick={() => setShowModal(true)} />
-                        {showModal ? <Modal><div><FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} /></div></Modal> : null}
+                        {showModal ? <Modal><div>
+                        <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
+                        {isSubmitSuccess ? (
+                        <div className="modal__displayname">{dados.map((dado)=>{
+                            return (
+                                dado.displayname
+                            )
+                        })}</div>) : null }
+                        </div></Modal> : null}
                     </nav>
                     :
                     <nav>

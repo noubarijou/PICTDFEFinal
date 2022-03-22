@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-import useAxios from '../../hooks/useAxios';
+/* import useAxios from '../../hooks/useAxios'; */
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 import { CardRegioes } from '../../components/CardRegioes';
@@ -11,19 +11,20 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 
+
 export const Home = () => {
-    const teste = useAxios(`/categoria`);
-    console.log(teste);
-    /* const categoria = useAxios("");
-    const modelo = useAxios("");
-    const montadora = useAxios(""); */
+
+    /* const teste = useAxios(`/categoria`);
+    console.log(teste); */
+    /* const modelo = useAxios(`/carro`); */
+    /* const montadora = useAxios(""); */
     const modelo = require("../../assets/detalhes.json");
     const montadora = require("../../assets/montadora.json");
     /* const regioes = require("../../assets/cidades.json"); */
 
-    /* if (!categoria || !categoria.length) return null; */
-    /* if (!modelo || !modelo.length) return null; */
-    /* if (!montadora || !montadora.length) return null; */
+/*  if (!categoria || !categoria.length) return null;
+    if (!modelo || !modelo.length) return null;
+    if (!montadora || !montadora.length) return null; */
 
     return (
         <>
@@ -40,7 +41,7 @@ export const Home = () => {
                         <CardCategoria id={3} imagem="https://static.rentcars.com/imagens/carros/jeep-compass.jpg" categoria="SUVs" preco="40,00" />
                         <CardCategoria id={4} imagem="https://static.rentcars.com/imagens/carros/fiat-fiorino.png" categoria="Cargos" preco="40,00" />
                     </Carousel>
-                    {/* <Carousel>
+                   {/*  <Carousel>
                         {categoria.map((item) => {
                             return (
                                 <div key={item.id}>

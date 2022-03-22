@@ -1,4 +1,4 @@
-/* import "../assets/form.scss";
+import "../assets/form.scss";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,7 +16,8 @@ export const Login = () => {
     email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
     password: Yup.string().min(6, "Senha deve conter no mínimo 6 caracteres").required("Senha obrigatória"),
   });
-
+  const credentials = require("../../assets/user.json")
+    
   return (
     <>
       <Helmet>
@@ -29,10 +30,17 @@ export const Login = () => {
             password: '',
           }}
           validationSchema={validationSchema} onSubmit={(values) => {
-            console.log(values);
-            setIsSubmitSuccess(true)
+            localStorage.setItem('credenciais', JSON.stringify(values));
+            const info = localStorage.getItem('credenciais');
+            if (info.email === credentials.email && info.password === credentials.password) {
+              console.log(info.email);
+              console.log(credentials.email);
+              setIsSubmitSuccess(true)
+          
+      }
           }}
         >
+          
           {isSubmitSuccess ? (navigate('/')) : (
 
             <div className="container">
@@ -55,16 +63,14 @@ export const Login = () => {
       </main>
     </>
   );
-}; */
-import "../assets/form.scss";
+};
+/* import "../assets/form.scss";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-/* import { LoginService } from '../../services/login'; */
+ import { LoginService } from '../../services/login'; 
 import { Form, useFormik } from "formik";
 
-/* import * as Yup from 'yup';
-import { TextField } from "../../components/TextField"; */
 
 export const Login = () => {
 
@@ -72,10 +78,7 @@ export const Login = () => {
 
   const navigate = useNavigate();
 
-/*   const validationSchema = Yup.object({
-    email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
-    password: Yup.string().min(6, "Senha deve conter no mínimo 6 caracteres").required("Senha obrigatória"),
-  }); */
+
   
   const formik = useFormik({
     initialValues: {
@@ -140,4 +143,4 @@ export const Login = () => {
       </main>
     </>
   );
-};
+}; */
