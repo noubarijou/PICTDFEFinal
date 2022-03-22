@@ -1,7 +1,8 @@
 @import "../../root.scss";
 
 .container__slider{
-    width: 90vw;
+    width: 18.50rem;
+    height: 20rem;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -32,6 +33,7 @@
 @media (min-width: $screen-lg-max) {
     .container__slider{
         width: 27.25rem;
+        height: 25rem;
     }
     
 }

@@ -6,6 +6,7 @@ import { Modal } from '../Modal';
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 export const Header = () => {
@@ -24,9 +25,9 @@ export const Header = () => {
                 <p className={width < 1000 ? "body-small" : "btn-small"}>Carros assegurados em todo território nacional l Parcele seu aluguel em até 12x e saia dirigindo com segurança e conforto</p>
             </div>
             <div className="header__nav">
-                <a href='/' className="header__logo">
+                <Link to='/' className="header__logo">
                     <h2>Alu<span>Car</span></h2>
-                </a>
+                </Link>
 
                 {width < 1000 ?
                 

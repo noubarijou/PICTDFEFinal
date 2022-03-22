@@ -4,7 +4,10 @@
     margin: 40px 20px;
     color: $primary2;
 
-    h3{
+}
+
+.container__categoria, .container__modelos{
+    h2{
         text-decoration: underline;
     }
 }
@@ -13,9 +16,6 @@
     .container__carousel{
         margin: 0 auto;
         justify-content: center;
-        .carousel__btn{
-            display: none !important;
-        }
     }
 }
 
@@ -38,6 +38,17 @@
             text-align: center;
         }
     }
+    .destinos__cards{
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        transition: ease .3s;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+
+    }
 }
 
 @media (min-width: $screen-md-max) {
@@ -57,5 +68,17 @@
         align-items: center;
         justify-content: space-around;
         gap: 6.75rem;
+    }
+}
+
+@media (min-width: $screen-xl-max){
+    .container__categoria, .container__destinos{
+        .container__carousel{
+            margin: 0 auto;
+            justify-content: center;
+            .carousel__btn{
+                display: none !important;
+            }
+        }
     }
 }

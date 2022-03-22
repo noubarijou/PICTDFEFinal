@@ -1,1 +1,34 @@
 @import "../../root.scss";
+
+.card__regiao{
+    width: 16.5rem;
+    flex: none;
+    
+    .regioes__img{
+        width: 16rem;
+        height: 8rem;
+        margin: 1.25rem auto;
+        
+        img{
+            border-radius: 0.5rem;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .regioes__info{
+        h2{
+            text-align: center;
+        }
+        .regioes__estados{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            a{
+                color: $primary2;
+                margin: 0 auto;
+                width: 43%;
+            }
+        }
+    }
+}
