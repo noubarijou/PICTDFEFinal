@@ -1,23 +1,23 @@
 import {Helmet} from 'react-helmet-async'
-import DatePicker from 'react-datepicker';
+/* import DatePicker from 'react-datepicker';
 import {useState} from 'react';
 import {Reservar} from '../../components/BotaoReserva'
 import {Link} from 'react-router-dom';
-import addDays from 'date-fns/addDays'
-/* import Select from 'react-select';
- *//* import 'react-select/dist/react-select.css'; */
+import addDays from 'date-fns/addDays' */
+import useAxios from '../../hooks/useAxios'
 
 export const Disponibilidade = () => {
-  const [startDate, setStartDate] = useState(new Date());
+/*   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const onChange = (dates) => {
   const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-  };
+  }; */
     /* const detalhes = require("../../assets/detalhes.json"); */
-  /* const detalhes = useAxios(`/caracteristicas`); */
-  const options = require('../../assets/cidades.json')
+  const detalhes = useAxios(`/caracteristicas`);
+  console.log(detalhes);
+ /*  const options = require('../../assets/cidades.json') */
   return (
     <>
     <Helmet>
@@ -25,7 +25,8 @@ export const Disponibilidade = () => {
     </Helmet>
     <main>
         <h2>Disponibilidade da categoria </h2>
-        <DatePicker 
+        <div>{detalhes}</div>
+    {/*     <DatePicker 
      selected={startDate}
      onChange={onChange}
      startDate={startDate}
@@ -36,7 +37,7 @@ export const Disponibilidade = () => {
      inline/>
     <Link to={`/disponibilidade`}>
     <Reservar />
-    </Link>
+    </Link> */}
     
 
     </main>
