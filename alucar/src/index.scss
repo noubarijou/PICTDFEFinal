@@ -29,6 +29,10 @@ body {
   }
 }
 
+/* react-datepicker */
+.react-datepicker__navigation{
+  z-index: 0 !important;
+}
 
 /* font-size */
 .btn-large{

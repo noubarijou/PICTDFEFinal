@@ -2,7 +2,6 @@ import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap';
