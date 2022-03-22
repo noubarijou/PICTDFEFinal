@@ -1,8 +1,81 @@
 @import "../../index.scss";
-.react-datepicker{
+.detalhe__carro{
+    .carro__categoria{
+        padding: 0 1.25rem;
+        width: 100%;
+        height: 4.25rem;
+        background-color: $emphasis;
+        display: flex;
+        align-items: center;
+    }
+    .carro__nome{
+        padding: 0 1.25rem;
+        width: 100%;
+        height: 1.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $primary2;
+        color: white;
+    }
+    .carro__info{
+        .carro__img{
+            width: 18.75rem;
+            margin: 2rem auto;
+            height: 8rem;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .carro__slogan{
+            width: 100%;
+            padding: 0.25rem 1.25rem;
+            background-color: $grey1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 2.5rem 0;
+        }
+        p{
+            padding: 0 1.25rem;
+            color: $grey3;
+        }
+        .carro__caracteristica{
+            padding: 0 1.25rem;
+            margin: 2.5rem 0;
+
+            h2{
+                text-decoration: underline;
+            }
+            div{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+        }
+    }
+    .detalhes__datePicker{
+        display: flex;
+        justify-content: center;
+        margin: 2.5rem 0;
+
+    }
+    .detalhe__mapa{
+        padding: 0 1.25rem;
+        width: 90%;
+    }
+}
+/* .react-datepicker{
     position: inherit !important;
+
+    .react-datepicker__navigation{
+        position: relative;
+    }
     
     .react-datepicker__header{
         position: inherit !important;
     }
-}
+} */

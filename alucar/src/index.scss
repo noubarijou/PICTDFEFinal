@@ -1,5 +1,4 @@
 @import "./root.scss";
-
 body {
   margin: 0;
   box-sizing: border-box;
@@ -7,10 +6,12 @@ body {
   font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
   user-select: none;
+  color: $primary2;
 
   /* li {
     list-style: none;
   } */
+  
   main{
     margin-top: 116px;
     min-height: calc(100vh - 120px);
