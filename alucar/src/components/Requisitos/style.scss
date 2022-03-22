@@ -1,0 +1,27 @@
+@import "../../root.scss";
+
+.requisito__card{
+    padding: 0 1.25rem;
+    margin: 1.5rem 0;
+
+    .requisito__icone{
+        position: absolute;
+        right: 1.5rem;
+        cursor: pointer;
+    }
+    .open{
+        color: $primary2;
+    }
+    .close{
+        color: $grey3;
+    }
+    .requisito__title{
+        cursor: pointer;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+    .requisito__regra{
+        text-align: justify;
+    }
+}

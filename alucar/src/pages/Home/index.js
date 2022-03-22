@@ -7,8 +7,8 @@ import { Carousel } from '../../components/Carousel';
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 import { CardRegioes } from '../../components/CardRegioes';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+/* import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'; */
 
 
 

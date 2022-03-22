@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Idade Mínima",
+        "descricao": "O locatário/condutor deverá possuir idade mínima de 21 anos."
+    },
+    {
+        "id": 2,
+        "title": "Carteira de Habilitação Nacional (CNH)",
+        "descricao": "O locatário deverá apresentar seu documento de habilitação original, emitido há mais de 2 anos (CNH Definitiva), válido e dentro do prazo de vencimento."
+    },
+    {
+        "id": 3,
+        "title": "Documento de Identidade, CPF, Passaporte",
+        "descricao": "O locatário deverá apresentar seu documento RG e CPF originais e não poderá apresentar restrições de qualquer espécie junto aos órgãos de proteção ao crédito (SPC, SERASA) no momento da abertura de contrato junto a locadora. O locatário estrangeiro deverá apresentar seu documento Passaporte original e válido no momento da abertura de contrato junto a locadora."
+    },
+    {
+        "id": 4,
+        "title": "Cartão de Crédito",
+        "descricao": "O locatário deverá apresentar cartão de crédito válido, de sua titularidade, dentro do prazo de vencimento, emitido por uma instituição bancária e com limite de crédito disponível para pré-autorização da caução de garantia. Não serão aceitos cartões de crédito de terceiros ou cartões não vinculados a instituições bancárias. A aprovação do cartão de crédito é de única e exclusiva responsabilidade da locadora."
+    },
+    {
+        "id": 5,
+        "title": "Comprovante de Reserva",
+        "descricao": "O locatário deverá apresentar à locadora uma via impressa do seu comprovante Voucher de confirmação de reserva. Este documento de confirmação assegurará ao locatário o uso de todos de serviços pré-solicitados e confirmados, assim como a disponibilidade de veículo do grupo escolhido, condições de pagamento, tarifas e descontos."
+    },
+    {
+        "id": 6,
+        "title": "Importante",
+        "descricao": "As locadoras se reservam no direito de recusar a alugar veículos a menores de idade, pessoas sem a carteira de habilitação, pessoas incapazes de demonstrar crédito para pagamento ou ainda pessoas que, na opinião da locadora, constituam um risco."
+    }
+]

@@ -10,6 +10,7 @@ import { Reservar } from "../../components/BotaoReserva";
 import { Link } from "react-router-dom";
 /* import addDays from 'date-fns/addDays'; */
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { Requisitos } from "../../components/Requisitos";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -19,7 +20,9 @@ export const Detalhes = () => {
   const { width } = useWindowDimensions();
 
   const detalhes = require("../../assets/detalhes.json");
+  const regras = require("../../assets/regras.json");
   /* const detalhes = useAxios(`/caracteristicas`); */
+  /* const regras = useAxios(`/regras`) */
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
@@ -52,7 +55,7 @@ export const Detalhes = () => {
                       <h1>{e.categoria}</h1>
                     </div>
                     <div className="carro__nome">
-                      <p className="subtitle">{e.modelo} ou similar </p>
+                      <p className="btn-large">{e.modelo} ou similar </p>
                       <Rating rating={e.rating} />
                     </div>
                     <div className="carro__info">
@@ -73,11 +76,11 @@ export const Detalhes = () => {
                       <div className="carro__caracteristica">
                         <h2>Categoria {e.categoria} oferece</h2>
                         <div>
-                          <p className="body-small">Cambio: {e.cambio}</p>
-                          <p className="body-small">Ar Condicionado: {e.arCondicionado}</p>
-                          <p className="body-small">Assentos: {e.quantidadeAssentos}</p>
-                          <p className="body-small">Motor: {e.motor}</p>
-                          <p className="body-small">Portas: {e.quantidadePortas}</p>
+                          <p className="body-large">Cambio: {e.cambio}</p>
+                          <p className="body-large">Ar Condicionado: {e.arCondicionado}</p>
+                          <p className="body-large">Assentos: {e.quantidadeAssentos}</p>
+                          <p className="body-large">Motor: {e.motor}</p>
+                          <p className="body-large">Portas: {e.quantidadePortas}</p>
                         </div>
                       </div>
                       <div>
@@ -115,24 +118,16 @@ export const Detalhes = () => {
           <div className="detalhe__mapa">
             <Mapa location={location} zoomLevel={17} />
           </div>
-          <h2>Requisitos para Alugar</h2>
-          <p>Idade Mínima
-            O locatário/condutor deverá possuir idade mínima de 21 anos.
-
-            Carteira de Habilitação Nacional (CNH)
-            O locatário deverá apresentar seu documento de habilitação original, emitido há mais de 2 anos (CNH Definitiva), válido e dentro do prazo de vencimento.
-
-            Documento de Identidade, CPF, Passaporte
-            O locatário deverá apresentar seu documento RG e CPF originais e não poderá apresentar restrições de qualquer espécie junto aos órgãos de proteção ao crédito (SPC, SERASA) no momento da abertura de contrato junto a locadora. O locatário estrangeiro deverá apresentar seu documento Passaporte original e válido no momento da abertura de contrato junto a locadora.
-
-            Cartão de Crédito
-            O locatário deverá apresentar cartão de crédito válido, de sua titularidade, dentro do prazo de vencimento, emitido por uma instituição bancária e com limite de crédito disponível para pré-autorização da caução de garantia. Não serão aceitos cartões de crédito de terceiros ou cartões não vinculados a instituições bancárias. A aprovação do cartão de crédito é de única e exclusiva responsabilidade da locadora.
-
-            Comprovante de Reserva
-            O locatário deverá apresentar à locadora uma via impressa do seu comprovante Voucher de confirmação de reserva. Este documento de confirmação assegurará ao locatário o uso de todos de serviços pré-solicitados e confirmados, assim como a disponibilidade de veículo do grupo escolhido, condições de pagamento, tarifas e descontos.
-
-            Importante
-            As locadoras se reservam no direito de recusar a alugar veículos a menores de idade, pessoas sem a carteira de habilitação, pessoas incapazes de demonstrar crédito para pagamento ou ainda pessoas que, na opinião da locadora, constituam um risco.</p>
+          <article className="detalhes__requisitos">
+            <h2>Requisitos para Alugar</h2>
+            {regras.map((regra) => {
+              return (
+                <div className="requisitos" key={regra.id}>
+                  <Requisitos title={regra.title} regra={regra.descricao} />
+                </div>
+              )
+            })}
+          </article>
         </article>
       </main>
     </>

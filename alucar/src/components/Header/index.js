@@ -17,13 +17,13 @@ export const Header = () => {
     const handleClose = () => {
         setShowModal(!showModal);
     }
-    useEffect(() =>{
+    useEffect(() => {
         const loggedInUser = localStorage.getItem('credenciais');
-        if(loggedInUser) {
+        if (loggedInUser) {
             setIsSubmitSuccess(true)
         }
-    },[]); 
- 
+    }, []);
+
     return (
         <header>
             <div className="header__txt">
@@ -35,18 +35,21 @@ export const Header = () => {
                 </Link>
 
                 {width < 1000 ?
-                
+
                     <nav>
                         <FontAwesomeIcon icon={faBars} size="2x" style={{ cursor: "pointer" }} onClick={() => setShowModal(true)} />
-                        {showModal ? <Modal><div>
-                        <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
-                        {isSubmitSuccess ? (
-                        <div className="modal__displayname">{dados.map((dado)=>{
-                            return (
-                                dado.displayname
-                            )
-                        })}</div>) : null }
-                        </div></Modal> : null}
+                        {showModal ?
+                            <Modal>
+                                <div>
+                                    <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
+                                    {isSubmitSuccess ? (
+                                        <div className="modal__displayname">{dados.map((dado) => {
+                                            return (
+                                                dado.displayname
+                                            )
+                                        })}</div>) : null}
+                                </div>
+                            </Modal> : null}
                     </nav>
                     :
                     <nav>

@@ -1,4 +1,3 @@
-import "../assets/form.scss";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";

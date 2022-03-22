@@ -2,7 +2,6 @@
 .detalhe__carro{
     .carro__categoria{
         padding: 0 1.25rem;
-        width: 100%;
         height: 4.25rem;
         background-color: $emphasis;
         display: flex;
@@ -10,7 +9,6 @@
     }
     .carro__nome{
         padding: 0 1.25rem;
-        width: 100%;
         height: 1.75rem;
         display: flex;
         justify-content: space-between;
@@ -30,7 +28,6 @@
             }
         }
         .carro__slogan{
-            width: 100%;
             padding: 0.25rem 1.25rem;
             background-color: $grey1;
             display: flex;
@@ -66,6 +63,15 @@
     .detalhe__mapa{
         padding: 0 1.25rem;
         width: 90%;
+    }
+    .detalhes__requisitos{
+        padding: 0 1.25rem;
+        .requisitos{
+            border-bottom: 1px solid $grey1;
+            &:last-child{
+                border-bottom: none;
+            }
+        }
     }
 }
 /* .react-datepicker{
