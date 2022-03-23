@@ -14,7 +14,7 @@ body {
   
   main{
     margin-top: 116px;
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 180px);
     margin-bottom: 10px;
   }
   
@@ -109,7 +109,7 @@ body {
   }
 }
 
-label, .error{
+/* label, .error{
   display: block;
 }
 
@@ -125,4 +125,4 @@ input, textarea{
     line-height: 21px;
     color: $grey3;
   }
-}
+} */

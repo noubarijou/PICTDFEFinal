@@ -1,0 +1,16 @@
+@import "../../root.scss";
+.card__caracteristica{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+    figure{
+        margin: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

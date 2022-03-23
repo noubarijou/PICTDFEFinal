@@ -36,7 +36,7 @@
             text-align: center;
             margin: 2.5rem 0;
         }
-        p{
+        .info__aviso{
             padding: 0 1.25rem;
             color: $grey3;
         }
@@ -47,10 +47,11 @@
             h2{
                 text-decoration: underline;
             }
-            div{
+            .caracteriscas__card{
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
+                gap: 1.25rem;
             }
         }
     }

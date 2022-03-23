@@ -1,0 +1,52 @@
+@import "../../root.scss";
+
+.card__adicional{
+    margin: 1.25rem;
+    border-radius: 0.75rem;
+    border: solid 1px $neutral2;
+    width: 23.5rem;
+    .adicional__title, .adicional__info {
+        padding: 0.5rem 1.25rem;
+    }
+    .adicional__title{
+        border-radius: 0.75rem 0.75rem 0 0;
+        background-color: $neutral2;
+        margin: 0;
+    }
+    .adicional__info{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        .adicional__descricao{
+            margin: 0;
+
+        }
+        .adicional__valor__checkbox{
+            width: 8rem;
+            .adicional__valor{}
+            .adicional__label{
+                background-color: $emphasis;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                .adicional__input{}
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-md-max){
+    .card__adicional{
+        width: 43.5rem;
+    }
+}
+
+@media (min-width: $screen-lg-max){
+    .card__adicional{
+        width: 26.5rem;
+    }
+}

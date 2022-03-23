@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 /* import addDays from 'date-fns/addDays'; */
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
+import { CardCaracteristica } from "../../components/CardCaracteristica";
+import { CardAdicionais } from "../../components/CardAdicionais";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -65,24 +67,25 @@ export const Detalhes = () => {
                       <article className="carro__slogan">
                         <h2> Ideal para quem busca o aluguel de um carro com economia e praticidade.</h2>
                       </article>
-                      <p className="body-small">
+                      <p className="body-small info__aviso">
                         *Este modelo é apenas uma sugestão do grupo que também possui as
                         mesmas características acima.
                       </p>
-                      <p className="body-small">
+                      <p className="body-small info__aviso">
                         **Garantimos reseva por grupo, não por modelo e final de placa de
                         acordo com a disponibilidade da loja
                       </p>
                       <div className="carro__caracteristica">
                         <h2>Categoria {e.categoria} oferece</h2>
-                        <div>
-                          <p className="body-large">Cambio: {e.cambio}</p>
-                          <p className="body-large">Ar Condicionado: {e.arCondicionado}</p>
-                          <p className="body-large">Assentos: {e.quantidadeAssentos}</p>
-                          <p className="body-large">Motor: {e.motor}</p>
-                          <p className="body-large">Portas: {e.quantidadePortas}</p>
+                        <div className="caracteriscas__card">
+                          <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.cambio} />
+                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.arCondicionado) ? "Ar condicionado" : null} />
+                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.quantidadeAssentos} ${(e.quantidadeAssentos <= 1) ? "assento" : "assentos"}`} />
+                          <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.motor} />
+                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.quantidadePortas} ${(e.quantidadePortas <= 1) ? "porta" : "portas"}`} />
                         </div>
                       </div>
+                      <CardAdicionais id={1} title="Proteção Básica" descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo." valor={9.90} />
                       <div>
                         <h4>Proteção Básica</h4>
                         <p>Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo</p>
