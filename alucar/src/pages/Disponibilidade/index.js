@@ -15,9 +15,9 @@ export const Disponibilidade = () => {
     setEndDate(end);
   }; */
     /* const detalhes = require("../../assets/detalhes.json"); */
-  const detalhes = useAxios(`/categoria`);
+  const detalhes = useAxios(`/categorias`);
   console.log(detalhes);
- /*  const options = require('../../assets/cidades.json') */
+  /* const options = require('../../assets/cidades.json') */
   return (
     <>
     <Helmet>
@@ -25,7 +25,8 @@ export const Disponibilidade = () => {
     </Helmet>
     <main>
         <h2>Disponibilidade da categoria </h2>
-        <div>{detalhes}</div>
+        
+        <div></div>
     {/*     <DatePicker 
      selected={startDate}
      onChange={onChange}
