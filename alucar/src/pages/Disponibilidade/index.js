@@ -15,7 +15,7 @@ export const Disponibilidade = () => {
     setEndDate(end);
   }; */
     /* const detalhes = require("../../assets/detalhes.json"); */
-  const detalhes = useAxios(`/caracteristicas`);
+  const detalhes = useAxios(`/categoria`);
   console.log(detalhes);
  /*  const options = require('../../assets/cidades.json') */
   return (

@@ -73,6 +73,22 @@ header{
                 left: 234px;
                 top: 85px;
             }
+            .modal__displaynameDesktop {
+                border-radius: 100px;
+                background-color: $grey4;
+                color: $white;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px;
+
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                left: 1830px;
+                top: 63px;
+            }
         }
     }
 }

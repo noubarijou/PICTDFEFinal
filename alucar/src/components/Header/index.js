@@ -23,7 +23,10 @@ export const Header = () => {
             setIsSubmitSuccess(true)
         }
     }, []);
-
+    const handleLogout = () => {
+        setIsSubmitSuccess(false);
+        localStorage.clear();
+      }
     return (
         <header>
             <div className="header__txt">
@@ -51,6 +54,22 @@ export const Header = () => {
                                 </div>
                             </Modal> : null}
                     </nav>
+                    :
+                    (isSubmitSuccess) ?
+                    <nav>
+                        <a href="/sobre" className="subtitle">Sobre</a>
+                        <a href="/ajuda" className="subtitle">Ajuda</a>
+                        <a href="/minhaconta" className="header__btn primary-btn btn-large">Minha Conta</a>
+                        <div className="modal__displaynameDesktop">{dados.map((dado) => {
+                                            return (
+                                                dado.displayname
+                                            )
+                                        }
+                        )}
+                        </div>
+                        <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleLogout()} /> 
+                    </nav>
+
                     :
                     <nav>
                         <a href="/sobre" className="subtitle">Sobre</a>
