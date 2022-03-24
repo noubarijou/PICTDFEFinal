@@ -1,98 +1,109 @@
-@import '../../root.scss';
+@import "../../root.scss";
 @import "../../index.scss";
 
+.categorias_filtros{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    
 .filtro__cidade_periodo {
+  display: flex;
   position: fixed;
-  width: 414px;
+  align-items: center;
+  width: 100%;
   height: 40px;
   left: 0px;
-  top: 116px;
-
-  /* Alucar/Primaria 01 */
-
-  background: #FBC02D;
+  top: 130px;
+  background: #fbc02d;
 }
 
-
 .filtro__ordernar {
-position: absolute;
-width: 207px;
-height: 60px;
-left: 0px;
-top: 156px;
-color: $white;
-/* Alucar/Gray 4 */
-
-background: $grey4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 145px;
+  height: 60px;
+  left: 0px;
+  top: 184px;
+  color: $white;
+  background: $grey4;
+ 
 }
 
 .filtro__filtrar {
-    position: absolute;
-    width: 207px;
-    height: 60px;
-    left: 207px;
-    top: 156px;
-    color: $white;
-    /* Alucar/Gray 4 */
-    
-    background: $grey4;
-}
+  display: flex;
+  position: fixed;
+  width: 150px;
+  height: 60px;
+  left: 145px;
+  top: 184px;
+  color: $white;
+  align-items: center;
+  background: $grey4;
+  
+}}
 
-.detalhe__carro{
-    .carro__categoria{
-        padding: 0 1.25rem;
-        height: 4.25rem;
-        background-color: $emphasis;
-        display: flex;
-        align-items: center;
-    }
-    .carro__nome{
-        padding: 0 1.25rem;
-        height: 1.75rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $primary2;
-        color: white;
-    }
-    .carro__info{
-        .carro__img{
-            width: 18.75rem;
-            margin: 2rem auto;
-            height: 8rem;
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        .carro__slogan{
-            padding: 0.25rem 1.25rem;
-            background-color: $grey1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin: 2.5rem 0;
-        }
-        .info__aviso{
-            padding: 0 1.25rem;
-            color: $grey3;
-        }
-        .carro__caracteristica{
-            padding: 0 1.25rem;
-            margin: 2.5rem 0;
-
-            h2{
-                text-decoration: underline;
-            }
-            .caracteriscas__card{
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: 1.25rem;
-            }
-        }
-    }
+.detalhe__carro {
     
+
+  .carro__nome {
+    margin-top: 85px;
+    padding: 0 1.25rem;
+    height: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $emphasis;
+    color: $primary2;
+  }
+  .carro__categoria {
+    padding: 0 1.25rem;
+    height: 4.25rem;
+    background-color: $primary2;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+  .carro__info {
+    .carro__img {
+      width: 18.75rem;
+      margin: 2rem auto;
+      height: 8rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .carro__slogan {
+      padding: 0.25rem 1.25rem;
+      background-color: $grey1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 2.5rem 0;
+    }
+    .info__aviso {
+      padding: 0 1.25rem;
+      color: $grey3;
+    }
+  }
+  .carro__caracteristica {
+    padding: 0 1.25rem;
+    margin: 2.5rem 0;
+
+    h2 {
+      text-decoration: underline;
+    }
+    .caracteriscas__card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+    }
+  }
 }
