@@ -22,7 +22,7 @@ const location = {
 export const Detalhes = () => {
   const { width } = useWindowDimensions();
 
-  /* const detalhes = require("../../assets/detalhes.json"); */
+  
   const regras = require("../../assets/regras.json");
   const detalhes = useAxios(`/carro`);
   /* const regras = useAxios(`/regras`) */
@@ -41,7 +41,7 @@ export const Detalhes = () => {
     setDetalhe(detalhesId);
     window.scrollTo(0, 0)
   }, [detalhesId])
-
+  console.log(detalhesId)
   return (
     <>
       <Helmet>
