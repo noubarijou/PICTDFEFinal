@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-/* import useAxios from '../../hooks/useAxios'; */
+import useAxios from '../../hooks/useAxios';
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 import { CardRegioes } from '../../components/CardRegioes';
@@ -14,17 +14,17 @@ import { useParams } from 'react-router-dom'; */
 
 export const Home = () => {
 
-    /* const teste = useAxios(`/categoria`);
-    console.log(teste); */
-    /* const modelo = useAxios(`/carro`); */
-    /* const montadora = useAxios(""); */
-    const modelo = require("../../assets/detalhes.json");
-    const montadora = require("../../assets/montadora.json");
+    const categorias = useAxios(`/categorias`);
+    
+    const modelos = useAxios(`/carro`);
+    /* const montadoras = useAxios(`/imagens`); */
+    /* const modelo = require("../../assets/detalhes.json");*/
+    const montadoras = require("../../assets/montadora.json"); 
     /* const regioes = require("../../assets/cidades.json"); */
 
-/*  if (!categoria || !categoria.length) return null;
-    if (!modelo || !modelo.length) return null;
-    if (!montadora || !montadora.length) return null; */
+    if (!categorias || !categorias.length) return null;
+    if (!modelos || !modelos.length) return null;
+    /* if (!montadoras || !montadoras.length) return null; */
 
     return (
         <>
@@ -35,29 +35,29 @@ export const Home = () => {
                 <ModalPesquisa />
                 <article className='container__categoria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
-                    <Carousel>
+                    {/* <Carousel>
                         <CardCategoria id={1} imagem="https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png" categoria="Compactos" preco="40,00" />
                         <CardCategoria id={2} imagem="https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png" categoria="Econômicos" preco="40,00" />
                         <CardCategoria id={3} imagem="https://static.rentcars.com/imagens/carros/jeep-compass.jpg" categoria="SUVs" preco="40,00" />
                         <CardCategoria id={4} imagem="https://static.rentcars.com/imagens/carros/fiat-fiorino.png" categoria="Cargos" preco="40,00" />
-                    </Carousel>
-                   {/*  <Carousel>
-                        {categoria.map((item) => {
+                    </Carousel> */}
+                   <Carousel>
+                        {categorias.map((item) => {
                             return (
-                                <div key={item.id}>
-                                <CardCategoria id={item.id} imagem={item.imagem} categoria={item.categoria} preco={item.preco} />
+                                <div key={item.categorias_id}>
+                                <CardCategoria id={item.categorias_id} imagem={item.url_img_modelo} categoria={item.categorias_nome} preco={item.preco} />
                                 </div>
                                 )
                         })}
-                    </Carousel> */}
+                    </Carousel>
                 </article>
                 <article className='container__modelos' id='container__modelos'>
                     <h2>Principais Modelos</h2>
                     <Carousel>
-                        {modelo.map((item) => {
+                        {modelos.map((item) => {
                             return (
-                                <div key={item.id}>
-                                    <CardCarro id={item.id} imagem={item.img} modelo={item.modelo} categoria={item.categoria} descricao={item.combustivel} rating={item.rating} />
+                                <div key={item.carro_id}>
+                                    <CardCarro id={item.carro_id} imagem={item.imagens.url_imagem} modelo={item.modelo} categoria={item.categorias.categorias_nome} descricao={item.caracteristicas.cambio} /* rating={item.rating} */ />
                                 </div>
                             )
                         })}
@@ -71,10 +71,10 @@ export const Home = () => {
                     </div>
                     <Carousel className='destinos__cards'>
                         <CardRegioes imagem="https://hweb-upload.s3-sa-east-1.amazonaws.com/5873d325c19a4207cc40b87c/07e1f8e2fdd64088bccc5ac8f8e9a306.jpg" regiaoBR="Norte" />
-                        <CardRegioes imagem="https://www.hotelsauipe.com.br/img/gallery/570541ea6edd9.jpg" regiaoBR="Nordeste" />
-                        <CardRegioes imagem="https://www.hotelsauipe.com.br/img/gallery/570541ea6edd9.jpg" regiaoBR="Centro-Oeste" />
-                        <CardRegioes imagem="https://www.hotelsauipe.com.br/img/gallery/570541ea6edd9.jpg" regiaoBR="Sudeste" />
-                        <CardRegioes imagem="https://www.hotelsauipe.com.br/img/gallery/570541ea6edd9.jpg" regiaoBR="Sul" />
+                        <CardRegioes imagem="https://wallpapercave.com/wp/wp1860191.jpg" regiaoBR="Nordeste" />
+                        <CardRegioes imagem="https://s.glbimg.com/jo/g1/f/original/2015/04/07/g0021220-edit.jpg" regiaoBR="Centro-Oeste" />
+                        <CardRegioes imagem="https://live.staticflickr.com/3060/2617086192_c99612d51d_b.jpg" regiaoBR="Sudeste" />
+                        <CardRegioes imagem="https://arvconstrutora.com.br/wp-content/uploads/2020/01/Florianopolis-Bigstock-copy.jpg" regiaoBR="Sul" />
                     </Carousel>
 
                 </article>
@@ -84,7 +84,7 @@ export const Home = () => {
                         <p>Nossos veículos inspecionados pelas próprias montadoras para garantir performance, qualidade e segurança, para você utilizar com tranquilidade e comodidade em quaisquer situações.</p>
                     </div>
                     <div className='montadora__card'>
-                        <CardMontadora slides={montadora} />
+                        <CardMontadora slides={montadoras} />
                     </div>
                 </article>
             </main>

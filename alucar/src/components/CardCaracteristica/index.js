@@ -24,7 +24,7 @@ export const CardCaracteristica = ({ icon, carcteristica, carcteristicaDescricao
             default:
                 break;
         }
-    }, [iconCaracteristica, icon]);
+    }, [icon]);
 
     return (
         <div className='card__caracteristica'>

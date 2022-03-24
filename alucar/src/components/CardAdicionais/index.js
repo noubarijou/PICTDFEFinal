@@ -16,7 +16,7 @@ export const CardAdicionais = ({ id, title, descricao, valor }) => {
             <div className="adicional__info">
                 <p className="body-small adicional__descricao">{descricao}</p>
                 <div className="adicional__valor__checkbox">
-                    <p className="btn-large adicional__valor">R${(valor.toFixed(2)).replace(".", ",")} <span className="body-small">/Diária</span></p>
+                    <p className="btn-large adicional__valor">{`R$${(valor.toFixed(2)).replace(".", ",")}`} <span className="body-small">/Diária</span></p>
                     <label htmlFor={id} onChange={handleChange} className="adicional__label btn-large">
                         Adicionar
                         <input type="checkbox" id={id} value={id} onChange={handleChange} className="adicional__input" />

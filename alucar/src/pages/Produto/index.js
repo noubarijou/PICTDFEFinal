@@ -13,6 +13,7 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
 import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { CardAdicionais } from "../../components/CardAdicionais";
+import useAxios from "../../hooks/useAxios";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -21,9 +22,9 @@ const location = {
 export const Detalhes = () => {
   const { width } = useWindowDimensions();
 
-  const detalhes = require("../../assets/detalhes.json");
+  /* const detalhes = require("../../assets/detalhes.json"); */
   const regras = require("../../assets/regras.json");
-  /* const detalhes = useAxios(`/caracteristicas`); */
+  const detalhes = useAxios(`/carro`);
   /* const regras = useAxios(`/regras`) */
 
   const [startDate, setStartDate] = useState(new Date());
@@ -50,11 +51,11 @@ export const Detalhes = () => {
         <article className="detalhe__carro">
           {detalhes[detalhesId] ? (
             <>
-              {detalhes.filter((item, index) => item.id === parseInt(detalhe)).map((e) => {
+              {detalhes.filter((item, index) => item.carro_id === parseInt(detalhe)).map((e) => {
                 return (
-                  <div key={e.id} id={e.id}>
+                  <div key={e.carro_id} id={e.carro_id}>
                     <div className="carro__categoria">
-                      <h1>{e.categoria}</h1>
+                      <h1>{e.categorias.categorias_nome}</h1>
                     </div>
                     <div className="carro__nome">
                       <p className="btn-large">{e.modelo} ou similar </p>
@@ -62,7 +63,7 @@ export const Detalhes = () => {
                     </div>
                     <div className="carro__info">
                       <figure className="carro__img">
-                        <img src={e.img} alt={e.modelo} />
+                        <img src={e.imagens.url_imagem} alt={e.imagens.titulo} />
                       </figure>
                       <article className="carro__slogan">
                         <h2> Ideal para quem busca o aluguel de um carro com economia e praticidade.</h2>
@@ -78,11 +79,11 @@ export const Detalhes = () => {
                       <div className="carro__caracteristica">
                         <h2>Categoria {e.categoria} oferece</h2>
                         <div className="caracteriscas__card">
-                          <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.cambio} />
-                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.arCondicionado) ? "Ar condicionado" : null} />
-                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.quantidadeAssentos} ${(e.quantidadeAssentos <= 1) ? "assento" : "assentos"}`} />
-                          <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.motor} />
-                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.quantidadePortas} ${(e.quantidadePortas <= 1) ? "porta" : "portas"}`} />
+                          <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.caracteristicas.cambio} />
+                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.caracteristicas.ar_condicionado) ? "Ar condicionado" : null} />
+                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.caracteristicas.qtde_assento} ${(e.caracteristicas.qtde_assento <= 1) ? "assento" : "assentos"}`} />
+                          <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.caracteristicas.motor} />
+                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtde_porta} ${(e.caracteristicas.qtde_porta <= 1) ? "porta" : "portas"}`} />
                         </div>
                       </div>
                       <CardAdicionais id={1} title="Proteção Básica" descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo." valor={9.90} />
@@ -115,7 +116,7 @@ export const Detalhes = () => {
               selectsDisabledDaysInRange
               inline />
           </div>
-          <Link to={`/disponibilidade`}>
+          <Link to={`/disponibilidade/`}>
             <Reservar />
           </Link>
           <div className="detalhe__mapa">

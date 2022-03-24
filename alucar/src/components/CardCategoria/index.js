@@ -12,8 +12,8 @@ export const CardCategoria = ({ id, imagem, categoria, preco }) => {
           <h2>{categoria}</h2>
           <p className="subtitle">A partir de</p>
           <p className="info__preco">R$ {preco} / dia</p>
-          <Link to={`/disponibilidade`}>
-            <Reservar {...id} />
+          <Link to={`/disponibilidade/:categoriaId`}>
+            <Reservar  />
           </Link>
         </div>
       </article>
