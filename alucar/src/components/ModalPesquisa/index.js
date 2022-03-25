@@ -1,5 +1,5 @@
 import './style.scss'
-
+import useAxios from '../../hooks/useAxios';
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendarDay } from '@fortawesome/free-solid-svg-icons'
@@ -8,8 +8,10 @@ import { useState } from 'react';
 
 
 export const ModalPesquisa = () => {
+    const cidades = useAxios(`/cidades`);
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
+    console.log(cidades)
     return (
         <div className="modal__pesquisa">
             <h2>Os melhores veículos, pelo melhor preço!</h2>
@@ -18,7 +20,15 @@ export const ModalPesquisa = () => {
                     <label htmlFor="where"><FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:</label>
                     <input type="text" id="where" placeholder="Informe uma cidade" list="cidades" required />
                     <datalist id="cidades">
-                        <option value="3421"></option>
+                        {cidades.map((cidade)=>{
+                            return (
+                                <div key={cidade.cidades_id}>
+                                <option > 
+                                    {cidade.cidades_nome}, {cidade.estado}
+                                </option>
+                                </div>
+                                )
+                        })}
                     </datalist>
                 </div>
                 <div>
