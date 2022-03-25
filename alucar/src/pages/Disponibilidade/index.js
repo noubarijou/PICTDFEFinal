@@ -27,7 +27,7 @@ export const Disponibilidade = () => {
     </Helmet>
     <main>
         <h2>Modelos disponíveis na categoria </h2>
-        <div className="categorias_filtros">
+        <div className="categorias__filtros">
         <p className="filtro__cidade_periodo btn-small">São Paulo, SP {` (DD/MM/YYYY ->  DD/MM/YYYY)`}</p>
         <div className="filtro__ordernar">Ordenar</div>
         <div className="filtro__filtrar">Filtrar</div>
@@ -57,9 +57,11 @@ export const Disponibilidade = () => {
                           <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtde_porta} ${(e.caracteristicas.qtde_porta <= 1) ? "porta" : "portas"}`} />
                     </div>
                     </div>
+                    <div className="carro__preco_reserva">
                     <p className="subtitle">A partir de</p>
                     <p className="info__preco">R$ {e.valor} / dia</p>
                     <Reservar />
+                    </div>
                   </div>
                 );
                 })}
