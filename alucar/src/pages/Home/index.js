@@ -35,12 +35,6 @@ export const Home = () => {
                 <ModalPesquisa />
                 <article className='container__categoria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
-                    {/* <Carousel>
-                        <CardCategoria id={1} imagem="https://static.rentcars.com/imagens/carros/chevrolet_onix-2020-2021.png" categoria="Compactos" preco="40,00" />
-                        <CardCategoria id={2} imagem="https://static.rentcars.com/imagens/carros/volkswagen_gol-2020-2021.png" categoria="Econômicos" preco="40,00" />
-                        <CardCategoria id={3} imagem="https://static.rentcars.com/imagens/carros/jeep-compass.jpg" categoria="SUVs" preco="40,00" />
-                        <CardCategoria id={4} imagem="https://static.rentcars.com/imagens/carros/fiat-fiorino.png" categoria="Cargos" preco="40,00" />
-                    </Carousel> */}
                    <Carousel>
                         {categorias.map((item) => {
                             return (
