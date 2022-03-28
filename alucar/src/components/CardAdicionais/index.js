@@ -8,6 +8,7 @@ export const CardAdicionais = ({ id, title, descricao, valor }) => {
 
     const handleChange = () => {
         setChecked(!checked);
+        localStorage.setItem('adicionais', JSON.stringify(valor));
     };
 
     return (
@@ -19,7 +20,7 @@ export const CardAdicionais = ({ id, title, descricao, valor }) => {
                     <p className="btn-large adicional__valor">{`R$${(valor.toFixed(2)).replace(".", ",")}`} <span className="body-small">/Diária</span></p>
                     <label htmlFor={id} onChange={handleChange} className="adicional__label btn-large">
                         Adicionar
-                        <input type="checkbox" id={id} value={id} onChange={handleChange} className="adicional__input" />
+                        <input name="seguro" type="radio" id={id} value={id} onChange={handleChange} className="adicional__input" />
                     </label>
                 </div>
             </div>

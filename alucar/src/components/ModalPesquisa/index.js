@@ -19,9 +19,12 @@ export const ModalPesquisa = () => {
 
   localStorage.setItem("dadosCidade", JSON.stringify(cidade));
   localStorage.setItem("dadosRange", JSON.stringify(dateRange));
+  localStorage.setItem("dadosStartDate", JSON.stringify(startDate));
+  localStorage.setItem("dadosEndDate", JSON.stringify(endDate));
   const pesquisaCidade = localStorage.getItem("dadosCidade");
   const pesquisaRange = localStorage.getItem("dadosRange");
-    
+  const pesquisaStartDate = localStorage.getItem("dadosStartDate");
+  const pesquisaEndDate = localStorage.getItem("dadosEndDate");  
   return (
     <div className="modal__pesquisa">
       <h2>Os melhores veículos, pelo melhor preço!</h2>

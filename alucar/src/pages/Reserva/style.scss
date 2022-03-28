@@ -1,0 +1,50 @@
+@import "../../index.scss";
+.detalhe__carro{
+    .carro__categoria{
+        padding: 0 1.25rem;
+        height: 4.25rem;
+        background-color: $emphasis;
+        display: flex;
+        align-items: center;
+    }
+    .carro__nome{
+        padding: 0 1.25rem;
+        height: 1.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $primary2;
+        color: white;
+    }
+    .carro__info{
+        .carro__img{
+            width: 18.75rem;
+            margin: 2rem auto;
+            height: 8rem;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .detalhes__datePicker{
+        display: flex;
+        justify-content: center;
+        margin: 2.5rem 0;
+
+    }
+    .detalhe__mapa{
+        padding: 0 1.25rem;
+        width: 90%;
+    }
+.detalhes__requisitos{
+        padding: 0 1.25rem;
+        .requisitos{
+            border-bottom: 1px solid $grey1;
+            &:last-child{
+                border-bottom: none;
+            }
+        }
+    }
+}
