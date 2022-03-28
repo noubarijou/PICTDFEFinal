@@ -1,11 +1,11 @@
 import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
-import DatePicker from "react-datepicker";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
-import { Mapa } from "../../components/Mapa/";
+import DatePicker from 'react-datepicker';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
+import { Spinner } from 'react-bootstrap';
+import { Mapa } from '../../components/Mapa/';
 import { Reservar } from "../../components/BotaoReserva";
 import { Link } from "react-router-dom";
 /* import addDays from 'date-fns/addDays'; */
@@ -15,13 +15,14 @@ import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { CardAdicionais } from "../../components/CardAdicionais";
 import useAxios from "../../hooks/useAxios";
 const location = {
-  address: "Av. Domingos Odália Filho, 301 - Centro, Osasco",
+  address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
   lng: -46.774591,
-};
+}
 export const Detalhes = () => {
   const { width } = useWindowDimensions();
 
+  
   const regras = require("../../assets/regras.json");
   const detalhes = useAxios(`/carro`);
   /* const regras = useAxios(`/regras`) */
@@ -38,9 +39,9 @@ export const Detalhes = () => {
   const [detalhe, setDetalhe] = useState();
   useEffect(() => {
     setDetalhe(detalhesId);
-    window.scrollTo(0, 0);
-  }, [detalhesId]);
-  console.log(detalhesId);
+    window.scrollTo(0, 0)
+  }, [detalhesId])
+  console.log(detalhesId)
   return (
     <>
       <Helmet>
@@ -50,117 +51,59 @@ export const Detalhes = () => {
         <article className="detalhe__carro">
           {detalhes[detalhesId] ? (
             <>
-              {detalhes
-                .filter((item, index) => item.carro_id === parseInt(detalhe))
-                .map((e) => {
-                  return (
-                    <div key={e.carro_id} id={e.carro_id}>
-                      <div className="carro__categoria">
-                        <h1>{e.categorias.categorias_nome}</h1>
-                      </div>
-                      <div className="carro__nome">
-                        <p className="btn-large">{e.modelo} ou similar </p>
-                        <Rating rating={e.rating} />
-                      </div>
-                      <div className="carro__info">
-                        <figure className="carro__img">
-                          <img
-                            src={e.imagens.url_imagem}
-                            alt={e.imagens.titulo}
-                          />
-                        </figure>
-                        <article className="carro__slogan">
-                          <h2>
-                            {" "}
-                            Ideal para quem busca o aluguel de um carro com
-                            economia e praticidade.
-                          </h2>
-                        </article>
-                        <p className="body-small info__aviso">
-                          *Este modelo é apenas uma sugestão do grupo que também
-                          possui as mesmas características acima.
-                        </p>
-                        <p className="body-small info__aviso">
-                          **Garantimos reseva por grupo, não por modelo e final
-                          de placa de acordo com a disponibilidade da loja
-                        </p>
-                        <div className="carro__caracteristica">
-                          <h2>Categoria {e.categoria} oferece</h2>
-                          <div className="caracteriscas__card">
-                            <CardCaracteristica
-                              icon="cambio"
-                              carcteristica="Tipo de cambio"
-                              carcteristicaDescricao={e.caracteristicas.cambio}
-                            />
-                            <CardCaracteristica
-                              icon="ar condicionado"
-                              carcteristica="Ar condicionado"
-                              carcteristicaDescricao={
-                                e.caracteristicas.ar_condicionado
-                                  ? "Ar condicionado"
-                                  : null
-                              }
-                            />
-                            <CardCaracteristica
-                              icon="assento"
-                              carcteristica="Quantidade de assento"
-                              carcteristicaDescricao={`${
-                                e.caracteristicas.qtde_assento
-                              } ${
-                                e.caracteristicas.qtde_assento <= 1
-                                  ? "assento"
-                                  : "assentos"
-                              }`}
-                            />
-                            <CardCaracteristica
-                              icon="motor"
-                              carcteristica="Motor"
-                              carcteristicaDescricao={e.caracteristicas.motor}
-                            />
-                            <CardCaracteristica
-                              icon="porta"
-                              carcteristica="Quantidade de portas"
-                              carcteristicaDescricao={`${
-                                e.caracteristicas.qtde_porta
-                              } ${
-                                e.caracteristicas.qtde_porta <= 1
-                                  ? "porta"
-                                  : "portas"
-                              }`}
-                            />
-                          </div>
-                        </div>
-                        <CardAdicionais
-                          id={1}
-                          title="Proteção Básica"
-                          descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo."
-                          valor={9.9}
-                        />
-                        <CardAdicionais
-                          id={2}
-                          title="Proteção Premium"
-                          descricao="Proteção Básica + Redução de Coparticipação + Benefício AluCar: Proteção contra Terceiros-ALI, sem custo adicional."
-                          valor={24.9}
-                        />
-                      </div>
+              {detalhes.filter((item, index) => item.carro_id === parseInt(detalhe)).map((e) => {
+                return (
+                  <div key={e.carro_id} id={e.carro_id}>
+                    <div className="carro__categoria">
+                      <h1>{e.categorias.categorias_nome}</h1>
                     </div>
-                  );
-                })}
+                    <div className="carro__nome">
+                      <p className="btn-large">{e.modelo} ou similar </p>
+                      <Rating rating={e.rating} />
+                    </div>
+                    <div className="carro__info">
+                      <figure className="carro__img">
+                        <img src={e.imagens.url_imagem} alt={e.imagens.titulo} />
+                      </figure>
+                      <article className="carro__slogan">
+                        <h2> Ideal para quem busca o aluguel de um carro com economia e praticidade.</h2>
+                      </article>
+                      <p className="body-small info__aviso">
+                        *Este modelo é apenas uma sugestão do grupo que também possui as
+                        mesmas características acima.
+                      </p>
+                      <p className="body-small info__aviso">
+                        **Garantimos reseva por grupo, não por modelo e final de placa de
+                        acordo com a disponibilidade da loja
+                      </p>
+                      <div className="carro__caracteristica">
+                        <h2>Categoria {e.categoria} oferece</h2>
+                        <div className="caracteriscas__card">
+                          <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.caracteristicas.cambio} />
+                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.caracteristicas.ar_condicionado) ? "Ar condicionado" : null} />
+                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.caracteristicas.qtde_assento} ${(e.caracteristicas.qtde_assento <= 1) ? "assento" : "assentos"}`} />
+                          <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.caracteristicas.motor} />
+                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtde_porta} ${(e.caracteristicas.qtde_porta <= 1) ? "porta" : "portas"}`} />
+                        </div>
+                      </div>
+                      <CardAdicionais id={1} title="Proteção Básica" descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo." valor={9.90} />
+                      <CardAdicionais id={2} title="Proteção Premium" descricao="Proteção Básica + Redução de Coparticipação + Benefício AluCar: Proteção contra Terceiros-ALI, sem custo adicional." valor={24.90} />
+                    </div>
+                  </div>
+                );
+              })}
             </>
-          ) : (
-            <Spinner />
-          )}
+          ) : (<Spinner />)}
           <div className="detalhes__datePicker">
             <DatePicker
               selected={startDate}
               onChange={onChange}
               startDate={startDate}
               endDate={endDate}
-              monthsShown={width > 768 ? 2 : 1}
+              monthsShown={(width > 768 ? 2 : 1)}
               selectsRange
               selectsDisabledDaysInRange
-              inline
-            />
+              inline />
           </div>
           <Link to={`/disponibilidade/`}>
             <Reservar />
@@ -175,7 +118,7 @@ export const Detalhes = () => {
                 <div className="requisitos" key={regra.id}>
                   <Requisitos title={regra.title} regra={regra.descricao} />
                 </div>
-              );
+              )
             })}
           </article>
         </article>

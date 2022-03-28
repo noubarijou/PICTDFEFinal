@@ -1,11 +1,34 @@
-.section__about{
-    padding: 7rem 0;
+@import "../../root.scss";
+.page__about{
+    display: flex;
+    align-items: center;
     
-    h1{
-        text-align: center;
+    .section__about{
+        h1{
+            text-align: center;
+        }
+        
+        p{
+            margin: 0 auto;
+            text-align: justify;
+            text-indent: 10px;
+        }
+        
     }
-    p{
-        padding: 3rem;
-    }
+}
 
+@media (max-width: $screen-md-max){
+    .section__about{
+        padding: 2.75rem 2rem;
+    }
+}
+@media (min-width: $screen-md-max){
+    .section__about{
+        padding: 2.75rem 7rem;
+    }
+}
+@media (min-width: $screen-xl-max){
+    .section__about{
+        padding: 2.75rem 15.5rem;
+    }
 }

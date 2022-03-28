@@ -1,5 +1,8 @@
-
 import './style.scss';
+
+/* Font Awesome */
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 let Membros = [
@@ -10,16 +13,14 @@ let Membros = [
     github: "https://github.com/luizinbrzado",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-luiz.png",
     linkedin: "https://www.linkedin.com/in/luizinbrzado",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   },
   {
     id: 2,
     nome: "Paulo Ventura",
-    foto: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-luiz.png",
+    foto: "https://alucar-t1-g4.s3.amazonaws.com/membros/paulo.jpeg",
     github: "https://github.com/noubarijou",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-paulo2.png",
     linkedin: "https://www.linkedin.com/in/paulo-ventura-50079913/",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   },
   {
     id: 3,
@@ -28,7 +29,6 @@ let Membros = [
     github: "https://github.com/AndreRibeiro07",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-andre.png",
     linkedin: "https://www.linkedin.com/in/andrerbr/",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   },
   {
     id: 4,
@@ -37,7 +37,6 @@ let Membros = [
     github: "https://github.com/jennimay",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-jenni2.png",
     linkedin: "https://www.linkedin.com/in/mundodajeje",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   },
   {
     id: 5,
@@ -46,7 +45,6 @@ let Membros = [
     github: "https://github.com/NelsonKobayashi",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-nelson.png",
     linkedin: "https://www.linkedin.com/in/nelsonkobayashi",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   },
   {
     id: 6,
@@ -55,7 +53,6 @@ let Membros = [
     github: "https://github.com/nathsilvavieira",
     githubImg: "https://alucar-t1-g4.s3.amazonaws.com/membros/github-nathalia.png",
     linkedin: "https://www.linkedin.com/in/nathalia-vieira93/",
-    linkedinImg: "https://cdn-icons-png.flaticon.com/512/61/61109.png"
   }
 ];
 
@@ -66,28 +63,27 @@ export const Perfil = () => {
   return (
     <>
       <section id='section-profile'>
-        <h2>Equipe Alucar</h2>
 
         {Membros?.map(
           ({ id, nome, foto, github, githubImg, linkedin, linkedinImg }) => {
             return (
-              <article key={id}>
-                <div className='perfil-container'>
-                  <img id='img-photo' src={foto} alt='avatar' />
+              <div className='perfil-container' key={id}>
+                <figure>
+                  <img className='img-photo' src={foto} alt={`foto de perfil ${nome} `} />
+                </figure>
 
-                  <h3>{nome}</h3>
+                <h4>{nome}</h4>
 
-                  <div className='icones'>
-                    <a href={github} target='_blank' rel='noreferrer'>
-                      <img src={githubImg} alt='github' />
-                    </a>
-                    <a href={linkedin} target='_blank' rel='noreferrer'>
-                      <img src={linkedinImg} alt='linkedin' />
-                    </a>
+                <div className='icones'>
+                  <a href={github} target='_blank' rel='noreferrer'>
+                    <FontAwesomeIcon icon={faGithub} size="2x" />
+                  </a>
+                  <a href={linkedin} target='_blank' rel='noreferrer'>
+                    <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                  </a>
 
-                  </div>
                 </div>
-              </article>
+              </div>
             );
           }
         )}
