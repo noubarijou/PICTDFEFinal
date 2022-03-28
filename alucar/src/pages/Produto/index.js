@@ -87,6 +87,7 @@ export const Detalhes = () => {
                         </div>
                       </div>
                       <CardAdicionais id={1} title="Proteção Básica" descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo." valor={9.90} />
+                      <CardAdicionais id={2} title="Proteção Premium" descricao="Proteção Básica + Redução de Coparticipação + Benefício AluCar: Proteção contra Terceiros-ALI, sem custo adicional." valor={24.90} />
                       <div>
                         <h4>Proteção Básica</h4>
                         <p>Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo</p>
