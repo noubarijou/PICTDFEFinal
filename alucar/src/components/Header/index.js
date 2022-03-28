@@ -27,6 +27,7 @@ export const Header = () => {
         setIsSubmitSuccess(false);
         localStorage.clear();
       }
+    console.log(isSubmitSuccess)
     return (
         <header>
             <div className="header__txt">

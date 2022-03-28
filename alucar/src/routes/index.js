@@ -12,6 +12,7 @@ import {MinhasReservas} from "../pages/MinhasReservas"
 import { Disponibilidade } from "../pages/Disponibilidade";
 import {MinhaConta} from '../pages/MinhaConta';
 import {Teste} from '../pages/Teste';
+import { Reserva } from "../pages/Reserva";
 /* import {Categorias} from "../pages/Categorias"; */
 
 const RouteList = () => {
@@ -30,6 +31,7 @@ const RouteList = () => {
                 <Route path="/disponibilidade/:detalhesId" element={<Disponibilidade />} />
                 <Route path="/minhaconta" element={<MinhaConta />} />
                 <Route path="/teste" element={<Teste />} />
+                <Route path="/reserva" element={<Reserva />} />
                 {/* <Route path="/categorias" element={<Categorias />} /> */}
             </Routes>
             <Footer />

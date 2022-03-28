@@ -1,34 +1,54 @@
 import { useState } from "react";
 import useAxios from "../../hooks/useAxios";
+import axios from 'axios';
 
 export const Teste = () => {
-  const [cidade, setCidade] = useState();
-  const cidades = useAxios(`/cidades`);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, setUser] = useState()
+    const cidades = useAxios(`/clientes`);
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const user = { username, password };
+        // send the username and password to the server
+        const response = await axios.post(
+          "http://blogservice.herokuapp.com/api/login",
+          user
+        );
+        // set the state of the user
+        setUser(response.data)
+        // store the user in localStorage
+        localStorage.setItem('user', response.data)
+        console.log(response.data)
+    };
+    if (user) {
+        return <div>{user.name} is loggged in</div>;
+      }
   
+ /*  console.log(cidades) */
   return (
-    
-    <main>
-    
+      <main>
+    <form onSubmit={handleSubmit}>
+    <label htmlFor="username">Username: </label>
+    <input
+      type="text"
+      value={username}
+      placeholder="enter a username"
+      onChange={({ target }) => setUsername(target.value)}
+    />
+    <div>
+      <label htmlFor="password">password: </label>
       <input
-        list="cidades"
-        type="text"
-        id="where"
-        onChange={(event) => setCidade(event.target.value)}
-        required
+        type="password"
+        value={password}
+        placeholder="enter a password"
+        onChange={({ target }) => setPassword(target.value)}
       />
-      <datalist id="cidades">
-        {cidades.map((cidade) => {
-            console.log(cidade)
-          return (
-            <div key={cidade.cidades_id}>
-              <option
-                data-value={cidade.value}
-                value={`${cidade.cidades_nome}, ${cidade.estado}`}
-              />
-            </div>
-          );
-        })}
-      </datalist>
-    </main>
-  );
+    </div>
+    <button type="submit">Login</button>
+  </form>
+  </main>
+);
 };
+  
+
