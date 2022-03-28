@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { Formik, Form } from "formik";
-import { TextField } from "../../components/TextField";
+import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { Formik, Form } from "formik";
+import DatePicker from "react-datepicker";
+import { Spinner } from "react-bootstrap";
+import { TextField } from "../../components/TextField";
+import { Requisitos } from "../../components/Requisitos";
+import { CardAdicionais } from "../../components/CardAdicionais";
+import { Rating } from "../../components/CardCarro/components/Rating";
+import { Reservar } from "../../components/BotaoReserva";
 import useAxios from "../../hooks/useAxios";
-import { useParams } from "react-router-dom";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,11 +17,6 @@ import {
   faLocationDot,
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
-import DatePicker from "react-datepicker";
-import { CardAdicionais } from "../../components/CardAdicionais";
-import { Rating } from "../../components/CardCarro/components/Rating";
-import { Spinner } from "react-bootstrap";
-import { Requisitos } from "../../components/Requisitos";
 
 export const Reserva = () => {
   const { width } = useWindowDimensions();
@@ -204,6 +205,9 @@ export const Reserva = () => {
             <Spinner />
           )}
           </article>
+          <Link to={`/minhasreservas/`}>
+            <Reservar />
+          </Link>
           <article className="detalhes__requisitos">
             <h2>Requisitos para Alugar</h2>
             {regras.map((regra) => {
