@@ -1,6 +1,6 @@
 import {useState} from 'react';
-import {Form} from 'formik';
-
+import {Formik, Form} from 'formik';
+import {TextField} from '../../components/TextField';
 import { Helmet } from 'react-helmet-async';
 import useAxios from "../../hooks/useAxios";
 /* icones - font awesome */
@@ -27,12 +27,13 @@ export const Reserva = () => {
         <Helmet>
             <title>Reserva</title>
         </Helmet>
-        <h3>Complete seus dados</h3>
+        <h3>Confirme seus dados</h3>
         <div className="linha"></div>
-        <form method="post">
-                {/* <TextField label="Nome" name="firstName" type="text" placeholder="Digite seu nome" required />
+        <Formik>
+        <Form method="post">
+                <TextField label="Nome" name="firstName" type="text" placeholder="Digite seu nome" disabled />
                 <TextField label="Sobrenome" name="lastName" type="text" placeholder="Digite seu sobrenome" required />
-                <TextField label="Email" name="email" type="email" placeholder="Digite seu email" required /> */}
+                <TextField label="Email" name="email" type="email" placeholder="Digite seu email" disabled />
                 <div>
           <label htmlFor="where">
             <FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:
@@ -93,8 +94,8 @@ export const Reserva = () => {
             <option value="19:30" />
             <option value="20:00" />
     </datalist>
-        </form>
-        
+        </Form>
+        </Formik>
     </main>
     </>
   )
