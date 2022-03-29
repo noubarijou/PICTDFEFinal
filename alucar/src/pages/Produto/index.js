@@ -49,11 +49,11 @@ export const Detalhes = () => {
         <article className="detalhe__carro">
           {detalhes[detalhesId] ? (
             <>
-              {detalhes.filter((item, index) => item.carro_id === parseInt(detalhe)).map((e) => {
+              {detalhes.filter((item, index) => item.carroId === parseInt(detalhe)).map((e) => {
                 return (
-                  <div key={e.carro_id} id={e.carro_id}>
+                  <div key={e.carroId} id={e.carroId}>
                     <div className="carro__categoria">
-                      <h1>{e.categorias.categorias_nome}</h1>
+                      <h1>{e.categorias.categoriasNome}</h1>
                     </div>
                     <div className="carro__nome">
                       <p className="btn-large">{e.modelo} ou similar </p>
@@ -61,7 +61,7 @@ export const Detalhes = () => {
                     </div>
                     <div className="carro__info">
                       <figure className="carro__img">
-                        <img src={e.imagens.url_imagem} alt={e.imagens.titulo} />
+                        <img src={e.imagens.urlImagem} alt={e.imagens.titulo} />
                       </figure>
                       <article className="carro__slogan">
                         <h2> Ideal para quem busca o aluguel de um carro com economia e praticidade.</h2>
@@ -78,10 +78,10 @@ export const Detalhes = () => {
                         <h2>Categoria {e.categoria} oferece</h2>
                         <div className="caracteriscas__card">
                           <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.caracteristicas.cambio} />
-                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.caracteristicas.ar_condicionado) ? "Ar condicionado" : null} />
-                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.caracteristicas.qtde_assento} ${(e.caracteristicas.qtde_assento <= 1) ? "assento" : "assentos"}`} />
+                          <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={(e.caracteristicas.arCondicionado) ? "Ar condicionado" : null} />
+                          <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.caracteristicas.qtdeAssento} ${(e.caracteristicas.qtdeAssento <= 1) ? "assento" : "assentos"}`} />
                           <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.caracteristicas.motor} />
-                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtde_porta} ${(e.caracteristicas.qtde_porta <= 1) ? "porta" : "portas"}`} />
+                          <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtdePorta} ${(e.caracteristicas.qtdePorta <= 1) ? "porta" : "portas"}`} />
                         </div>
                       </div>
                       <CardAdicionais id={1} title="Proteção Básica" descricao="Proteção contra roubo, furto, incêndio, perda total, danos e/ou avarias causados exclusivamente ao veículo." valor={9.90} />

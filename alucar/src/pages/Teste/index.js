@@ -1,67 +1,375 @@
-import { useState } from "react";
-import {useAxios} from "../../hooks/useAxios";
-import axios from "axios";
-import { CardCategoria } from "../../components/CardCategoria";
+/* import "./style.scss"; */
 
+/* import { CardFiltros } from "../../components/CardFiltros";
+import { CardOrdenar } from "../../components/CardOrdenar"; */
+import { Fragment } from 'react';
+import {useForm, Controller} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import {
+  Paper,
+  Box,
+  Grid,
+  TextField,
+  Typography,
+  Button
+} from '@material-ui/core';
 export const Teste = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState();
-  const cidades = useAxios(`/clientes`);
-  const categorias = useAxios(`/categorias`);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const user = { username, password };
-    // send the username and password to the server
-    const response = await axios.post(
-      "http://blogservice.herokuapp.com/api/login",
-      user
-    );
-    // set the state of the user
-    setUser(response.data);
-    // store the user in localStorage
-    localStorage.setItem("user", response.data);
-    console.log(response.data);
+  const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required("Nome obrigatório"),
+    lastName: Yup.string().required("Sobrenome obrigatório"),
+    email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
+    password: Yup.string().min(6, "Senha deve conter no mínimo 6 caracteres").required("Senha obrigatória"),
+    confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Senha não confere").required("Confirmação de senha obrigatória"),
+  });
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
+  const onSubmit = data => {
+    console.log(JSON.stringify(data, null, 2));
   };
-  if (user) {
-    return <div>{user.name} is loggged in</div>;
-  }
-
-  /*  console.log(cidades) */
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          type="text"
-          value={username}
-          placeholder="enter a username"
-          onChange={({ target }) => setUsername(target.value)}
-        />
-        <div>
-          <label htmlFor="password">password: </label>
-          <input
-            type="password"
-            value={password}
-            placeholder="enter a password"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-
-      {categorias.map((item) => {
-        return (
-          <div key={item.categorias_id}>
-            <CardCategoria
-              id={item.categorias_id}
-              imagem={item.urlImgModelo}
-              categoria={item.categoriasNome}
-              preco={item.preco}
+    <Fragment>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Crie sua conta
+        </Typography>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={12}>
+            <TextField
+              required
+              id="firstName"
+              name="firstName"
+              label="Nome"
+              fullWidth
+              margin="dense"
+              {...register('firstName')}
+              error={errors.firstName ? true : false}
             />
-          </div>
-        );
-      })}
-    </main>
-  );
+            <Typography variant="inherit" color="textSecondary">
+              {errors.firstName?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="lastName"
+              name="lastName"
+              label="Sobrenome"
+              fullWidth
+              margin="dense"
+              {...register('lastName')}
+              error={errors.lastName ? true : false}
+            />
+            <Typography variant="inherit" color="textSecondary">
+              {errors.lastName?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="email"
+              name="email"
+              label="Email"
+              fullWidth
+              margin="dense"
+              {...register('email')}
+              error={errors.email ? true : false}
+            />
+            <Typography variant="inherit" color="textSecondary">
+              {errors.email?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="password"
+              name="password"
+              label="Senha"
+              type="password"
+              fullWidth
+              margin="dense"
+              {...register('password')}
+              error={errors.password ? true : false}
+            />
+            <Typography variant="inherit" color="textSecondary">
+              {errors.password?.message}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="confirmPassword"
+              name="confirmPassword"
+              label="Confirme sua senha"
+              type="password"
+              fullWidth
+              margin="dense"
+              {...register('confirmPassword')}
+              error={errors.confirmPassword ? true : false}
+            />
+            <Typography variant="inherit" color="textSecondary">
+              {errors.confirmPassword?.message}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Box mt={3}>
+          <Button 
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit(onSubmit)}
+          >
+            Criar Conta
+          </Button>
+        </Box>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+    <Paper>
+      <Box px={3} py={2}>
+        <Typography variant="h6" align="center" margin="dense">
+          Entre em sua conta
+        </Typography>
+      </Box>
+    </Paper>
+  </Fragment>
+  </main>
+);
 };
