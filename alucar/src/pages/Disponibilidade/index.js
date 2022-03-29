@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async'
-import useAxios from '../../hooks/useAxios'
+import {useAxios} from '../../hooks/useAxios'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { Spinner } from 'react-bootstrap';
 import './style.scss';
 import { Rating } from '../../components/CardCarro/components/Rating';
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
@@ -67,7 +66,7 @@ export const Disponibilidade = () => {
                 );
               })}
             </>
-          ) : (<Spinner />)}
+          ) : (null)}
         </article>
       </main>
     </>

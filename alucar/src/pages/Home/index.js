@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-import useAxios from '../../hooks/useAxios';
+import {useAxios} from '../../hooks/useAxios';
 import { CardCarro } from '../../components/CardCarro';
 import { CardMontadora } from '../../components/CardMontadora';
 import { CardRegioes } from '../../components/CardRegioes';
@@ -36,10 +36,10 @@ export const Home = () => {
                 <article className='container__categoria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
                    <Carousel>
-                        {categorias.map((item) => {
+                        {categorias.map((itens) => {
                             return (
-                                <div key={item.categorias_id}>
-                                <CardCategoria id={item.categorias_id} imagem={item.url_img_modelo} categoria={item.categorias_nome} preco={item.preco} />
+                                <div key={itens.categoriasId}>
+                                <CardCategoria id={itens.categoriasId} imagem={itens.urlImgModelo} categoria={itens.categoriasNome} preco={itens.preco} />
                                 </div>
                                 )
                         })}
@@ -50,8 +50,8 @@ export const Home = () => {
                     <Carousel>
                         {modelos.map((item) => {
                             return (
-                                <div key={item.carro_id}>
-                                    <CardCarro id={item.carro_id} imagem={item.imagens.url_imagem} modelo={item.modelo} categoria={item.categorias.categorias_nome} descricao={item.caracteristicas.cambio} /* rating={item.rating} */ />
+                                <div key={item.carroId}>
+                                    <CardCarro id={item.carroId} imagem={item.imagens.urlImagem} modelo={item.modelo} categoria={item.categorias.categoriasNome} descricao={item.caracteristicas.cambio} /* rating={item.rating} */ />
                                 </div>
                             )
                         })}

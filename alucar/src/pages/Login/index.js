@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { TextField } from "../../components/TextField";
 
 export const Login = () => {
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+  const [isSubmitSuccess, setIsSubmitSuccess] = useState();
 
   const navigate = useNavigate();
 
@@ -19,7 +19,8 @@ export const Login = () => {
       .required("Senha obrigatória"),
   });
   const credentials = require("../../assets/user.json");
-
+  console.log(credentials)
+  
   return (
     <>
       <Helmet>
@@ -33,16 +34,22 @@ export const Login = () => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            localStorage.setItem("credenciais", JSON.stringify(values));
-            const info = localStorage.getItem("credenciais");
-            if (
-              info.email === credentials.username &&
-              info.password === credentials.password
-            ) {
-             
-              setIsSubmitSuccess(true);
-            } else {
+            console.log(values)
+            localStorage.setItem('credenciais', JSON.stringify(values));
+            const info = localStorage.getItem('credenciais');
+            console.log(info.email)
+            
+            if ((
+              info.email !== credentials.username &&
+              info.password !== credentials.password
+            ) || info.email !== credentials.username ||
+              info.password !== credentials.password
+            )
+             {
+              setIsSubmitSuccess(false);
               alert("Usuário ou senha inválidos");
+            } else {
+              setIsSubmitSuccess(true);
             }
           }}
         >
@@ -51,6 +58,7 @@ export const Login = () => {
           ) : (
             <div className="container">
               <h1>Entrar na sua conta</h1>
+              
               <Form>
                 <TextField
                   label="Email"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 
-const useAxios = (url) => {
+export const useAxios = (url) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -19,4 +19,55 @@ const useAxios = (url) => {
   return data;
 }
 
-export default useAxios;
+export const useAxiosPost = (url) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await api.post(url);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    loadData();
+  }, [url]);
+
+  return data;
+}
+export const useAxiosPut = (url) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await api.put(url);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    loadData();
+  }, [url]);
+
+  return data;
+}
+export const useAxiosDelete = (url) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await api.delete(url);
+        setData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    loadData();
+  }, [url]);
+
+  return data;
+}
+

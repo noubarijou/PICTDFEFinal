@@ -1,10 +1,8 @@
 import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
-import DatePicker from 'react-datepicker';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { Spinner } from 'react-bootstrap';
 import { Mapa } from '../../components/Mapa/';
 import { Reservar } from "../../components/BotaoReserva";
 import { Link } from "react-router-dom";
@@ -13,7 +11,7 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
 import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { CardAdicionais } from "../../components/CardAdicionais";
-import useAxios from "../../hooks/useAxios";
+import {useAxios} from "../../hooks/useAxios";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -93,17 +91,8 @@ export const Detalhes = () => {
                 );
               })}
             </>
-          ) : (<Spinner />)}
+          ) : (null)}
           <div className="detalhes__datePicker">
-            <DatePicker
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              monthsShown={(width > 768 ? 2 : 1)}
-              selectsRange
-              selectsDisabledDaysInRange
-              inline />
           </div>
           <Link to={`/disponibilidade/`}>
             <Reservar />

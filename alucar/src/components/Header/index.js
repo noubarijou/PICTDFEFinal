@@ -27,7 +27,6 @@ export const Header = () => {
         setIsSubmitSuccess(false);
         localStorage.clear();
       }
-    console.log(isSubmitSuccess)
     return (
         <header>
             <div className="header__txt">
@@ -58,6 +57,7 @@ export const Header = () => {
                     :
                     (isSubmitSuccess) ?
                     <nav>
+                        {console.log(isSubmitSuccess)}
                         <a href="/sobre" className="subtitle">Sobre</a>
                         <a href="/ajuda" className="subtitle">Ajuda</a>
                         <a href="/minhaconta" className="header__btn primary-btn btn-large">Minha Conta</a>

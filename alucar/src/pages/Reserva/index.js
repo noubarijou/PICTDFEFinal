@@ -2,14 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Formik, Form } from "formik";
-import DatePicker from "react-datepicker";
-import { Spinner } from "react-bootstrap";
 import { TextField } from "../../components/TextField";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import { Reservar } from "../../components/BotaoReserva";
-import useAxios from "../../hooks/useAxios";
+import {useAxios} from "../../hooks/useAxios";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -92,26 +90,17 @@ export const Reserva = () => {
               <datalist id="cidades">
                 {cidades.map((item) => {
                   return (
-                    <div key={item.cidades_id}>
+                    <div key={item.cidadesId}>
                       <option
+                      id={item.cidadesId}
                         data-value={item.value}
-                        value={`${item.cidades_nome}, ${item.estado}`}
+                        value={`${item.cidadesNome}, ${item.estado}`}
                       />
                     </div>
                   );
                 })}
               </datalist>
             </div>
-            <DatePicker
-              selected={startDate}
-              onChange={onChange}
-              startDate={startDate}
-              endDate={endDate}
-              monthsShown={width > 768 ? 2 : 1}
-              selectsRange
-              selectsDisabledDaysInRange
-              inline
-            />
             <h3>Selecione o horario de retirada</h3>
             <input
               type="text"
@@ -169,12 +158,12 @@ export const Reserva = () => {
           {detalhes[detalhesId] ? (
             <>
               {detalhes
-                .filter((itens, index) => itens.carro_id === parseInt(detalhe))
+                .filter((itens, index) => itens.carroId === parseInt(detalhe))
                 .map((e) => {
                   return (
-                    <div key={e.carro_id} id={e.carro_id}>
+                    <div key={e.carroId} id={e.carroId}>
                       <div className="carro__categoria">
-                        <h1>{e.categorias.categorias_nome}</h1>
+                        <h1>{e.categorias.categoriasNome}</h1>
                       </div>
                       <div className="carro__nome">
                         <p className="btn-large">{e.modelo} ou similar </p>
@@ -183,7 +172,7 @@ export const Reserva = () => {
                       <div className="carro__info">
                         <figure className="carro__img">
                           <img
-                            src={e.imagens.url_imagem}
+                            src={e.imagens.urlImagem}
                             alt={e.imagens.titulo}
                           />
                         </figure>
@@ -202,7 +191,7 @@ export const Reserva = () => {
                 })}
             </>
           ) : (
-            <Spinner />
+            null
           )}
           </article>
           <Link to={`/minhasreservas/`}>
@@ -213,7 +202,7 @@ export const Reserva = () => {
             {regras.map((regra) => {
               return (
                 <div className="requisitos" key={regra.id}>
-                  <Requisitos title={regra.title} regra={regra.descricao} />
+                  <Requisitos id={regra.id} title={regra.title} regra={regra.descricao} />
                 </div>
               )
             })}

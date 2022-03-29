@@ -1,12 +1,11 @@
 import "./style.scss";
-import useAxios from "../../hooks/useAxios";
+import {useAxios} from "../../hooks/useAxios";
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
-import DatePicker from "react-datepicker";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -42,12 +41,12 @@ export const ModalPesquisa = () => {
             required
           />
           <datalist id="cidades">
-            {cidades.map((item) => {
+            {cidades.map((itemModal) => {
               return (
-                <div key={item.cidades_id}>
-                  <option
-                    data-value={item.value}
-                    value={`${item.cidades_nome}, ${item.estado}`}
+                <div key={itemModal.cidadesId}>
+                  <option id={itemModal.cidadesId}
+                    data-value={itemModal.value}
+                    value={`${itemModal.cidadesNome}, ${itemModal.estado}`}
                   />
                 </div>
               );
@@ -58,18 +57,7 @@ export const ModalPesquisa = () => {
           <label htmlFor="whenStart">
             <FontAwesomeIcon icon={faCalendarDay} /> Período de locação:
           </label>
-          <DatePicker
-            className="calendario"
-            placeholderText="Selecione o período de locação"
-            selectsRange={true}
-            startDate={startDate}
-            endDate={endDate}
-            monthsShown={2}
-            onChange={(update) => {
-              setDateRange(update);
-            }}
-            isClearable={true}
-          />
+          
           {/* <input type="date" id="whenStart" placeholder="Selecione a data inicial de locação" required /> */}
         </div>
         <Link to={`/disponibilidade/}`}>
