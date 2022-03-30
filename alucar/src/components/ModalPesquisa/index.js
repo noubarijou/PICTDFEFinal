@@ -55,7 +55,7 @@ export const ModalPesquisa = () => {
         </div>
           <button
             type="submit"
-            className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade/`)}
+            className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
           >
             Pesquisar
           </button>
