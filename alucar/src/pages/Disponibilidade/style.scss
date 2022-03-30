@@ -1,20 +1,16 @@
 @import "../../root.scss";
-@import "../../index.scss";
 
 .categorias__filtros {
   display: flex;
   flex-wrap: wrap;
 
-  .filtro__cidade_periodo {
-      p {
-          margin: 0;
-      }
+  .filtro__cidade__periodo {
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 40px;
-    left: 0px;
-    background: #fbc02d;
+    background-color: $emphasis;
     flex-basis: 100%;
   }
 

@@ -14,9 +14,6 @@
         justify-content: center;
     }
 
-    /* .react-datepicker__input-container{
-        position: inherit !important;
-    } */
 }
 
 @media (max-width: 1000px) {
@@ -24,13 +21,8 @@
         flex-direction: column;
         flex-wrap: wrap;
 
-        div{
+        .pesquisa__div{
             margin: 0 auto 18px;
-
-            /* input{
-                min-width: 250px;
-                max-width: 350px;
-            } */
         }
 
         button{

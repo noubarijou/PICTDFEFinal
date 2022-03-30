@@ -19,15 +19,8 @@ export const ModalPesquisa = () => {
     localStorage.setItem("dadosRange", JSON.stringify(dateRange));
     localStorage.setItem("dadosStartDate", JSON.stringify(startDate));
     localStorage.setItem("dadosEndDate", JSON.stringify(endDate));
-
-    /* navigate("/disponibilidade/:detalhesId"); */
-
   }
 
-  /* const pesquisaCidade = localStorage.getItem("dadosCidade");
-  const pesquisaRange = localStorage.getItem("dadosRange");
-  const pesquisaStartDate = localStorage.getItem("dadosStartDate");
-  const pesquisaEndDate = localStorage.getItem("dadosEndDate"); */
   return (
     <div className="modal__pesquisa">
       <h2>Os melhores veículos, pelo melhor preço!</h2>
@@ -62,7 +55,7 @@ export const ModalPesquisa = () => {
         </div>
           <button
             type="submit"
-            className="btn secondary-btn btn-large" onClick={setDados()}
+            className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade/`)}
           >
             Pesquisar
           </button>

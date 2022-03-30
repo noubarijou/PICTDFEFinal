@@ -12,7 +12,6 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import MobileDateRangePicker from '@mui/lab/MobileDateRangePicker';
 import DesktopDateRangePicker from '@mui/lab/DesktopDateRangePicker';
-import TextField from '@mui/material/TextField';
 
 /* Date-fns */
 import isWeekend from 'date-fns/isWeekend';

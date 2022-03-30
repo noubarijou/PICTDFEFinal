@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import {useAxios} from '../../hooks/useAxios'
+import { useAxios } from '../../hooks/useAxios'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import './style.scss';
@@ -8,17 +8,39 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { Reservar } from '../../components/BotaoReserva';
 
+/* DATE-FNS */
+import { format } from 'date-fns'
+
 export const Disponibilidade = () => {
   const detalhes = useAxios(`/carro`);
   const categorias = useAxios(`/categorias`);
   const { width } = useWindowDimensions();
   const { detalhesId } = useParams();
   const [detalhe, setDetalhe] = useState();
+  const [dados, setDados] = useState([]);
+
 
   useEffect(() => {
     setDetalhe(detalhesId);
+
+    setDados({
+      dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")),
+      dadosRange: JSON.parse(localStorage.getItem("dadosRange")),
+      dadosStartDate: format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy"),
+      dadosEndDate: format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy")
+    })
+
     window.scrollTo(0, 0)
   }, [detalhesId]);
+
+  /* const getDados = () => {
+    setDados(localStorage.getItem("dadosCidade"), 
+    localStorage.getItem("dadosRange"), 
+    localStorage.getItem("dadosStartDate"), 
+    localStorage.getItem("dadosEndDate"))
+  } */
+
+  console.log(dados)
 
   return (
     <>
@@ -28,7 +50,11 @@ export const Disponibilidade = () => {
       <main>
         <h2>Modelos disponíveis na categoria </h2>
         <div className="categorias__filtros">
-          <p className="filtro__cidade_periodo btn-small">São Paulo, SP {` (DD/MM/YYYY ->  DD/MM/YYYY)`}</p>
+
+          <p className="filtro__cidade__periodo btn-small">
+            {`${dados.dadosCidade} (${dados.dadosStartDate} -> ${dados.dadosEndDate})`}
+          </p>
+
           <div className="filtro__ordernar">Ordenar</div>
           <div className="filtro__filtrar">Filtrar</div>
         </div>
