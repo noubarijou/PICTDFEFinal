@@ -1,1 +1,71 @@
 @import "../../root.scss";
+
+.carro__nome{
+    background-color: $emphasis;
+    padding: 1.25rem;
+    h1{
+        margin: 0;
+    }
+}
+.carro__categoria{
+    background-color: $primary2;
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    p{
+        color: $white;
+        margin: 0;
+    }
+}
+.carro__info{
+    .carro__img{
+    margin: 1.25rem;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    }
+    .carro__caracteristica{
+        padding: 2.5rem 1.25rem;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .carro__reserva{
+        padding: 1.25rem;
+        .carro__preco{
+            p, h2{
+                margin: 0;
+            }
+            .info__preco{
+                color: $green;
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-md-max){
+    .carro__info{
+        .carro__img{
+            width: 85%;
+            height: 11.25rem;
+        }
+        .carro__reserva{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+@media (min-width: $screen-md-max){
+    .carro__info{
+        .carro__img{
+            height: 16rem;
+            width: 50%;
+        }
+        .carro__reserva{
+            
+        }
+    }
+}

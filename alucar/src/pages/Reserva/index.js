@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Formik, Form } from "formik";
 import { TextField } from "../../components/TextField";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
-import { Reservar } from "../../components/BotaoReserva";
 import {useAxios} from "../../hooks/useAxios";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 /* icones - font awesome */
@@ -24,6 +23,8 @@ export const Reserva = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
   const [cidade, setCidade] = useState();
+  const navigate = useNavigate();
+  
   const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -194,9 +195,7 @@ export const Reserva = () => {
             null
           )}
           </article>
-          <Link to={`/minhasreservas/`}>
-            <Reservar />
-          </Link>
+          <button type="submit" className="btn success-btn" onSubmit={navigate(`/minhasreservas/`)}>Revervar</button>
           <article className="detalhes__requisitos">
             <h2>Requisitos para Alugar</h2>
             {regras.map((regra) => {

@@ -6,7 +6,7 @@ import { useAxios } from '../../hooks/useAxios';
 import { Helmet } from 'react-helmet-async';
 import { Rating } from '../../components/CardCarro/components/Rating';
 import { CardCaracteristica } from '../../components/CardCaracteristica';
-import { Reservar } from '../../components/BotaoReserva';
+import { CardDisponibilidade } from '../../components/CardDisponibilidade';
 
 export const DisponibilidadePesquisa = () => {
     const [dados, setDados] = useState([]);
@@ -36,33 +36,24 @@ export const DisponibilidadePesquisa = () => {
                     <div className="filtro__ordernar">Ordenar</div>
                     <div className="filtro__filtrar">Filtrar</div>
                 </div>
-                <article className="detalhe__carro">
+                <article className="disponibilidade__carro">
                     {detalhes.map((e) => {
                         return (
                             <div key={e.carroId} id={e.carroId}>
-                                <div className="carro__nome"><h1>{e.modelo}</h1></div>
-                                <div className="carro__categoria">
-                                    <p className="btn-large">{e.categorias.categoriasNome} ou similar</p>
-                                    <Rating rating={e.rating} />
-                                </div>
-                                <div className="carro__info">
-                                    <figure className="carro__img">
-                                        <img src={e.imagens.urlImagem} alt={e.modelo} />
-                                    </figure>
-                                </div>
-                                <div className="carro__caracteristica">
-                                    <div className="caracteriscas__card">
-                                        <CardCaracteristica icon="cambio" carcteristica="Tipo de cambio" carcteristicaDescricao={e.caracteristicas.cambio} />
-                                        {e.caracteristicas.arCondicionado ? <CardCaracteristica icon="ar condicionado" carcteristica="Ar condicionado" carcteristicaDescricao={e.caracteristicas.ar_condicionado} /> : null}
-                                        <CardCaracteristica icon="assento" carcteristica="Quantidade de assento" carcteristicaDescricao={`${e.caracteristicas.qtdeAssento} ${(e.caracteristicas.qtdeAssento <= 1) ? "assento" : "assentos"}`} />
-                                        <CardCaracteristica icon="motor" carcteristica="Motor" carcteristicaDescricao={e.caracteristicas.motor} />
-                                        <CardCaracteristica icon="porta" carcteristica="Quantidade de portas" carcteristicaDescricao={`${e.caracteristicas.qtdePorta} ${(e.caracteristicas.qtdePorta <= 1) ? "porta" : "portas"}`} />
-                                    </div>
-                                </div>
-                                <div className="carro__preco_reserva">
-                                    <p className="subtitle">A partir de</p>
-                                    <p className="info__preco">R$ {e.valor} / dia</p>
-                                    <Reservar />
+                                <div key={e.carroId} id={e.carroId}>
+                                    <CardDisponibilidade
+                                        modelo={e.modelo}
+                                        categoriasNome={e.categorias.categoriasNome}
+                                        rating={e.rating}
+                                        urlImagem={e.imagens.urlImagem}
+                                        cambio={e.caracteristicas.cambio}
+                                        arCondicionado={e.caracteristicas.arCondicionado}
+                                        qtdeAssento={e.caracteristicas.qtdeAssento}
+                                        motor={e.caracteristicas.motor}
+                                        qtdePorta={e.caracteristicas.qtdePorta}
+                                        valor={e.valor}
+                                    />
+
                                 </div>
                             </div>
                         );

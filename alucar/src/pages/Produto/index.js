@@ -2,16 +2,15 @@ import "./style.scss";
 import { Helmet } from "react-helmet-async";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Mapa } from '../../components/Mapa/';
-import { Reservar } from "../../components/BotaoReserva";
 import { Link } from "react-router-dom";
 /* import addDays from 'date-fns/addDays'; */
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
 import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { CardAdicionais } from "../../components/CardAdicionais";
-import {useAxios} from "../../hooks/useAxios";
+import { useAxios } from "../../hooks/useAxios";
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -19,8 +18,9 @@ const location = {
 }
 export const Detalhes = () => {
   const { width } = useWindowDimensions();
+  const navigate = useNavigate();
 
-  
+
   const regras = require("../../assets/regras.json");
   const detalhes = useAxios(`/carro`);
   /* const regras = useAxios(`/regras`) */
@@ -94,9 +94,7 @@ export const Detalhes = () => {
           ) : (null)}
           <div className="detalhes__datePicker">
           </div>
-          <Link to={`/disponibilidade/`}>
-            <Reservar />
-          </Link>
+          <button type="submit" className="btn success-btn">Revervar</button>
           <div className="detalhe__mapa">
             <Mapa location={location} zoomLevel={17} />
           </div>
