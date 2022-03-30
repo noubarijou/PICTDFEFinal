@@ -1,7 +1,7 @@
 import './style.scss';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { useState, useEffect } from 'react';
-import { Modal } from '../Modal';
+import { ModalNav } from '../ModalNav';
 
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -42,7 +42,7 @@ export const Header = () => {
                     <nav>
                         <FontAwesomeIcon icon={faBars} size="2x" style={{ cursor: "pointer" }} onClick={() => setShowModal(true)} />
                         {showModal ?
-                            <Modal>
+                            <ModalNav>
                                 <div>
                                     <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
                                     {isSubmitSuccess ? (
@@ -52,7 +52,7 @@ export const Header = () => {
                                             )
                                         })}</div>) : null}
                                 </div>
-                            </Modal> : null}
+                            </ModalNav> : null}
                     </nav>
                     :
                     (isSubmitSuccess) ?

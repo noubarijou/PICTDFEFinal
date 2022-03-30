@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
-export const Modal = ({ children }) => {
+export const ModalNav = ({ children }) => {
 
   const dados = require("../../assets/user.json");
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
