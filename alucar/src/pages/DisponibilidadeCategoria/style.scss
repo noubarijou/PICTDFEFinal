@@ -1,6 +1,6 @@
 @import "../../root.scss";
 
-.categorias__filtros {
+/* .categorias__filtros {
   display: flex;
   flex-wrap: wrap;
 
@@ -35,13 +35,13 @@
     background: $grey4;
     flex-basis: 50%;
   }
-}
+} */
 
-.detalhe__carro {
+/* .detalhe__carro {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid #FBC02D; */
- /*  margin:  25px 15px; */
+  border: 1px solid #FBC02D;
+  margin:  25px 15px;
   justify-content: space-around;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -50,7 +50,7 @@
     padding: 0 1.25rem;
     height: 1.75rem;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
     background-color: $emphasis;
     color: $primary2;
@@ -107,5 +107,6 @@
     color: $green;
   }
   
+} 
 }
-}
+*/
