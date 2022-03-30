@@ -36,15 +36,17 @@ export const Teste = () => {
   return (
     <main>
     <Fragment>
-    <Paper>
+    <Paper elevation={0}>
       <Box px={3} py={2}>
         <Typography variant="h6" align="center" margin="dense">
           Crie sua conta
         </Typography>
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={12}>
+        <form noValidate>
+        <Grid container spacing={1} direction="column" alignItems="center">
+          <Grid item xs={6} sm={6}>
             <TextField
               required
+              variant="outlined"
               id="firstName"
               name="firstName"
               label="Nome"
@@ -57,9 +59,10 @@ export const Teste = () => {
               {errors.firstName?.message}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               required
+              variant="outlined"
               id="lastName"
               name="lastName"
               label="Sobrenome"
@@ -72,9 +75,10 @@ export const Teste = () => {
               {errors.lastName?.message}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
               required
+              variant="outlined"
               id="email"
               name="email"
               label="Email"
@@ -87,9 +91,11 @@ export const Teste = () => {
               {errors.email?.message}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
+              autoComplete="off"
               required
+              variant="outlined"
               id="password"
               name="password"
               label="Senha"
@@ -103,9 +109,11 @@ export const Teste = () => {
               {errors.password?.message}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <TextField
+              autoComplete="off"
               required
+              variant="outlined"
               id="confirmPassword"
               name="confirmPassword"
               label="Confirme sua senha"
@@ -120,8 +128,8 @@ export const Teste = () => {
             </Typography>
           </Grid>
         </Grid>
-        <Box mt={3}>
-          <Button 
+        <Box mt={3} >
+          <Button
             variant="contained"
             color="primary"
             onClick={handleSubmit(onSubmit)}
@@ -129,244 +137,7 @@ export const Teste = () => {
             Criar Conta
           </Button>
         </Box>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
-      </Box>
-    </Paper>
-    <Paper>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Entre em sua conta
-        </Typography>
+        </form>
       </Box>
     </Paper>
   </Fragment>
