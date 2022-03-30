@@ -43,7 +43,7 @@ export const Teste = () => {
         </Typography>
         <form noValidate>
         <Grid container spacing={1} direction="column" alignItems="center">
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               required
               variant="outlined"
@@ -59,7 +59,7 @@ export const Teste = () => {
               {errors.firstName?.message}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               required
               variant="outlined"
@@ -75,7 +75,7 @@ export const Teste = () => {
               {errors.lastName?.message}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               required
               variant="outlined"
@@ -91,7 +91,7 @@ export const Teste = () => {
               {errors.email?.message}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               autoComplete="off"
               required
@@ -109,7 +109,7 @@ export const Teste = () => {
               {errors.password?.message}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={12}>
             <TextField
               autoComplete="off"
               required
@@ -127,7 +127,6 @@ export const Teste = () => {
               {errors.confirmPassword?.message}
             </Typography>
           </Grid>
-        </Grid>
         <Box mt={3} >
           <Button
             variant="contained"
@@ -137,6 +136,7 @@ export const Teste = () => {
             Criar Conta
           </Button>
         </Box>
+        </Grid>
         </form>
       </Box>
     </Paper>
