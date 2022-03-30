@@ -27,10 +27,10 @@
         div{
             margin: 0 auto 18px;
 
-            input{
+            /* input{
                 min-width: 250px;
                 max-width: 350px;
-            }
+            } */
         }
 
         button{
@@ -44,15 +44,15 @@
     .pesquisa__form{
         align-items: flex-end;
 
-        div, button{
+        .pesquisa__div, button{
             margin: 0 1rem;
         }
 
 
-        input{
+        /* input{
             min-width: 380px;
             max-width: 520px;
-        }
+        } */
     }
 
 }

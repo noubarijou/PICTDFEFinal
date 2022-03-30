@@ -1,0 +1,48 @@
+@import "../../../../root.scss";
+.date__pesquisa{
+    .date__div{
+        display: flex;
+        flex-wrap: nowrap;
+        border-radius: 0.5rem;
+        
+        .date__input{
+            height: 2.5rem;
+            color: $primary2;
+            border: none;
+            text-align: center;
+            
+            &::placeholder{
+                color: $grey4;
+            }
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    .start{
+        border-radius: 0.5rem 0 0 0.5rem ;
+        /* text-align: right; */
+    }
+    .end{
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+}
+
+@media (max-width: $screen-md-max){
+    .date__pesquisa, .date__div{
+        width: 18.75rem;
+        .date__input{
+            width: 9.25rem;
+        }
+    }
+}
+@media (min-width: $screen-md-max){
+    .date__pesquisa, .date__div{
+        width: 33.25rem;
+        .date__input{
+            width: 16.25rem;
+        }
+    }
+}
