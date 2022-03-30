@@ -1,0 +1,71 @@
+@import "../../root.scss";
+
+.filtro__cidade__periodo{
+    position: fixed;
+    top: 7.25rem;
+    z-index: 1;
+    background-color: $emphasis;
+    color: $primary2;
+    text-align: center;
+    padding: 0.75rem 0;
+    margin: 0;
+}
+.disponibilidade__filtros{
+    .filtro__btn{
+        width: 50%;
+        height: 3.75rem;
+        border-radius: 0;
+    }
+    .filtro--filtrar{
+        border-left: 0.5px solid $white;
+        
+    }
+    .filtro--ordenar{
+        border-right: 0.5px solid $white;
+    }
+}
+.disponibilidade__carro{
+    .disponibilidade__card{
+        margin: 2.5rem 0;
+    }
+}
+
+@media (max-width: $screen-lg-max){
+    .filtro__cidade__periodo{
+
+        width: 100vw;
+    }
+    .disponibilidade__filtros{
+        position: fixed;
+        top: 9.75rem;
+        width: 100vw;
+    }
+
+    .disponibilidade__carro{
+        margin-top: 15rem;
+        padding: 0 1.25rem;
+    }
+}
+
+@media (min-width: $screen-lg-max){
+    .disponibilidade{
+        padding: 0 2.5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        .filtro__cidade__periodo{
+            width: 70vw;
+            right: 2.5rem;
+        }
+        .disponibilidade__filtros{
+            width: 20vw;
+        }
+        .disponibilidade__todosCarros{
+            margin-top: 1rem;
+            width: 70vw;
+            .disponibilidade__carro{
+                width: 100%;
+            }
+        }
+    }
+}

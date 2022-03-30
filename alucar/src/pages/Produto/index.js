@@ -4,13 +4,14 @@ import { Rating } from "../../components/CardCarro/components/Rating";
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Mapa } from '../../components/Mapa/';
-import { Link } from "react-router-dom";
+import { ButtonToClick } from '../../components/Buttons';
 /* import addDays from 'date-fns/addDays'; */
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
 import { CardCaracteristica } from "../../components/CardCaracteristica";
 import { CardAdicionais } from "../../components/CardAdicionais";
 import { useAxios } from "../../hooks/useAxios";
+
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
   lat: -23.5329081,
@@ -94,7 +95,7 @@ export const Detalhes = () => {
           ) : (null)}
           <div className="detalhes__datePicker">
           </div>
-          <button type="submit" className="btn success-btn">Revervar</button>
+          <ButtonToClick classes={"success-btn"} urlTo={`/reserva/`}>Reservar</ButtonToClick>
           <div className="detalhe__mapa">
             <Mapa location={location} zoomLevel={17} />
           </div>

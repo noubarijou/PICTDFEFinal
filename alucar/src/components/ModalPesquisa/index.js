@@ -6,6 +6,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Calendar } from "./components/Calendar";
 import { useNavigate } from "react-router-dom";
+import { ButtonSubmit } from "../../components/Buttons"
 
 export const ModalPesquisa = () => {
   const cidades = useAxios(`/cidades`);
@@ -26,39 +27,42 @@ export const ModalPesquisa = () => {
       <h2>Os melhores veículos, pelo melhor preço!</h2>
       <form className="pesquisa__form">
         <div className="pesquisa__div">
-          <label htmlFor="where">
-            <FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:
-          </label>
-          <input
-            type="text"
-            id="where"
-            placeholder="Informe uma cidade"
-            list="cidades"
-            onChange={(event) => setCidade(event.target.value)}
-            required
-          />
-          <datalist id="cidades">
-            {cidades.map((itemModal) => {
-              return (
-                <div key={itemModal.cidadesId}>
-                  <option id={itemModal.cidadesId}
-                    data-value={itemModal.value}
-                    value={`${itemModal.cidadesNome}, ${itemModal.estado}`}
-                  />
-                </div>
-              );
-            })}
-          </datalist>
+          <div className="local__pesquisa">
+            <label htmlFor="where">
+              <FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o carro:
+            </label>
+            <input
+              type="text"
+              className="input"
+              id="where"
+              placeholder="Informe uma cidade"
+              list="cidades"
+              onChange={(event) => setCidade(event.target.value)}
+              required
+            />
+            <datalist id="cidades">
+              {cidades.map((itemModal) => {
+                return (
+                  <div key={itemModal.cidadesId}>
+                    <option id={itemModal.cidadesId}
+                      data-value={itemModal.value}
+                      value={`${itemModal.cidadesNome}, ${itemModal.estado}`}
+                    />
+                  </div>
+                );
+              })}
+            </datalist>
+          </div>
         </div>
         <div className="pesquisa__div">
           <Calendar value={dateRange} setValue={setDateRange} />
         </div>
-          <button
-            type="submit"
-            className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
-          >
-            Pesquisar
-          </button>
+        <button
+          type="submit"
+          className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
+        >
+          Pesquisar
+        </button>
       </form>
     </div>
   );

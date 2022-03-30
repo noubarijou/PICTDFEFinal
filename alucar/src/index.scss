@@ -111,18 +111,23 @@ body {
 
 /* label, .error{
   display: block;
-}
-
-input, textarea{
-  border-radius: 8px;
-  border: none; 
-  background-color: $white;
-  height: 38px;
-  padding-left: 18px;
-
-  &::placeholder{
-    font-size: 14px;
-    line-height: 21px;
-    color: $grey3;
-  }
 } */
+
+.input, .textarea{
+    border-radius: 0.5rem;
+    border: none; 
+    background-color: $white;
+    height: 2.5rem;
+    color: $primary2;
+    border: none;
+    text-align: center;
+    
+    &::placeholder{
+        color: $grey4;
+        line-height: 1.25rem;
+    }
+    &:focus{
+        border: none;
+        outline: none;
+    }
+}

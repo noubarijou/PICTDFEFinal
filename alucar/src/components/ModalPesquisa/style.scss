@@ -16,13 +16,18 @@
 
 }
 
-@media (max-width: 1000px) {
+@media (max-width: $screen-lg-max) {
     .pesquisa__form{
         flex-direction: column;
         flex-wrap: wrap;
+        row-gap: 1rem;
 
         .pesquisa__div{
-            margin: 0 auto 18px;
+            width: 18.75rem;
+            margin: 0 auto;
+            .input{
+                width: 100%;
+            }
         }
 
         button{
@@ -32,19 +37,17 @@
     }
 }
 
-@media (min-width: 1001px) {
+@media (min-width: $screen-lg-max) {
     .pesquisa__form{
         align-items: flex-end;
+
+        .pesquisa__div{
+            width: 33.25rem;
+        }
 
         .pesquisa__div, button{
             margin: 0 1rem;
         }
-
-
-        /* input{
-            min-width: 380px;
-            max-width: 520px;
-        } */
     }
 
 }

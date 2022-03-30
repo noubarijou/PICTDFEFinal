@@ -3,6 +3,7 @@
 .carro__nome{
     background-color: $emphasis;
     padding: 1.25rem;
+    border-radius: 0.5rem 0.5rem 0 0;
     h1{
         margin: 0;
     }
@@ -17,39 +18,53 @@
         margin: 0;
     }
 }
-.carro__info{
-    .carro__img{
-    margin: 1.25rem;
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    }
-    .carro__caracteristica{
-        padding: 2.5rem 1.25rem;
+.carro__carro{
+    border: 1px solid $emphasis;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: 0;
+    padding: 1.25rem;
+
+    .carro__info{
+        .carro__img{
+        /* height: 11.25rem; */
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-    .carro__reserva{
-        padding: 1.25rem;
-        .carro__preco{
-            p, h2{
-                margin: 0;
-            }
-            .info__preco{
-                color: $green;
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+        }
+        .carro__caracteristica{
+            display: grid;
+            flex-wrap: wrap;
+        }
+        .carro__reserva{
+            padding: 1.25rem;
+            .carro__preco{
+                p, h2{
+                    margin: 0;
+                }
+                .info__preco{
+                    color: $green;
+                }
             }
         }
     }
-}
 
+}
 @media (max-width: $screen-md-max){
     .carro__info{
         .carro__img{
             width: 85%;
-            height: 11.25rem;
+            img{
+                height: auto;
+            }
+        }
+        .carro__caracteristica{
+            grid-template-columns: auto;
+            justify-content: center;
         }
         .carro__reserva{
             display: flex;
@@ -60,12 +75,30 @@
 }
 @media (min-width: $screen-md-max){
     .carro__info{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         .carro__img{
             height: 16rem;
-            width: 50%;
+            width: 40%;
         }
-        .carro__reserva{
-            
+        .carro__dados{
+            width: 60%;
+            .carro__caracteristica{
+                grid-template-columns: 1fr 1fr;
+            }
+            .carro__reserva{
+                .carro__preco{
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+    .carro__btn--reservar{
+        width: 80%;
+        margin: 0 auto;
+        .btn__reservar{
+            width: 100%;    
         }
     }
 }

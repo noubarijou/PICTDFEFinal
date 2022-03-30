@@ -14,6 +14,7 @@ export const Header = () => {
     const [isSubmitSuccess, setIsSubmitSuccess] = useState();
     const [showModal, setShowModal] = useState(false);
     const dados = require("../../assets/user.json")
+    
     const handleClose = () => {
         setShowModal(!showModal);
     }

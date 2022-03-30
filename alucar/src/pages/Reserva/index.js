@@ -8,6 +8,7 @@ import { CardAdicionais } from "../../components/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import {useAxios} from "../../hooks/useAxios";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { ButtonToClick } from '../../components/Buttons';
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -195,7 +196,7 @@ export const Reserva = () => {
             null
           )}
           </article>
-          <button type="submit" className="btn success-btn" onSubmit={navigate(`/minhasreservas/`)}>Revervar</button>
+          <ButtonToClick classes={"success-btn"} urlTo={`/minhasreservas/`}>Reservar</ButtonToClick>
           <article className="detalhes__requisitos">
             <h2>Requisitos para Alugar</h2>
             {regras.map((regra) => {
