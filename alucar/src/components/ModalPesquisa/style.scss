@@ -12,6 +12,11 @@
         line-height: 21px;
         display: flex;
         justify-content: center;
+        .local__pesquisa{
+            label{
+                display: block;
+            }
+        }
     }
 
 }
@@ -42,12 +47,53 @@
         align-items: flex-end;
 
         .pesquisa__div{
-            width: 33.25rem;
+            .local__pesquisa{
+                width: 25rem;
+                .input{
+                    width: 100%;
+                }
+            }
         }
 
         .pesquisa__div, button{
             margin: 0 1rem;
         }
+    }
+
+}
+
+@media (min-width: $screen-xl-max) {
+    .pesquisa__form{
+        .pesquisa__div{
+            .local__pesquisa{
+                width: 30rem;
+            }
+        }
+
+        .pesquisa__div, button{
+            margin: 0 2rem;
+        }
+
+    }
+
+}
+
+@media (min-width: 2000px) {
+    .pesquisa__form{
+        .pesquisa__div{
+            .local__pesquisa{
+                width: 40rem;
+            }
+        }
+
+        .pesquisa__div, button{
+            margin: 0 3rem;
+        }
+
+        .btn-pesquisar{
+            width: 20rem;
+        }
+
     }
 
 }

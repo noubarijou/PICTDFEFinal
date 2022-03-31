@@ -6,7 +6,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Calendar } from "./components/Calendar";
 import { useNavigate } from "react-router-dom";
-import { ButtonSubmit } from "../../components/Buttons"
+import { /* ButtonSubmit */ } from "../../components/Buttons"
 
 export const ModalPesquisa = () => {
   const cidades = useAxios(`/cidades`);
@@ -59,7 +59,7 @@ export const ModalPesquisa = () => {
         </div>
         <button
           type="submit"
-          className="btn secondary-btn btn-large" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
+          className="btn secondary-btn btn-large btn-pesquisar" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
         >
           Pesquisar
         </button>
