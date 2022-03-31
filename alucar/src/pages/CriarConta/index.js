@@ -41,7 +41,7 @@ export const CriarConta = () => {
      */
     console.log(JSON.stringify(data, null, 2));
     if (data) {
-      UseAxiosPost(`/cliente`, data)
+      /* UseAxiosPost(`/cliente`, data) */
       navigate('/login')
     }
   };

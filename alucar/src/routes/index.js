@@ -14,6 +14,7 @@ import { MinhaConta } from '../pages/MinhaConta';
 import { Teste } from '../pages/Teste';
 import { Reserva } from "../pages/Reserva";
 import { DisponibilidadePesquisa } from "../pages/DisponibilidadePesquisa";
+import { SandBox } from "../pages/SandBox";
 
 const RouteList = () => {
     
@@ -34,6 +35,7 @@ const RouteList = () => {
                     <Route path="/minhaconta" element={<MinhaConta />} />
                     <Route path="/teste" element={<Teste />} />
                     <Route path="/reserva" element={<Reserva />} />
+                    <Route path="sandbox" element={<SandBox />} />
                     {/* <Route path="/categorias" element={<Categorias />} /> */}
                 </Routes>
                 <Footer />

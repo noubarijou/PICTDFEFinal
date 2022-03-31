@@ -1,146 +1,79 @@
-/* import "./style.scss"; */
-
-/* import { CardFiltros } from "../../components/CardFiltros";
-import { CardOrdenar } from "../../components/CardOrdenar"; */
-import { Fragment } from 'react';
-import {useForm, Controller} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import {
-  Paper,
-  Box,
-  Grid,
-  TextField,
-  Typography,
-  Button
-} from '@material-ui/core';
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { Helmet } from "react-helmet-async";
+import { useNavigate, Link } from "react-router-dom";
+import * as Yup from "yup";
+import {useAxios} from '../../hooks/useAxios';
+import AuthContext from '../../context/AuthProvider';
+import axios from '../../services/api';
+const LOGIN_URL = '/clientes/validarSenha';
 export const Teste = () => {
-  const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("Nome obrigatório"),
-    lastName: Yup.string().required("Sobrenome obrigatório"),
-    email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
-    password: Yup.string().min(6, "Senha deve conter no mínimo 6 caracteres").required("Senha obrigatória"),
-    confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], "Senha não confere").required("Confirmação de senha obrigatória"),
-  });
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
-    resolver: yupResolver(validationSchema)
-  });
-  const onSubmit = data => {
-    console.log(JSON.stringify(data, null, 2));
-  };
+  const {setAuth} = useContext(AuthContext);
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+  
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+  useEffect(() => {
+    setErrMsg('');
+  }, [user, pwd]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(LOGIN_URL, JSON.stringify({user, pwd}),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        });
+        const accessToken = response?.data?.accessToken;
+        const roles = response?.data?.roles;
+        setAuth({user, pwd, roles, accessToken});
+      setUser('');
+      setPwd('');
+      setSuccess(true);
+    }catch (err) {
+      if (!err.response) {
+      setErrMsg('Erro de conexão com o servidor');
+    } else if (err.response?.status === 400) {
+      setErrMsg('Usuário ou senha não recebidos');
+    } else if (err.response?.status === 401) {
+      setErrMsg('Não autorizado');
+    } else {
+      setErrMsg('Lojin falhou');
+    }
+    errRef.current.focus();
+  }
+    
+
+  }
   return (
-    <main>
-    <Fragment>
-    <Paper elevation={0}>
-      <Box px={3} py={2}>
-        <Typography variant="h6" align="center" margin="dense">
-          Crie sua conta
-        </Typography>
-        <form noValidate>
-        <Grid container spacing={1} direction="column" alignItems="center">
-          <Grid item xs={12} sm={12}>
-            <TextField
-              required
-              variant="outlined"
-              id="firstName"
-              name="firstName"
-              label="Nome"
-              fullWidth
-              margin="dense"
-              {...register('firstName')}
-              error={errors.firstName ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.firstName?.message}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <TextField
-              required
-              variant="outlined"
-              id="lastName"
-              name="lastName"
-              label="Sobrenome"
-              fullWidth
-              margin="dense"
-              {...register('lastName')}
-              error={errors.lastName ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.lastName?.message}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <TextField
-              required
-              variant="outlined"
-              id="email"
-              name="email"
-              label="Email"
-              fullWidth
-              margin="dense"
-              {...register('email')}
-              error={errors.email ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.email?.message}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <TextField
-              autoComplete="off"
-              required
-              variant="outlined"
-              id="password"
-              name="password"
-              label="Senha"
-              type="password"
-              fullWidth
-              margin="dense"
-              {...register('password')}
-              error={errors.password ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.password?.message}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <TextField
-              autoComplete="off"
-              required
-              variant="outlined"
-              id="confirmPassword"
-              name="confirmPassword"
-              label="Confirme sua senha"
-              type="password"
-              fullWidth
-              margin="dense"
-              {...register('confirmPassword')}
-              error={errors.confirmPassword ? true : false}
-            />
-            <Typography variant="inherit" color="textSecondary">
-              {errors.confirmPassword?.message}
-            </Typography>
-          </Grid>
-        <Box mt={3} >
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit(onSubmit)}
-          >
-            Criar Conta
-          </Button>
-        </Box>
-        </Grid>
+    <>
+      <Helmet>
+        <title>AluCar | Teste</title>
+      </Helmet>
+      <main>
+        
+        <h1>Sign in</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username:</label>
+          <input type="text" name="username" id="username" ref={userRef} onChange={(e) => setUser(e.target.value)} value={user} autoComplete="off" required/>
+          <label htmlFor="password">Password:</label>
+          <input type="password" name="password" id="password" onChange={(e) => setPwd(e.target.value)} value={pwd} autoComplete="off" required/>
+          <button>Sign in</button>
         </form>
-      </Box>
-    </Paper>
-  </Fragment>
-  </main>
-);
+        <p className="criarconta btn-small">
+                Não tem conta?{" "}
+                <Link className="linkcriarconta" to="/criarconta">
+                  Crie uma aqui.
+                </Link>
+              </p>
+              <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+      </main>
+      </>
+  );
 };
