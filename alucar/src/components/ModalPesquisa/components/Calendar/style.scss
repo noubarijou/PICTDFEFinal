@@ -30,7 +30,7 @@
     }
 }
 
-@media (max-width: $screen-md-max){
+@media (max-width: $screen-lg-max){
     .date__pesquisa, .date__div{
         width: 18.75rem;
         .date__input{
@@ -38,11 +38,23 @@
         }
     }
 }
-@media (min-width: $screen-md-max){
+@media (min-width: $screen-lg-max){
     .date__pesquisa, .date__div{
-        width: 33.25rem;
+        width: 25rem;
         .date__input{
-            width: 16.25rem;
+            width: 50%;
         }
+    }
+}
+
+@media (min-width: $screen-xl-max){
+    .date__pesquisa, .date__div{
+        width: 30rem;
+    }
+}
+
+@media (min-width: 2000px){
+    .date__pesquisa, .date__div{
+        width: 40rem;
     }
 }
