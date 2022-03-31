@@ -16,10 +16,15 @@ import { Reserva } from "../pages/Reserva";
 import { DisponibilidadePesquisa } from "../pages/DisponibilidadePesquisa";
 import { SandBox } from "../pages/SandBox";
 
+import {Lojin} from '../pages/Teste/Lojin';
+import {Register} from '../pages/Teste/Register';
+/* import * as serviceWorker from './serviceWorker'; */
+
 const RouteList = () => {
     
     return (
         <BrowserRouter>
+       
             <HelmetProvider>
                 <Header />
                 <Routes>
@@ -36,10 +41,13 @@ const RouteList = () => {
                     <Route path="/teste" element={<Teste />} />
                     <Route path="/reserva" element={<Reserva />} />
                     <Route path="sandbox" element={<SandBox />} />
+                    <Route path="/lojin" element={<Lojin />} />
+                    <Route path="/register" element={<Register />} />
                     {/* <Route path="/categorias" element={<Categorias />} /> */}
                 </Routes>
                 <Footer />
             </HelmetProvider>
+            
         </BrowserRouter>
     )
 };
