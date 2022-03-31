@@ -21,6 +21,71 @@ export const SandBox = () => {
         <Paper>
             <Box p={2}>
                 <Typography variant="h6" align="center" margin="dense">Entre em contato</Typography>
+                <Grid container spacing={2} direction="column" alignItems="center">
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                            name="firstName"
+                            label="Nome"
+                            id="firstName"
+                            required
+                            fullWidth
+                            margin="dense"
+                            {...register('firstName')}
+                            error={errors.firstName ? true : false}
+                            />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="lastName"
+                        label="Sobrenome"
+                        id="lastName"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('lastName')}
+                        error={errors.lastName ? true : false}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="email"
+                        label="Email"
+                        id="email"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('email')}
+                        error={errors.email ? true : false}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="mensagem"
+                        label="Mensagem"
+                        id="mensagem"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('mensagem')}
+                        error={errors.mensagem ? true : false}
+                        rows={6}
+                        multiline
+                        />
+                    </Grid>
+                <Box mt={3}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Enviar
+            </Button>
+          </Box>
+                </Grid>
             </Box>
         </Paper>
     </Fragment>

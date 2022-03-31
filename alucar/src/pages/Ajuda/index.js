@@ -1,60 +1,94 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import React, {Fragment} from 'react'
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { TextField } from "../../components/TextField";
+import { Paper, Box, Grid, TextField, Typography, Button} from '@material-ui/core';
 
 export const Ajuda = () => {
-
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
-
-  const navigate = useNavigate();
-
-  const validationSchema = Yup.object({
-    firstName: Yup.string().required("Nome obrigatório"),
-    lastName: Yup.string().required("Sobrenome obrigatório"),
-    email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
-    message: Yup.string().required("Escreva sua mensagem")
-  });
-
+    const validationSchema = Yup.object().shape({
+        firstName: Yup.string().required("Nome obrigatório"),
+        lastName: Yup.string().required("Sobrenome obrigatório"),
+        email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
+        mensagem: Yup.string().required("Mensagem obrigatória")
+    });
+    const {register, handleSubmit, formState:{errors}} = useForm({ resolver: yupResolver(validationSchema) });
+    const onSubmit = data => {
+        console.log(JSON.stringify(data, null, 2));
+      };
   return (
-    <>
-      <Helmet>
-        <title>AluCar | Ajuda</title>
-      </Helmet>
       <main>
-        <Formik
-          initialValues={{
-            name: '',
-            lastname: '',
-            email: '',
-            message: '',
-          }}
-          validationSchema={validationSchema} onSubmit={(values) => {
-            setIsSubmitSuccess(true)
-          }}
-        >
-          {isSubmitSuccess ? (navigate('/login')) : (
-
-            <div className="container">
-              <h1>Entre em contato</h1>
-              <Form>
-                <TextField label="Nome" name="firstName" type="text" placeholder="Digite seu nome" required />
-                <TextField label="Sobrenome" name="lastName" type="text" placeholder="Digite seu sobrenome" required />
-                <TextField label="Email" name="email" type="email" placeholder="Digite seu email" required />
-                <div>
-                  <label htmlFor="message">Mensagem</label>
-                  <Field as="textarea" className="form__input" name="message" rows={5} placeholder="Digite seu mensagem"  autoComplete="off" />
-                  <ErrorMessage component="p" name="message" className="error body-small" />
-                </div>
-                <button type="submit" className="btn primary-btn btn-large">Enviar</button>
-              </Form>
-            </div>
-          )}
-
-        </Formik>
-      </main>
-    </>
-  );
-};
+    <Fragment>
+        <Paper>
+            <Box p={2}>
+                <Typography variant="h6" align="center" margin="dense">Entre em contato</Typography>
+                <Grid container spacing={2} direction="column" alignItems="center">
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                            name="firstName"
+                            label="Nome"
+                            id="firstName"
+                            required
+                            fullWidth
+                            margin="dense"
+                            {...register('firstName')}
+                            error={errors.firstName ? true : false}
+                            />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="lastName"
+                        label="Sobrenome"
+                        id="lastName"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('lastName')}
+                        error={errors.lastName ? true : false}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="email"
+                        label="Email"
+                        id="email"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('email')}
+                        error={errors.email ? true : false}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                        <TextField
+                        variant="outlined"
+                        name="mensagem"
+                        label="Mensagem"
+                        id="mensagem"
+                        required
+                        fullWidth
+                        margin="dense"
+                        {...register('mensagem')}
+                        error={errors.mensagem ? true : false}
+                        rows={6}
+                        multiline
+                        />
+                    </Grid>
+                <Box mt={3}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit(onSubmit)}
+            >
+              Enviar
+            </Button>
+          </Box>
+                </Grid>
+            </Box>
+        </Paper>
+    </Fragment>
+    </main>
+  )
+}
