@@ -8,8 +8,8 @@ import { ButtonToClick } from '../../components/Buttons';
 /* import addDays from 'date-fns/addDays'; */
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { Requisitos } from "../../components/Requisitos";
-import { CardCaracteristica } from "../../components/CardCaracteristica";
-import { CardAdicionais } from "../../components/CardAdicionais";
+import { CardCaracteristica } from "../../components/Cards/CardCaracteristica";
+import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { useAxios } from "../../hooks/useAxios";
 
 const location = {

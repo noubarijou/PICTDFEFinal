@@ -2,10 +2,10 @@ import "./style.scss";
 
 import React from 'react'
 
-import { Rating } from '../../components/CardCarro/components/Rating';
-import { CardCaracteristica } from "../../components/CardCaracteristica";
-import { ButtonSubmit } from "../Buttons";
-import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { Rating } from '../../CardCarro/components/Rating';
+import { CardCaracteristica } from "../CardCaracteristica";
+import { ButtonSubmit } from "../../Buttons";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 
 export const CardDisponibilidade = ({ rating, categoriasNome, urlImagem, modelo, cambio, arCondicionado, qtdeAssento, qtdePorta, motor, valor, urlTo }) => {
     const { width } = useWindowDimensions();

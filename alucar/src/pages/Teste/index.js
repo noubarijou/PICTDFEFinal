@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { Requisitos } from "../../components/Requisitos";
-import { CardAdicionais } from "../../components/CardAdicionais";
+import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import { ButtonToClick } from "../../components/Buttons";
 /* import { ControlledOpenSelect } from "../../components/Listas/ListaCidades"; */

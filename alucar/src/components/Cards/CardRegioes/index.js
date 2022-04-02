@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.scss";
 
 export const CardRegioes = ({ imagem, regiaoBR }) => {
-    const regioesJson = require("../../assets/cidades.json");
+    const regioesJson = require("../../../assets/cidades.json");
 
     const regioesBR = regioesJson.filter((regiaoPais, index) => (regiaoPais.regiao === regiaoBR))
 

@@ -5,7 +5,7 @@ import '../assets/disponibilidade.scss';
 import { format } from 'date-fns'
 import { useAxios } from '../../hooks/useAxios';
 import { Helmet } from 'react-helmet-async';
-import { CardDisponibilidade } from '../../components/CardDisponibilidade';
+import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
 import { ButtonHandleClose } from '../../components/Buttons';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */

@@ -1,12 +1,12 @@
 import './style.scss';
 import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
-import { CardCategoria } from '../../components/CardCategoria';
+import { CardCategoria } from '../../components/Cards/CardCategoria';
 import { Carousel } from '../../components/Carousel';
 import {useAxios} from '../../hooks/useAxios';
 import { CardCarro } from '../../components/CardCarro';
-import { CardMontadora } from '../../components/CardMontadora';
-import { CardRegioes } from '../../components/CardRegioes';
+import { CardMontadora } from '../../components/Cards/CardMontadora';
+import { CardRegioes } from '../../components/Cards/CardRegioes';
 /* import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; */
 

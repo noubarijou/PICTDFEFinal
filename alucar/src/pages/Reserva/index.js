@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Formik, Form } from "formik";
 import { TextField } from "../../components/TextField";
 import { Requisitos } from "../../components/Requisitos";
-import { CardAdicionais } from "../../components/CardAdicionais";
+import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
 import {useAxios} from "../../hooks/useAxios";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";

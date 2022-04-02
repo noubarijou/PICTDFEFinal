@@ -3,13 +3,13 @@ import { useAxios } from '../../hooks/useAxios'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import '../assets/disponibilidade.scss';
-import { CardDisponibilidade } from '../../components/CardDisponibilidade';
+import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
 import { ButtonHandleClose } from '../../components/Buttons';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
-import {CardFiltros} from '../../components/CardFiltros/';
+import {CardFiltros} from '../../components/Cards/CardFiltros/';
 
 
 export const DisponibilidadeCategoria = () => {
