@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Paper, Box, Grid, TextField, Typography, Button} from '@material-ui/core';
+import '../../index.scss';
 
 export const Ajuda = () => {
     const validationSchema = Yup.object().shape({
@@ -79,7 +80,7 @@ export const Ajuda = () => {
                 <Box mt={3}>
             <Button
               variant="contained"
-              color="primary"
+              style={{backgroundColor: '#FBC02D', color: 'black'}}
               onClick={handleSubmit(onSubmit)}
             >
               Enviar

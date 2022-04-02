@@ -156,7 +156,7 @@ export const CriarConta = () => {
                   <Box mt={3}>
                     <Button
                       variant="contained"
-                      color="primary"
+                      style={{backgroundColor: '#FBC02D', color: 'black'}}
                       onClick={handleSubmit(onSubmit)}
                     >
                       Criar Conta

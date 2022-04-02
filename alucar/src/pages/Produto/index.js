@@ -21,10 +21,8 @@ export const Detalhes = () => {
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
 
-
   const regras = require("../../assets/regras.json");
   const detalhes = useAxios(`/carro`);
-  /* const regras = useAxios(`/regras`) */
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
@@ -40,7 +38,7 @@ export const Detalhes = () => {
     setDetalhe(detalhesId);
     window.scrollTo(0, 0)
   }, [detalhesId])
-  console.log(detalhesId)
+ 
   return (
     <>
       <Helmet>

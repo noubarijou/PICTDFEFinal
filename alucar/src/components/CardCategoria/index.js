@@ -1,9 +1,12 @@
 import "./style.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 export const CardCategoria = ({ id, imagem, categoria, preco }) => {
   const navigate = useNavigate();
-
+  /* const handleSubmit = () => {
+    navigate(`/categoria/${id}`);
+  }; */
   return (
+    
     <>
       <article className="card__categoria">
         <div className="card__img" >
@@ -13,7 +16,9 @@ export const CardCategoria = ({ id, imagem, categoria, preco }) => {
           <h2>{categoria}</h2>
           <p className="subtitle">A partir de</p>
           <p className="info__preco">R$ {preco} / dia</p>
-          <button type="submit" className="btn success-btn" onSubmit={navigate(`/disponibilidade/${id}`)}>Revervar</button>
+          <Link to={`/disponibilidade/${id}`}>
+          <button type="submit" className="btn success-btn">Revervar</button>
+          </Link>
         </div>
       </article>
     </>

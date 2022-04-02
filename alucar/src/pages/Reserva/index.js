@@ -160,7 +160,7 @@ export const Reserva = () => {
           {detalhes[detalhesId] ? (
             <>
               {detalhes
-                .filter((itens, index) => itens.carroId === parseInt(detalhe))
+                .filter((itens, index) => itens.carroId === parseInt(detalhesId))
                 .map((e) => {
                   return (
                     <div key={e.carroId} id={e.carroId}>
@@ -193,7 +193,7 @@ export const Reserva = () => {
                 })}
             </>
           ) : (
-            null
+            <div>erro no mapa</div>
           )}
           </article>
           <ButtonToClick classes={"success-btn"} urlTo={`/minhasreservas/`}>Reservar</ButtonToClick>

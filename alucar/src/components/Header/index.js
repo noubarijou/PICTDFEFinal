@@ -5,7 +5,7 @@ import { ModalNav } from '../ModalNav';
 
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faXmark, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 
@@ -27,6 +27,7 @@ export const Header = () => {
     const handleLogout = () => {
         setIsSubmitSuccess(false);
         localStorage.clear();
+        window.location.reload();
       }
     return (
         <header>
@@ -48,8 +49,9 @@ export const Header = () => {
                                     <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
                                     {isSubmitSuccess ? (
                                         <div className="modal__displayname">{dados.map((dado) => {
-                                            return (
-                                                dado.displayname
+                                            return (<Link to='/minhaconta' onClick={() => handleClose()}>
+                                                {dado.displayname}
+                                                </Link>
                                             )
                                         })}</div>) : null}
                                 </div>
@@ -69,7 +71,7 @@ export const Header = () => {
                                         }
                         )}
                         </div>
-                        <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleLogout()} /> 
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" style={{ cursor: "pointer" }} onClick={() => handleLogout()} /> 
                     </nav>
 
                     :

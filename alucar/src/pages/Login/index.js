@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
-import { Form, Formik } from "formik";
+import { useNavigate } from "react-router-dom";
+import {useForm } from "react-hook-form";
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as Yup from "yup";
-import { TextField } from "../../components/TextField";
+import {
+  Paper,
+  Box,
+  Grid,
+  TextField,
+  Typography,
+  Button
+} from '@material-ui/core';
 
 export const Login = () => {
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
@@ -18,75 +26,86 @@ export const Login = () => {
       .min(6, "Senha deve conter no mínimo 6 caracteres")
       .required("Senha obrigatória"),
   });
-  const credentials = require("../../assets/user.json");
-  console.log(credentials)
-  
+  const credentials = {
+    user: {
+      id: 1,
+      username: "usuario@dh.com.br",
+      password: "umaboasenha",
+      nome: "Digital",
+      sobrenome: "House",
+      displayname: "DH",
+    },
+  };
+  const {register, handleSubmit, formState: {errors} } = useForm({resolver:yupResolver(validationSchema)})
+  const onSubmit = (data) => {
+    console.log(data);
+    localStorage.setItem("credenciais", JSON.stringify(data));
+    const formdata = localStorage.getItem("credenciais");
+    if ((
+      data.email !== credentials.user.username ||
+      data.password !== credentials.user.password
+    )) {
+      setIsSubmitSuccess(false);
+    } else {
+      setIsSubmitSuccess(true);
+      navigate("/");
+      window.location.reload();
+      console.log(isSubmitSuccess)
+    }
+  }
   return (
     <>
       <Helmet>
         <title>AluCar | Login</title>
       </Helmet>
       <main>
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={validationSchema}
-          onSubmit={(values) => {
-            console.log(values)
-            localStorage.setItem('credenciais', JSON.stringify(values));
-            const info = localStorage.getItem('credenciais');
-            console.log(info.email)
-            
-            if ((
-              info.email !== credentials.username &&
-              info.password !== credentials.password
-            ) || info.email !== credentials.username ||
-              info.password !== credentials.password
-            )
-             {
-              setIsSubmitSuccess(false);
-              alert("Usuário ou senha inválidos");
-            } else {
-              setIsSubmitSuccess(true);
-            }
-          }}
-        >
           {isSubmitSuccess ? (
-            navigate("/")
-          ) : (
-            <div className="container">
-              <h1>Entrar na sua conta</h1>
-              {}
-              <Form>
-                <TextField
-                  label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="Digite seu email"
-                  required
-                />
-                <TextField
-                  label="Senha"
-                  name="password"
-                  type="password"
-                  placeholder="Digite uma senha"
-                  required
-                />
-                <button type="submit" className="btn primary-btn btn-large">
-                  Entrar
-                </button>
-              </Form>
-              <p className="criarconta btn-small">
-                Não tem conta?{" "}
-                <Link className="linkcriarconta" to="/criarconta">
-                  Crie uma aqui.
-                </Link>
-              </p>
-            </div>
-          )}
-        </Formik>
+            navigate("/")) : (
+            <Paper>
+              <Box px={3} py={2}>
+                <Typography variant="h4" align="center" margin="dense">
+                  Entre em sua conta
+                </Typography>
+                <Grid container spacing={1}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                    required
+                      name="email"
+                      label="Email"
+                      id="email"
+                      variant="outlined"
+                      fullWidth
+                      margin="dense"
+                      {...register('email')}
+                      error={errors.fullname?true:false}
+                      />
+                      <Typography variant="inherit" color="textSecondary">{errors.email?.message}</Typography>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      required
+                      name="password"
+                      label="Senha"
+                      id="password"
+                      variant="outlined"
+                      type="password"
+                      fullWidth
+                      margin="dense"
+                      {...register('password')}
+                      error={errors.password?true:false}
+                      />
+                      <Typography variant="inherit" color="textSecondary">{errors.password?.message}</Typography>
+                  </Grid>
+                </Grid>
+                <Box mt={3}>
+                  <Button
+                    variant="contained"
+                    style={{backgroundColor: '#FBC02D', color: 'black'}}
+                    onClick={handleSubmit(onSubmit)}
+                  >Entrar</Button>
+                </Box>
+              </Box>
+            </Paper>)}
       </main>
     </>
   );

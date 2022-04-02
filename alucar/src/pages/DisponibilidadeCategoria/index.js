@@ -9,6 +9,7 @@ import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
+import {CardFiltros} from '../../components/CardFiltros/';
 
 
 export const DisponibilidadeCategoria = () => {
@@ -82,7 +83,7 @@ export const DisponibilidadeCategoria = () => {
             :
             <>
               <div className="disponibilidade__filtros">
-              Colocar o filtro aqui
+              <CardFiltros />
               </div>
               <div className="disponibilidade__todosCarros">
                 {categorias.filter((item) => item.categoriasId === parseInt(detalhesId)).map((e) => {
