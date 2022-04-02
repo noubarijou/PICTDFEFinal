@@ -2,13 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const ButtonSubmit = ({ children, urlTo, classes }) => {
-
+  const navigation = useNavigate();
+  const [ navigate, setNavigate] = useState();
+  
+  useEffect(()=>{
+    setNavigate(urlTo)
+  },[urlTo])
+  
+  const Click = (e) => {
+    e.preventDefault()
+    console.log(e)
+    console.log(navigate)
+    navigation(navigate)
+  }
   return (
-    <button type="submit" className={`btn btn-large ${classes}`} onSubmit={useNavigate(urlTo)}>{children}</button>
+    <button className={`btn btn-large ${classes}`} onClick={((e)=>{Click(e)})}>{children}</button>
   )
 }
 
 export const ButtonToClick = ({ children, urlTo, classes }) => {
+  const navigation = useNavigate();
   const [ navigate, setNavigate] = useState();
 
   
@@ -18,7 +31,7 @@ export const ButtonToClick = ({ children, urlTo, classes }) => {
   
   const Click = (e) => {
     e.preventDefault()
-    useNavigate(navigate)
+    navigation(navigate)
   }
 
   return (

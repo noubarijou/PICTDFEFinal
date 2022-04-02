@@ -66,6 +66,7 @@ export const DisponibilidadeCategoria = () => {
                         modelo={e.modelo}
                         categoriasNome={e.categorias.categoriasNome}
                         rating={e.rating}
+                        urlTo={`/reserva/${detalhesId}`}
                         urlImagem={e.imagens.urlImagem}
                         cambio={e.caracteristicas.cambio}
                         arCondicionado={e.caracteristicas.arCondicionado}
@@ -74,7 +75,6 @@ export const DisponibilidadeCategoria = () => {
                         qtdePorta={e.caracteristicas.qtdePorta}
                         valor={e.valor}
                       />
-
                     </div>
                   );
                 })}
@@ -101,6 +101,7 @@ export const DisponibilidadeCategoria = () => {
                           modelo={e.modelo}
                           categoriasNome={e.categorias.categoriasNome}
                           rating={e.rating}
+                          urlTo={`/reserva/${detalhesId}`}
                           urlImagem={e.imagens.urlImagem}
                           cambio={e.caracteristicas.cambio}
                           arCondicionado={e.caracteristicas.arCondicionado}

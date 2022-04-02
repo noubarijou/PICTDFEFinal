@@ -17,7 +17,7 @@ const location = {
   lat: -23.5329081,
   lng: -46.774591,
 }
-export const Detalhes = () => {
+export const Produto = () => {
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -93,7 +93,7 @@ export const Detalhes = () => {
           ) : (null)}
           <div className="detalhes__datePicker">
           </div>
-          <ButtonToClick classes={"success-btn"} urlTo={`/reserva/`}>Reservar</ButtonToClick>
+          <ButtonToClick classes={"success-btn"} urlTo={`/reserva/${detalhesId}`}>Reservar</ButtonToClick>
           <div className="detalhe__mapa">
             <Mapa location={location} zoomLevel={17} />
           </div>

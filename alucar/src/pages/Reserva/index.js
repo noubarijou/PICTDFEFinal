@@ -160,7 +160,7 @@ export const Reserva = () => {
           {detalhes[detalhesId] ? (
             <>
               {detalhes
-                .filter((itens, index) => itens.carroId === parseInt(detalhesId))
+                .filter((itens, index) => itens.carroId === parseInt(detalhe))
                 .map((e) => {
                   return (
                     <div key={e.carroId} id={e.carroId}>

@@ -9,7 +9,7 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 export const CardDisponibilidade = ({ rating, categoriasNome, urlImagem, modelo, cambio, arCondicionado, qtdeAssento, qtdePorta, motor, valor, urlTo }) => {
     const { width } = useWindowDimensions();
-
+    console.log(urlTo)
     return (
         <>
             <div className="carro__nome"><h1>{modelo}</h1></div>
