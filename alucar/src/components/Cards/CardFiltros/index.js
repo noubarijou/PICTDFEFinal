@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles.scss";
+import '../../../pages/assets/disponibilidade.scss';
 
 export const CardFiltros = ({}) => {
   const [checked, setChecked] = useState(false);
@@ -267,7 +267,6 @@ export const CardFiltros = ({}) => {
             </label>
           </div>
         </div>
-      <button type="submit" className="btn-large">Aplicar</button>
       </form>
     </div>
   );

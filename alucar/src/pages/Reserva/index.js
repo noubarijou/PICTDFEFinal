@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Formik, Form } from "formik";
-import { TextField } from "../../components/TextField";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/CardCarro/components/Rating";
@@ -17,6 +15,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Calendar } from "../../components/ModalPesquisa/components/Calendar";
 import CircularProgress from '@mui/material/CircularProgress';
+import {
+  Paper,
+  Box,
+  Grid,
+  TextField,
+  Typography,
+} from "@material-ui/core";
+import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";
+import {CalendarioDesktop} from '../../components/Calendarios/CalendarioDesktop';
+import {CalendarioMobile} from '../../components/Calendarios/CalendarioMobile';
+
 
 export const Reserva = () => {
   const { width } = useWindowDimensions();
@@ -55,32 +64,42 @@ export const Reserva = () => {
         <Helmet>
           <title>Reserva</title>
         </Helmet>
-        <h3>Confirme seus dados</h3>
-        <div className="linha"></div>
-        <Formik>
-          <Form method="post">
+        <Paper>
+          <Box p={3}>
+            <Typography variant="h5" align="center" margin="dense">
+              Confirme seus dados
+            </Typography>
+          </Box>
+        </Paper>
+        <Grid container spacing={3} direction="column" alignItems="center">
+          <Grid item xs>
             <TextField
+              disabled
+              id="nome"
               label="Nome"
-              name="firstName"
               type="text"
               placeholder="Digite seu nome"
-              disabled
             />
+          </Grid>
+          <Grid item xs>
             <TextField
+              required
+              id="sobrenome"
               label="Sobrenome"
-              name="lastName"
               type="text"
               placeholder="Digite seu sobrenome"
-              required
             />
+          </Grid>
+          <Grid item xs>
             <TextField
+              disabled
+              id="email"
               label="Email"
-              name="email"
               type="email"
               placeholder="Digite seu email"
-              disabled
             />
-            <div>
+          </Grid>
+        <Grid item xs>
               <label htmlFor="where">
                 <FontAwesomeIcon icon={faLocationDot} /> Onde quer retirar o
                 carro:
@@ -106,43 +125,9 @@ export const Reserva = () => {
                   );
                 })}
               </datalist>
-            </div>
-            <h3>Selecione o horario de retirada</h3>
-            <input
-              type="text"
-              id="times"
-              list="horarios"
-              placeholder="Escolha o horario"
-              required
-            />
-            <datalist id="horarios">
-              <option value="09:00" />
-              <option value="09:30" />
-              <option value="10:00" />
-              <option value="10:30" />
-              <option value="11:00" />
-              <option value="11:30" />
-              <option value="12:00" />
-              <option value="12:30" />
-              <option value="13:00" />
-              <option value="13:30" />
-              <option value="14:00" />
-              <option value="14:30" />
-              <option value="15:00" />
-              <option value="15:30" />
-              <option value="16:00" />
-              <option value="16:30" />
-              <option value="17:00" />
-              <option value="17:30" />
-              <option value="18:00" />
-              <option value="18:30" />
-              <option value="19:00" />
-              <option value="19:30" />
-              <option value="20:00" />
-            </datalist>
-            <Calendar value={dateRange} setValue={setDateRange} />
-          </Form>
-        </Formik>
+            </Grid>
+            <ControlledOpenSelect />
+            {width < 768 ? (<CalendarioMobile />) : (<CalendarioDesktop />)}
         <CardAdicionais
           id={1}
           title="Proteção Básica"
@@ -212,7 +197,7 @@ export const Reserva = () => {
               )
             })}
           </article>
-        
+        </Grid>
       </main>
     </>
   );
