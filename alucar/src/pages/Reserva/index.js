@@ -15,22 +15,25 @@ import {
   faLocationDot,
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
+import { Calendar } from "../../components/ModalPesquisa/components/Calendar";
 
 export const Reserva = () => {
   const { width } = useWindowDimensions();
   const cidades = useAxios(`/cidades`);
   const detalhes = useAxios(`/carro`);
   const regras = require("../../assets/regras.json");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+  /* const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null); */
   const [cidade, setCidade] = useState();
   const navigate = useNavigate();
   
-  const onChange = (dates) => {
+  /* const onChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-  };
+  }; */
   const { detalhesId } = useParams();
   const [detalhe, setDetalhe] = useState();
   useEffect(() => {
@@ -136,6 +139,7 @@ export const Reserva = () => {
               <option value="19:30" />
               <option value="20:00" />
             </datalist>
+            <Calendar value={dateRange} setValue={setDateRange} />
           </Form>
         </Formik>
         <CardAdicionais
