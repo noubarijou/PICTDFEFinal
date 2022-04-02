@@ -17,7 +17,7 @@ import {
 import { useState, useEffect } from "react";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
-import { Rating } from "../../components/CardCarro/components/Rating";
+import { Rating } from "../../components/Rating";
 import { ButtonToClick } from "../../components/Buttons";
 /* import { ControlledOpenSelect } from "../../components/Listas/ListaCidades"; */
 import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";

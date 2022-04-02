@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
-import { Rating } from "../../components/CardCarro/components/Rating";
+import { Rating } from "../../components/Rating";
 import {useAxios} from "../../hooks/useAxios";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { ButtonToClick } from '../../components/Buttons';

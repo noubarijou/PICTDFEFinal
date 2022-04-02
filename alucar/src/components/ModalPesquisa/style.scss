@@ -16,6 +16,13 @@
             label{
                 display: block;
             }
+            .input{
+                width: 100%;
+            }
+            datalist{
+                width: 100%;
+            }
+
         }
     }
 
@@ -30,9 +37,6 @@
         .pesquisa__div{
             width: 18.75rem;
             margin: 0 auto;
-            .input{
-                width: 100%;
-            }
         }
 
         button{
@@ -49,9 +53,6 @@
         .pesquisa__div{
             .local__pesquisa{
                 width: 25rem;
-                .input{
-                    width: 100%;
-                }
             }
         }
 

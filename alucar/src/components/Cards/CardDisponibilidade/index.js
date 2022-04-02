@@ -2,7 +2,7 @@ import "./style.scss";
 
 import React from 'react'
 
-import { Rating } from '../../CardCarro/components/Rating';
+import { Rating } from '../../Rating';
 import { CardCaracteristica } from "../CardCaracteristica";
 import { ButtonSubmit } from "../../Buttons";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";

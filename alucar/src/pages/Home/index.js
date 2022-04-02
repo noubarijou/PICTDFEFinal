@@ -4,7 +4,7 @@ import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/Cards/CardCategoria';
 import { Carousel } from '../../components/Carousel';
 import {useAxios} from '../../hooks/useAxios';
-import { CardCarro } from '../../components/CardCarro';
+import { CardCarro } from '../../components/Cards/CardCarro';
 import { CardMontadora } from '../../components/Cards/CardMontadora';
 import { CardRegioes } from '../../components/Cards/CardRegioes';
 /* import { useEffect, useState } from 'react';

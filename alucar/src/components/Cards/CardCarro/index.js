@@ -1,6 +1,6 @@
 /* import Detalhes from "../../detalhes.json" */
 import { Link } from "react-router-dom"
-import { Rating } from "./components/Rating";
+import { Rating } from "../../Rating";
 import './style.scss';
 
 

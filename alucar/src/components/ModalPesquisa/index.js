@@ -6,7 +6,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Calendar } from "./components/Calendar";
 import { useNavigate } from "react-router-dom";
-import { /* ButtonSubmit */ } from "../../components/Buttons"
+import { ButtonSubmit } from "../../components/Buttons"
 
 export const ModalPesquisa = () => {
   const cidades = useAxios(`/cidades`);
@@ -14,6 +14,11 @@ export const ModalPesquisa = () => {
   const [startDate, endDate] = dateRange;
   const [cidade, setCidade] = useState();
   const navigate = useNavigate();
+
+  const onSubmit = () => {
+    setDados();
+    navigate(`/disponibilidade`);
+  }
 
   const setDados = () => {
     localStorage.setItem("dadosCidade", JSON.stringify(cidade));
@@ -25,7 +30,7 @@ export const ModalPesquisa = () => {
   return (
     <div className="modal__pesquisa">
       <h2>Os melhores veículos, pelo melhor preço!</h2>
-      <form className="pesquisa__form">
+      <form className="pesquisa__form" onSubmit={onSubmit}>
         <div className="pesquisa__div">
           <div className="local__pesquisa">
             <label htmlFor="where">
@@ -57,12 +62,7 @@ export const ModalPesquisa = () => {
         <div className="pesquisa__div">
           <Calendar value={dateRange} setValue={setDateRange} />
         </div>
-        <button
-          type="submit"
-          className="btn secondary-btn btn-large btn-pesquisar" onSubmit={setDados()} onClick={() => navigate(`/disponibilidade`)}
-        >
-          Pesquisar
-        </button>
+        <ButtonSubmit classes={"btn-pesquiar secondary-btn"}>Pesquisar</ButtonSubmit>
       </form>
     </div>
   );

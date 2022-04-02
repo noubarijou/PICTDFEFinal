@@ -1,6 +1,6 @@
 import "./style.scss";
 import { Helmet } from "react-helmet-async";
-import { Rating } from "../../components/CardCarro/components/Rating";
+import { Rating } from "../../components/Rating";
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
 import { Mapa } from '../../components/Mapa/';
