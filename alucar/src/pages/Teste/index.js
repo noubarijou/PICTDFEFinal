@@ -21,8 +21,8 @@ import { Rating } from "../../components/Rating";
 import { ButtonToClick } from "../../components/Buttons";
 /* import { ControlledOpenSelect } from "../../components/Listas/ListaCidades"; */
 import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";
-import {CalendarioMobile} from '../../components/Calendarios/CalendarioMobile';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Calendario } from "../../components/Calendarios";
 
 export const Teste = () => {
   const pedidos = useAxios("/clientes");
@@ -126,7 +126,7 @@ export const Teste = () => {
             </datalist>
           </Grid>
           <ControlledOpenSelect />
-          <CalendarioMobile />
+          <Calendario value="" setValue={""} />
           <CardAdicionais
           id={1}
           title="Proteção Básica"

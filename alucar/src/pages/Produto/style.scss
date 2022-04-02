@@ -1,13 +1,13 @@
 @import "../../index.scss";
-.detalhe__carro{
-    .carro__categoria{
+.detalhes__carro{
+    .detalhe__categoria{
         padding: 0 1.25rem;
         height: 4.25rem;
         background-color: $emphasis;
         display: flex;
         align-items: center;
     }
-    .carro__nome{
+    .detalhe__nome{
         padding: 0 1.25rem;
         height: 1.75rem;
         border-radius: 0;
@@ -17,10 +17,11 @@
         background-color: $primary2;
         color: white;
     }
-    .carro__info{
-        .carro__img{
+    .detalhe__info{
+        margin: 2.5rem 0;
+        .info__img{
             width: 18.75rem;
-            margin: 2rem auto;
+            margin: 2.5rem auto;
             height: 8rem;
             img{
                 width: 100%;
@@ -28,7 +29,7 @@
                 object-fit: cover;
             }
         }
-        .carro__slogan{
+        .info__slogan{
             padding: 0.25rem 1.25rem;
             background-color: $grey1;
             display: flex;
@@ -56,6 +57,12 @@
             }
         }
     }
+    .detalhe__btn{
+        width: 80%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .detalhes__datePicker{
         display: flex;
         justify-content: center;
@@ -63,11 +70,15 @@
 
     }
     .detalhe__mapa{
-        padding: 0 1.25rem;
+        margin: 2.5rem auto;
         width: 90%;
     }
     .detalhes__requisitos{
+        margin: 2.5rem 0;
         padding: 0 1.25rem;
+        h2{
+            text-decoration: underline;
+        }
         .requisitos{
             border-bottom: 1px solid $grey1;
             &:last-child{
@@ -76,14 +87,52 @@
         }
     }
 }
-/* .react-datepicker{
-    position: inherit !important;
 
-    .react-datepicker__navigation{
-        position: relative;
+@media (min-width: $screen-md-max){
+    .detalhes__carro{
+        .detalhe__categoria, .detalhe__nome, .detalhes__requisitos{
+            padding: 0 7rem;
+        }
+        .detalhe__info{
+            .info__slogan{
+                padding: 0.25rem 7rem;
+            }
+            .info__aviso, .carro__caracteristica{
+                padding: 0 7rem;
+            }
+        }
     }
-    
-    .react-datepicker__header{
-        position: inherit !important;
+}
+
+@media (min-width: $screen-lg-max){
+    .detalhes__carro{
+        .detalhe__categoria, .detalhe__nome{
+            padding: 0 5rem;
+        }
+        .detalhe__info{
+            .info__principal{
+                padding: 0 4.25rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.5rem;
+                .info__img{
+                    width: 45%;
+                    height: 20rem;
+                    img{
+                        height: auto;
+                        position: relative;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                .info__caracteristica{
+                    width: 45%;
+                    .carro__caracteristica{
+                        padding: 0 1.25rem;
+                    }
+                }
+            }
+        }
     }
-} */
+}

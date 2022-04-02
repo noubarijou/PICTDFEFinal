@@ -15,7 +15,7 @@ export const Calendario = ({ value, setValue }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <StaticDateRangePicker
-        displayStaticWrapperAs={width > 768 ? "desktop" : "mobile"}
+        displayStaticWrapperAs={width >= 768 ? "desktop" : "mobile"}
         disablePast
         shouldDisableDate={isWeekend}
         startText="Check-in"

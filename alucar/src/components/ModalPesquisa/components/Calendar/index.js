@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./style.scss";
 import { useWindowDimensions } from '../../../../hooks/useWindowDimensions';
 
@@ -18,9 +18,6 @@ import isWeekend from 'date-fns/isWeekend';
 
 export const Calendar = ({value, setValue}) => {
     const { width } = useWindowDimensions();
-
-    /* const [value, setValue] = useState([null, null]); */
-    /* console.log(value) */
 
     return (
         <div className="date__pesquisa">

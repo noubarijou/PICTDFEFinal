@@ -25,3 +25,11 @@
         text-align: justify;
     }
 }
+
+@media (min-width: $screen-md-max){
+    .requisito__card{
+        .requisito__icone{
+            right: 8rem;
+        }
+    }
+}

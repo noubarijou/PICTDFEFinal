@@ -9,11 +9,8 @@ import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 import { ButtonToClick } from '../../components/Buttons';
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationDot,
-  faCalendarDay,
-} from "@fortawesome/free-solid-svg-icons";
-import { Calendar } from "../../components/ModalPesquisa/components/Calendar";
+import { faLocationDot, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+
 import CircularProgress from '@mui/material/CircularProgress';
 import {
   Paper,
@@ -23,8 +20,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";
-import {CalendarioDesktop} from '../../components/Calendarios/CalendarioDesktop';
-import {CalendarioMobile} from '../../components/Calendarios/CalendarioMobile';
+import {Calendario} from '../../components/Calendarios';
 
 
 export const Reserva = () => {
@@ -127,7 +123,7 @@ export const Reserva = () => {
               </datalist>
             </Grid>
             <ControlledOpenSelect />
-            {width < 768 ? (<CalendarioMobile />) : (<CalendarioDesktop />)}
+            <Calendario />
         <CardAdicionais
           id={1}
           title="Proteção Básica"
