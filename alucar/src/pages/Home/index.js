@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { ModalPesquisa } from '../../components/ModalPesquisa';
 import { CardCategoria } from '../../components/Cards/CardCategoria';
 import { Carousel } from '../../components/Carousel';
-import {useAxios} from '../../hooks/useAxios';
+import { useAxios } from '../../hooks/useAxios';
 import { CardCarro } from '../../components/Cards/CardCarro';
 import { CardMontadora } from '../../components/Cards/CardMontadora';
 import { CardRegioes } from '../../components/Cards/CardRegioes';
@@ -15,11 +15,11 @@ import { useParams } from 'react-router-dom'; */
 export const Home = () => {
 
     const categorias = useAxios(`/categorias`);
-    
+
     const modelos = useAxios(`/carro`);
     /* const montadoras = useAxios(`/imagens`); */
     /* const modelo = require("../../assets/detalhes.json");*/
-    const montadoras = require("../../assets/montadora.json"); 
+    const montadoras = require("../../assets/montadora.json");
     /* const regioes = require("../../assets/cidades.json"); */
 
     if (!categorias || !categorias.length) return null;
@@ -35,13 +35,13 @@ export const Home = () => {
                 <ModalPesquisa />
                 <article className='container__categoria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
-                   <Carousel>
+                    <Carousel>
                         {categorias.map((itens) => {
                             return (
                                 <div key={itens.categoriasId}>
-                                <CardCategoria id={itens.categoriasId} imagem={itens.urlImgModelo} categoria={itens.categoriasNome} preco={itens.preco} />
+                                    <CardCategoria id={itens.categoriasId} imagem={itens.urlImgModelo} categoria={itens.categoriasNome} preco={itens.preco} />
                                 </div>
-                                )
+                            )
                         })}
                     </Carousel>
                 </article>
@@ -51,7 +51,7 @@ export const Home = () => {
                         {modelos.map((item) => {
                             return (
                                 <div key={item.carroId}>
-                                    <CardCarro id={item.carroId} imagem={item.imagens.urlImagem} modelo={item.modelo} categoria={item.categorias.categoriasNome} descricao={item.caracteristicas.cambio} /* rating={item.rating} */ />
+                                    <CardCarro id={item.carroId} imagem={item.imagens.urlImagem} modelo={item.modelo} categoria={item.categorias.categoriasNome} descricao={item.caracteristicas.cambio} rating={item.rating} />
                                 </div>
                             )
                         })}
