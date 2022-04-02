@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
@@ -20,7 +19,7 @@ export const CardRegioes = ({ imagem, regiaoBR }) => {
                         {
                             regioesBR.map((regiao) => {
                                 return (
-                                    <Link to="" key={regiao.id}>
+                                    <Link to={`/disponibilidade`} key={regiao.id}>
                                         <li className="btn-small">{regiao.cidade}</li>
                                     </Link>
                                 )
