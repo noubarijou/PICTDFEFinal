@@ -16,6 +16,7 @@ import {
   faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 import { Calendar } from "../../components/ModalPesquisa/components/Calendar";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Reserva = () => {
   const { width } = useWindowDimensions();
@@ -197,7 +198,7 @@ export const Reserva = () => {
                 })}
             </>
           ) : (
-            <div>erro no mapa</div>
+            <CircularProgress />
           )}
           </article>
           <ButtonToClick classes={"success-btn"} urlTo={`/minhasreservas/`}>Reservar</ButtonToClick>
