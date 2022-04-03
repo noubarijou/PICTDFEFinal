@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Rating } from '../../Rating';
 import { CardCaracteristica } from "../CardCaracteristica";
-import { ButtonSubmit } from "../../Buttons";
+import { ButtonToClick } from "../../Buttons";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 
 export const CardDisponibilidade = ({ rating, categoriasNome, urlImagem, modelo, cambio, arCondicionado, qtdeAssento, qtdePorta, motor, valor, urlTo }) => {
@@ -37,7 +37,7 @@ export const CardDisponibilidade = ({ rating, categoriasNome, urlImagem, modelo,
                                         <p className="subtitle">A partir de</p>
                                         <h2 className="info__preco">{`R$${(valor.toFixed(2)).replace(".", ",")} /dia`}</h2>
                                     </div>
-                                    <ButtonSubmit classes="success-btn" urlTo={urlTo}>Reservar</ButtonSubmit>
+                                    <ButtonToClick classes="success-btn" urlTo={urlTo}>Reservar</ButtonToClick>
                                 </div>
                             </div>
                         </>
@@ -63,7 +63,7 @@ export const CardDisponibilidade = ({ rating, categoriasNome, urlImagem, modelo,
                                 </article>
                             </div>
                             <div className="carro__btn--reservar">
-                                <ButtonSubmit classes="success-btn btn__reservar" urlTo={urlTo}>Reservar</ButtonSubmit>
+                                <ButtonToClick classes="success-btn btn__reservar" urlTo={urlTo}>Reservar</ButtonToClick>
                             </div>
                         </>
                 }

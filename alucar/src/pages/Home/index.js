@@ -1,6 +1,6 @@
 import './style.scss';
 import { Helmet } from 'react-helmet-async';
-import { ModalPesquisa } from '../../components/ModalPesquisa';
+import { ModalPesquisa } from '../../components/Modal/ModalPesquisa';
 import { CardCategoria } from '../../components/Cards/CardCategoria';
 import { Carousel } from '../../components/Carousel';
 import { useAxios } from '../../hooks/useAxios';
