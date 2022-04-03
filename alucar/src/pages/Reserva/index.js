@@ -44,13 +44,14 @@ export const Reserva = () => {
   console.log(loggedInUser);
 
 
-  /* const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
+  const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
   const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange"));
   const pesquisaStartDate = format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy");
-  const pesquisaEndDate = format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy"); 
-  */
+  const pesquisaEndDate = format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy");
+
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
   
+
 
  
 
@@ -166,9 +167,9 @@ export const Reserva = () => {
                       <div className="carro__info_final">
                         <p>{cidade}</p>
                         <div className="linha"></div>
-                        {dados.dadosStartDate === '' ? (<p>Check in {startDate}</p>):(<p>Check in {dados.dadosStartDate}</p>)}
+                        {pesquisaStartDate === '' ? (<p>Check in {startDate}</p>):(<p>Check in {pesquisaStartDate}</p>)}
                         <div className="linha"></div>
-                        {dados.dadosEndDate === '' ? (<p>Check out {endDate}</p>):(<p>Check out {dados.dadosEndDate}</p>)}
+                        {pesquisaEndDate === '' ? (<p>Check out {endDate}</p>):(<p>Check out {pesquisaEndDate}</p>)}
                         <div className="linha"></div>
                         <p>{`Total R$${valorTotal}`}</p>
                       </div>
