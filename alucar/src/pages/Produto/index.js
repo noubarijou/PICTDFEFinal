@@ -19,11 +19,13 @@ const location = {
   lng: -46.774591,
 }
 export const Produto = () => {
+  /* verifica o tamanho da tela */
   const { width } = useWindowDimensions();
   /* AXIOS */
   const regras = require("../../assets/regras.json");
   const detalhes = useAxios(`/carro`);
 
+  /* Variável para guardar as datas recebidas */
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
