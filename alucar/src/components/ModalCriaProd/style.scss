@@ -1,0 +1,36 @@
+div.container{
+    background-color: greenyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button.modalButton{
+        font-size: 0.75rem;
+        padding: 0.75rem;
+    }
+    div.modalDiv{
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div.imageModal{
+            display: flex;
+            background-color: yellow;
+            width: 10rem;
+            align-items: center;
+            
+        }
+        div.buttonModal{
+            display: flex;
+            align-items: center;
+            button{
+                padding:3rem;
+                background: yellow;
+                border:none;
+                font-style: sanserif;
+                font-size: 1.5rem;
+
+            }
+        }
+
+    }
+}
