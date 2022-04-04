@@ -5,10 +5,10 @@ import vector from './img/Vector.png';
 
 Modal.setAppElement('#root')
 
- const ModalCriaProd =() => {
+export const ModalCriaProd =() => {
     const [modalVisible, setModalVisible] = useState (false);
 
-    function hundleModal(){
+    function handleModal(){
         if(modalVisible===false){
             setModalVisible(true);
         }else{
@@ -19,24 +19,10 @@ Modal.setAppElement('#root')
         return ( 
         
         <div className="container">
-            <button className="modalButton" onClick={hundleModal}>Modal</button>
+            <button className="modalButton" onClick={handleModal}>Modal</button>
             <Modal
             isOpen = {modalVisible}
-            onRequestClose = {hundleModal}>
-<<<<<<< HEAD
-                    <div className="modalDiv">
-                        <div className="imageModal">
-                            <img src={vector} alt="check" />
-                        </div>
-                        <div>
-                            <h5> Produto adicionado Sucesso!</h5>
-                            
-                        </div>
-                        <div className="buttonModal">
-                            <button onClick={hundleModal}>Ok</button>
-                            <button onClick={hundleModal}>Voltar</button>
-                        </div>
-=======
+            onRequestClose = {handleModal}>
                     <div>
                         <div>
                             <img src={vector} alt="check" width={'150px'} />
@@ -45,8 +31,7 @@ Modal.setAppElement('#root')
                             <h5> Produto adicionado Sucesso!</h5>
                             <button></button>
                         </div>
-                        <div><button onClick={hundleModal}>Ok</button></div>
->>>>>>> 3566b2b69cd94b6411eb2a728d642098a544e461
+                        <div><button onClick={handleModal}>Ok</button></div>
                     </div>        
             </Modal>
         </div>
@@ -54,4 +39,3 @@ Modal.setAppElement('#root')
      );
 }
 
-export default ModalCriaProd;

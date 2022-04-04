@@ -1,4 +1,5 @@
-import ModalCriaProd from '../../components/ModalCriaProd';
+import { ModalCriaProd } from "../../components/ModalCriaProd";
+
 
 
 function TesteModal() {
