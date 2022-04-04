@@ -19,7 +19,7 @@ export const useAxios = (url) => {
   return data;
 }
 
-export const UseAxiosPost = (url) => {
+export const useAxiosPost = (url) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {

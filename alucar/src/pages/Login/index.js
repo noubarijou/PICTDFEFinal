@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import {useForm } from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useAxios} from "../../hooks/useAxios";
 import * as Yup from "yup";
 import {
   Paper,
@@ -15,7 +16,7 @@ import {
 
 export const Login = () => {
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
-
+  const login = useAxios(`/clientes`);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object({
@@ -66,7 +67,7 @@ export const Login = () => {
                 <Typography variant="h4" align="center" margin="dense">
                   Entre em sua conta
                 </Typography>
-                <Grid container spacing={1}>
+                <Grid container spacing={1} direction="column" alignItems="center">
                   <Grid item xs={12} sm={6}>
                     <TextField
                     required
@@ -96,7 +97,6 @@ export const Login = () => {
                       />
                       <Typography variant="inherit" color="textSecondary">{errors.password?.message}</Typography>
                   </Grid>
-                </Grid>
                 <Box mt={3}>
                   <Button
                     variant="contained"
@@ -104,6 +104,7 @@ export const Login = () => {
                     onClick={handleSubmit(onSubmit)}
                   >Entrar</Button>
                 </Box>
+                </Grid>
               </Box>
             </Paper>)}
       </main>

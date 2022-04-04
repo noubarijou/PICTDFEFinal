@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import { UseAxiosPost } from "../../hooks/useAxios";
+import { useAxiosPost } from "../../hooks/useAxios";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 /* import { TextField } from "../../components/TextField"; */
@@ -16,6 +16,7 @@ import {
 } from "@material-ui/core";
 
 export const CriarConta = () => {
+  const cadastro = useAxiosPost(`/clientes`);
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
 
   const navigate = useNavigate();
@@ -42,8 +43,7 @@ export const CriarConta = () => {
     resolver: yupResolver(validationSchema),
   });
   const onSubmit = (data) => {
-    /*
-     */
+    
     console.log(JSON.stringify(data, null, 2));
     if (data) {
       /* UseAxiosPost(`/cliente`, data) */
