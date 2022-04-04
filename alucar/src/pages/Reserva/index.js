@@ -19,54 +19,53 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";
+import { SelecionarHorarios } from "../../components/Listas/ListaHorarios";
 import {Calendario} from '../../components/Calendarios';
+import { format } from 'date-fns'
 
 
 export const Reserva = () => {
+  const loggedInUser = localStorage.getItem('credenciais');
   const { width } = useWindowDimensions();
+  const navigate = useNavigate();
   const cidades = useAxios(`/cidades`);
   const detalhes = useAxios(`/carro`);
   const regras = require("../../assets/regras.json");
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  /* const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null); */
   const [cidade, setCidade] = useState();
-  const navigate = useNavigate();
-  
-  /* const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  }; */
+  const [dados, setDados] = useState([]);
   const { detalhesId } = useParams();
   const [detalhe, setDetalhe] = useState();
   useEffect(() => {
     setDetalhe(detalhesId);
     window.scrollTo(0, 0);
   }, [detalhesId]);
-  /* localStorage.setItem("dadosCidade", JSON.stringify(cidade));
-  localStorage.setItem("dadosRange", JSON.stringify(dateRange)); */
-  const pesquisaCidade = localStorage.getItem("dadosCidade");
-  const pesquisaRange = localStorage.getItem("dadosRange");
-  const pesquisaStartDate = localStorage.getItem("dadosStartDate");
-  const pesquisaEndDate = localStorage.getItem("dadosEndDate"); 
+  console.log(loggedInUser);
+
+
+  const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
+  const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange"));
+  const pesquisaStartDate = format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy");
+  const pesquisaEndDate = format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy");
+
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
   
+
+
+ 
+
   return (
     <>
       <main>
         <Helmet>
           <title>Reserva</title>
         </Helmet>
-        <Paper>
           <Box p={3}>
             <Typography variant="h5" align="center" margin="dense">
               Confirme seus dados
             </Typography>
           </Box>
-        </Paper>
         <Grid container spacing={3} direction="column" alignItems="center">
           <Grid item xs>
             <TextField
@@ -122,8 +121,8 @@ export const Reserva = () => {
                 })}
               </datalist>
             </Grid>
-            <ControlledOpenSelect />
-            <Calendario />
+            <SelecionarHorarios />
+            <Calendario value={dateRange} setValue={setDateRange}/>
         <CardAdicionais
           id={1}
           title="Proteção Básica"
@@ -146,7 +145,7 @@ export const Reserva = () => {
           {detalhes[detalhesId] ? (
             <>
               {detalhes
-                .filter((itens, index) => itens.carroId === parseInt(detalhe))
+                .filter((itens, index) => itens.carroId === parseInt(detalhesId))
                 .map((e) => {
                   return (
                     <div key={e.carroId} id={e.carroId}>
@@ -168,9 +167,9 @@ export const Reserva = () => {
                       <div className="carro__info_final">
                         <p>{cidade}</p>
                         <div className="linha"></div>
-                        {pesquisaStartDate === null ? (<p>Check in {startDate}</p>):(<p>Check in {pesquisaStartDate}</p>)}
+                        {pesquisaStartDate === '' ? (<p>Check in {startDate}</p>):(<p>Check in {pesquisaStartDate}</p>)}
                         <div className="linha"></div>
-                        {pesquisaEndDate === null ? (<p>Check out {endDate}</p>):(<p>Check out {pesquisaEndDate}</p>)}
+                        {pesquisaEndDate === '' ? (<p>Check out {endDate}</p>):(<p>Check out {pesquisaEndDate}</p>)}
                         <div className="linha"></div>
                         <p>{`Total R$${valorTotal}`}</p>
                       </div>

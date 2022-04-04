@@ -1,12 +1,12 @@
 import "./style.scss";
-import { useAxios } from "../../hooks/useAxios";
+import { useAxios } from '../../../hooks/useAxios';
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Calendar } from "./components/Calendar";
 import { useNavigate } from "react-router-dom";
-import { ButtonSubmit } from "../../components/Buttons"
+import { ButtonSubmit } from "../../Buttons"
 
 export const ModalPesquisa = () => {
   const cidades = useAxios(`/cidades`);

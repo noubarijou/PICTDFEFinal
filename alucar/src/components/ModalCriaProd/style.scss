@@ -1,5 +1,6 @@
 div.container{
     background-color: greenyellow;
+<<<<<<< HEAD
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,5 +33,10 @@ div.container{
             }
         }
 
+=======
+    button.modalButton{
+        font-size: 50px;
+        padding: 150px;
+>>>>>>> 3566b2b69cd94b6411eb2a728d642098a544e461
     }
 }

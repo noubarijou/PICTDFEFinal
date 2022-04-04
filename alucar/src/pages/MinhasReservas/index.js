@@ -49,7 +49,7 @@ export const MinhasReservas = () => {
         ) : (
           <p>Você ainda não fez nenhuma reserva</p>
         )}
-        <Link to={`/`}>
+        <Link to={`/minhaconta`}>
           <Button variant="contained" style={{backgroundColor: '#FBC02D', color: 'black'}}>Voltar</Button>
         </Link>
       </main>

@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
-export const ControlledOpenSelect = () => {
+export const SelecionarHorarios = () => {
   const [horario, setHorario] = React.useState('');
   const [open, setOpen] = React.useState(false);
 

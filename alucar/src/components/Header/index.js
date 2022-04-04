@@ -1,7 +1,7 @@
 import './style.scss';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { useState, useEffect } from 'react';
-import { ModalNav } from '../ModalNav';
+import { ModalNav } from '../Modal/ModalNav';
 
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

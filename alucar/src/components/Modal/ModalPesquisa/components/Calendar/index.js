@@ -1,6 +1,6 @@
 import React from 'react'
 import "./style.scss";
-import { useWindowDimensions } from '../../../../hooks/useWindowDimensions';
+import { useWindowDimensions } from '../../../../../hooks/useWindowDimensions';
 
 /* Font awesome */
 /* icones - font awesome */

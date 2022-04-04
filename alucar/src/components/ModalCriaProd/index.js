@@ -23,6 +23,7 @@ Modal.setAppElement('#root')
             <Modal
             isOpen = {modalVisible}
             onRequestClose = {hundleModal}>
+<<<<<<< HEAD
                     <div className="modalDiv">
                         <div className="imageModal">
                             <img src={vector} alt="check" />
@@ -35,6 +36,17 @@ Modal.setAppElement('#root')
                             <button onClick={hundleModal}>Ok</button>
                             <button onClick={hundleModal}>Voltar</button>
                         </div>
+=======
+                    <div>
+                        <div>
+                            <img src={vector} alt="check" width={'150px'} />
+                        </div>
+                        <div>
+                            <h5> Produto adicionado Sucesso!</h5>
+                            <button></button>
+                        </div>
+                        <div><button onClick={hundleModal}>Ok</button></div>
+>>>>>>> 3566b2b69cd94b6411eb2a728d642098a544e461
                     </div>        
             </Modal>
         </div>

@@ -20,7 +20,7 @@ import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/Rating";
 import { ButtonToClick } from "../../components/Buttons";
 /* import { ControlledOpenSelect } from "../../components/Listas/ListaCidades"; */
-import { ControlledOpenSelect } from "../../components/Listas/ListaHorarios";
+import { SelecionarHorarios } from "../../components/Listas/ListaHorarios";
 import CircularProgress from '@mui/material/CircularProgress';
 import { Calendario } from "../../components/Calendarios";
 
@@ -125,7 +125,7 @@ export const Teste = () => {
               })}
             </datalist>
           </Grid>
-          <ControlledOpenSelect />
+          <SelecionarHorarios />
           <Calendario value="" setValue={""} />
           <CardAdicionais
           id={1}
