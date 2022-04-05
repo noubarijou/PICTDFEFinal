@@ -38,12 +38,13 @@ const RouteList = () => {
                     <Route path="/disponibilidade/:detalhesId" element={<DisponibilidadeCategoria />} />
                     <Route path="/disponibilidade" element={<DisponibilidadePesquisa />} />
                     <Route path="/minhaconta" element={<MinhaConta />} />
-                    <Route path="/teste" element={<Teste />} />
+                    <Route path="/admin" element={<Teste />} />
                     <Route path="/reserva/:detalhesId" element={<Reserva />} />
                     <Route path="sandbox" element={<SandBox />} />
                     <Route path="/lojin" element={<Lojin />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/testeModal" element={<TesteModal />} />
+                    <Route path="/teste" element={<Teste />} />
                     {/* <Route path="/categorias" element={<Categorias />} /> */}
                 </Routes>
                 <Footer />

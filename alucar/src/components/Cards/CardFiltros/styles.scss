@@ -49,3 +49,19 @@
         width: 26.5rem;
     }
 }
+
+@media (min-width: $screen-sm-max) {
+
+    .card__filtros {
+        width: 40rem;
+        .card__form {
+            
+        }
+        .filtro__title{
+            width: 40rem;
+        }
+        .filtro__info{
+            width: 40rem;
+        }
+    }
+}

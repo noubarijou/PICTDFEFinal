@@ -1,16 +1,19 @@
 import { useState } from "react";
 import '../../../pages/assets/disponibilidade.scss';
 
-export const CardFiltros = ({}) => {
-  const [checked, setChecked] = useState(false);
+export const CardFiltros = () => {
+  const [option, setOption] = useState(false);
 
-  const handleChange = () => {
-    /* setChecked(!checked); */
-    /* localStorage.setItem('filtros', JSON.stringify()); */
+  const handleChange = (event) => {
+    setOption(event.target.value);
   };
+
+  const resetaFiltros = () => {
+    setOption('');
+  }
   return (
     <div className="card__filtros">
-      <form>
+      <form className="card__form">
         <h3 className="filtro__title">Quantidade de Portas</h3>
         <div className="filtro__info">
           <div className="filtro__checkbox">
@@ -19,6 +22,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="2portas"
               value="2"
+              checked={option === "2"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -36,6 +40,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="4portas"
               value="4"
+              checked={option === "4"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -56,6 +61,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="ate5assentos"
               value="5"
+              checked={option === 5}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -73,6 +79,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="maisque5"
               value="5+"
+              checked={option === "5+"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -93,6 +100,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="temAr"
               value="sim"
+              checked={option === "sim"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -110,6 +118,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="naoTemAr"
               value="nao"
+              checked={option === "nao"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -130,6 +139,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="gasolina"
               value="gasolina"
+              checked={option === "gasolina"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -147,6 +157,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="flex"
               value="flex"
+              checked={option === "flex"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -167,6 +178,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="automatico"
               value="automatico"
+              checked={option === "automatico"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -184,6 +196,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="manual"
               value="manual"
+              checked={option === "manual"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -204,6 +217,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="1.4"
               value="1.4"
+              checked={option === "1.4"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -221,6 +235,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="1.6"
               value="1.6"
+              checked={option === "1.6"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -238,6 +253,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="1.8"
               value="1.8"
+              checked={option === "1.8"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -255,6 +271,7 @@ export const CardFiltros = ({}) => {
               type="radio"
               id="2.0"
               value="2.0"
+              checked={option === "2.0"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -267,6 +284,10 @@ export const CardFiltros = ({}) => {
             </label>
           </div>
         </div>
+        <button
+          type="reset"
+          onClick={resetaFiltros}
+        />
       </form>
     </div>
   );
