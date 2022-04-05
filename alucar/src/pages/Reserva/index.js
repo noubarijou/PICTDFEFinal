@@ -25,6 +25,16 @@ import { format } from 'date-fns'
 
 
 export const Reserva = () => {
+  const user = {
+    user: {
+      id: 1,
+      username: "usuario@dh.com.br",
+      password: "umaboasenha",
+      nome: "Digital",
+      sobrenome: "House",
+      displayname: "DH",
+    },
+  };
   const loggedInUser = localStorage.getItem('credenciais');
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
@@ -71,7 +81,7 @@ export const Reserva = () => {
             <TextField
               disabled
               id="nome"
-              label="Nome"
+              label={user.user.nome}
               type="text"
               placeholder="Digite seu nome"
             />
@@ -89,7 +99,7 @@ export const Reserva = () => {
             <TextField
               disabled
               id="email"
-              label="Email"
+              label={user.user.username}
               type="email"
               placeholder="Digite seu email"
             />
@@ -150,7 +160,7 @@ export const Reserva = () => {
                   return (
                     <div key={e.carroId} id={e.carroId}>
                       <div className="carro__categoria">
-                        <h1>{e.categorias.categoriasNome}</h1>
+                        <h1 style={{color: 'white'}}>{e.categorias.categoriasNome}</h1>
                       </div>
                       <div className="carro__nome">
                         <p className="btn-large">{e.modelo} ou similar </p>
@@ -171,7 +181,7 @@ export const Reserva = () => {
                         <div className="linha"></div>
                         {pesquisaEndDate === '' ? (<p>Check out {endDate}</p>):(<p>Check out {pesquisaEndDate}</p>)}
                         <div className="linha"></div>
-                        <p>{`Total R$${valorTotal}`}</p>
+                        <p>{`Total R$`}</p>
                       </div>
                     </div>
                   );

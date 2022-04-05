@@ -6,6 +6,9 @@
         background-color: $emphasis;
         display: flex;
         align-items: center;
+        h1 {
+            color: white;
+        }
     }
     .carro__nome{
         padding: 0 1.25rem;

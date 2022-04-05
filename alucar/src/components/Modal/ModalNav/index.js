@@ -31,6 +31,10 @@ export const ModalNav = ({ children }) => {
             })}
           </p>
           <div className="linha"></div>
+          <a href="/minhaconta" className="body-large">
+            Minha Conta
+          </a>
+          <div className="linha"></div>
           <a href="/sobre" className="body-large">
             Sobre
           </a>
