@@ -11,6 +11,8 @@ import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { CardFiltros } from '../../components/Cards/CardFiltros';
+import { CardOrdenar } from '../../components/Cards/CardOrdenar';
 
 export const DisponibilidadePesquisa = () => {
 
@@ -85,7 +87,8 @@ export const DisponibilidadePesquisa = () => {
                                 {`${dados.dadosCidade} (${dados.dadosStartDate} -> ${dados.dadosEndDate})`}
                             </p>
                             <div className="disponibilidade__filtros">
-                                Colocar o filtro aqui
+                                <CardFiltros />
+                                <CardOrdenar />
                             </div>
                             <div className="disponibilidade__todosCarros">
                                 <article className="disponibilidade__carro">

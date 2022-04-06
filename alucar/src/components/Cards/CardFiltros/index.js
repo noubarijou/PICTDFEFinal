@@ -70,7 +70,7 @@ export const CardFiltros = () => {
               onChange={handleChange}
               className="filtro__label"
             >
-              Até 5 assentos
+              Até 5
             </label>
           </div>
           <div className="filtro__checkbox">
@@ -88,7 +88,7 @@ export const CardFiltros = () => {
               onChange={handleChange}
               className="filtro__label"
             >
-              + de 5 lugares
+              mais que 5
             </label>
           </div>
         </div>
