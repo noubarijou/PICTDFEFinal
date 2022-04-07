@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'http://184.72.115.9:8080/clientes/validarSenha';
+const API_URL = 'http://184.72.115.9:8080/validarSenha';
 
 const register = (email, senha) => {
     return axios.post(API_URL + 'criarconta', {
