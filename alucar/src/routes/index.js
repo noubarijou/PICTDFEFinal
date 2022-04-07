@@ -19,7 +19,7 @@ import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
 import {Lojin} from '../pages/Teste/Lojin';
 import {Register} from '../pages/Teste/Register';
-import TesteModal from "../pages/Teste/TesteModal";
+
 /* import * as serviceWorker from './serviceWorker'; */
 
 const RouteList = () => {
@@ -46,7 +46,6 @@ const RouteList = () => {
                     <Route path="sandbox" element={<SandBox />} />
                     <Route path="/lojin" element={<Lojin />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/testeModal" element={<TesteModal />} />
                     <Route path="/teste" element={<Teste />} />
                 </Routes>
                 <Footer />
