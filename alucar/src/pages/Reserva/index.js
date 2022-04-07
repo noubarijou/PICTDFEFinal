@@ -151,7 +151,7 @@ export const Reserva = () => {
         descricao="Não, estou disposto a correr os riscos sem a proteção do veículo."
         valor={0.0}
         />
-        <article className="detalhe__carro">
+        <article className="reserva__carro">
           {detalhes[detalhesId] ? (
             <>
               {detalhes
@@ -159,11 +159,11 @@ export const Reserva = () => {
                 .map((e) => {
                   return (
                     <div key={e.carroId} id={e.carroId}>
-                      <div className="carro__categoria">
-                        <h1 style={{color: 'white'}}>{e.categorias.categoriasNome}</h1>
-                      </div>
                       <div className="carro__nome">
-                        <p className="btn-large">{e.modelo} ou similar </p>
+                        <h1 style={{color: 'white'}}>{e.modelo}</h1>
+                      </div>
+                      <div className="carro__categoria">
+                        <p className="btn-large">{e.categorias.categoriasNome} ou similar </p>
                         <Rating rating={e.rating} />
                       </div>
                       <div className="carro__info">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../../../pages/assets/disponibilidade.scss';
+import './style.scss';
 
 export const CardFiltros = () => {
   const [option, setOption] = useState(false);
@@ -61,7 +61,7 @@ export const CardFiltros = () => {
               type="radio"
               id="ate5assentos"
               value="5"
-              checked={option === 5}
+              checked={option === "5"}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -70,7 +70,7 @@ export const CardFiltros = () => {
               onChange={handleChange}
               className="filtro__label"
             >
-              Até 5
+              Até 5 lugares
             </label>
           </div>
           <div className="filtro__checkbox">
@@ -88,7 +88,7 @@ export const CardFiltros = () => {
               onChange={handleChange}
               className="filtro__label"
             >
-              mais que 5
+              Mais que 5 lugares
             </label>
           </div>
         </div>
@@ -284,10 +284,14 @@ export const CardFiltros = () => {
             </label>
           </div>
         </div>
-        <button
+        <button className="btn btn-large primary-btn btn-limpar"
+          type="reset"
+          onClick={handleChange}
+        >Aplicar</button>
+        <button className="btn btn-large secondary-btn btn-limpar"
           type="reset"
           onClick={resetaFiltros}
-        />
+        >Limpar</button>
       </form>
     </div>
   );

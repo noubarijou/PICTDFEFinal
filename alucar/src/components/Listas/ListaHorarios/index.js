@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -6,8 +6,8 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
 export const SelecionarHorarios = () => {
-  const [horario, setHorario] = React.useState('');
-  const [open, setOpen] = React.useState(false);
+  const [horario, setHorario] = useState('');
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event) => {
     setHorario(event.target.value);
@@ -26,7 +26,7 @@ export const SelecionarHorarios = () => {
       <Button sx={{ display: 'block', mt: 2 }} style={{color: 'black'}} onClick={handleOpen}>
             Selecione o horário de retirada
       </Button>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ m: 1, minWidth: 300 }}>
         <InputLabel id="demo-controlled-open-select-label">Horário</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"

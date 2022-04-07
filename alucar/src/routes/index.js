@@ -19,6 +19,7 @@ import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
 import {Lojin} from '../pages/Teste/Lojin';
 import {Register} from '../pages/Teste/Register';
+import { Admin } from "../pages/Admin";
 
 /* import * as serviceWorker from './serviceWorker'; */
 
@@ -39,8 +40,9 @@ const RouteList = () => {
                     <Route path="/disponibilidade/:detalhesId" element={<DisponibilidadeCategoria />} />
                     <Route path="/disponibilidade" element={<DisponibilidadePesquisa />} />
                     <Route path="/minhaconta" element={<MinhaConta />} />
-                    <Route path="/admin" element={<Teste />} />
+                    <Route path="/teste" element={<Teste />} />
                     <Route path="/reserva/:detalhesId" element={<Reserva />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="*" element={<NotFound />} />
                     {/* Não esquecer de tirar depois */}
                     <Route path="sandbox" element={<SandBox />} />

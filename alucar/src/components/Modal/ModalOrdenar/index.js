@@ -1,9 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { CardFiltros } from "../../Cards/CardFiltros";
+import { CardOrdenar } from "../../Cards/CardOrdenar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFilter} from "@fortawesome/free-solid-svg-icons";
+import {faArrowDownWideShort} from "@fortawesome/free-solid-svg-icons";
 
 const style = {
   position: "absolute",
@@ -12,7 +12,7 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-export const ModalFiltros = () => {
+export const ModalOrdenar = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = (e) => {
     e.preventDefault();
@@ -27,8 +27,8 @@ export const ModalFiltros = () => {
         >
           {
             <>
-              <FontAwesomeIcon icon={faFilter} />
-              {"  "}Filtrar
+              <FontAwesomeIcon icon={faArrowDownWideShort} />
+              {"  "}Ordenar
             </>
           }
         </button>
@@ -39,7 +39,7 @@ export const ModalFiltros = () => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <CardFiltros />
+            <CardOrdenar />
           </Box>
         </Modal>
     </>

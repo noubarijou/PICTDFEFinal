@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import '../assets/disponibilidade.scss';
 import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
+import {CardFiltros} from '../../components/Cards/CardFiltros/';
+import { CardOrdenar } from '../../components/Cards/CardOrdenar';
 import { ButtonHandleClose } from '../../components/Buttons';
+import {ModalFiltros} from '../../components/Modal/ModalFiltros';
+import {ModalOrdenar} from '../../components/Modal/ModalOrdenar';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
-import {CardFiltros} from '../../components/Cards/CardFiltros/';
-import { CardOrdenar } from '../../components/Cards/CardOrdenar';
-/* import {ModalFiltros} from '../../components/Modals/ModalFiltros'; */
 
 export const DisponibilidadeCategoria = () => {
   const detalhes = useAxios(`/carro`);
@@ -44,20 +45,8 @@ export const DisponibilidadeCategoria = () => {
                 )
               })}
               <div className="disponibilidade__filtros">
-                <ButtonHandleClose classes="secondary-btn filtro__btn filtro--ordenar">
-                  {<>
-                    <FontAwesomeIcon icon={faArrowDownWideShort} />
-                    {"  "}Ordenar
-                  </>}
-                </ButtonHandleClose>
-                <ButtonHandleClose classes="secondary-btn filtro__btn filtro--filtrar">
-                  {
-                    <>
-                      <FontAwesomeIcon icon={faFilter} />
-                      {"  "}Filtrar
-                    </>
-                  }
-                </ButtonHandleClose>
+                <ModalOrdenar />
+                <ModalFiltros />
               </div>
               <article className="disponibilidade__carro">
                 {detalhes.filter((item) => item.categorias.categoriasId === parseInt(detalhesId)).map((e) => {

@@ -1,3 +1,4 @@
+import '../CardFiltros/style.scss';
 import { useState } from "react";
 
 export const CardOrdenar = () => {
@@ -12,7 +13,7 @@ export const CardOrdenar = () => {
   }
   return (
     <div className="card__filtros">
-      <form>
+      <form className="card__form">
       <h3 className="filtro__title">Ordenar por</h3>
       <div className="filtro__info">
         <div className="filtro__checkbox">
@@ -88,10 +89,14 @@ export const CardOrdenar = () => {
           </label>
           </div> 
       </div>
-      <button
+        <button className="btn btn-large primary-btn btn-limpar"
+          type="reset"
+          onClick={handleChange}
+        >Aplicar</button>
+        <button className="btn btn-large secondary-btn btn-limpar"
           type="reset"
           onClick={resetaFiltros}
-        />
+        >Limpar</button>
         </form>
     </div>
   );
