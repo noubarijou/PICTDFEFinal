@@ -1,9 +1,17 @@
 @import "../../root.scss";
-.page__about{
-    display: flex;
-    align-items: center;
     
-    .section__about{
+.about__section{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 2.5rem 0;
+
+    .about__article{
+        width: 70%;
+        margin: 0 auto;
+        
         h1{
             text-align: center;
         }
@@ -13,22 +21,6 @@
             text-align: justify;
             text-indent: 10px;
         }
-        
     }
-}
-
-@media (max-width: $screen-md-max){
-    .section__about{
-        padding: 2.75rem 2rem;
-    }
-}
-@media (min-width: $screen-md-max){
-    .section__about{
-        padding: 2.75rem 7rem;
-    }
-}
-@media (min-width: $screen-xl-max){
-    .section__about{
-        padding: 2.75rem 15.5rem;
-    }
+    
 }
