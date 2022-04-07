@@ -1,9 +1,6 @@
-import * as React from "react";
+import {useState} from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { CardFiltros } from "../../Cards/CardFiltros";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faFilter} from "@fortawesome/free-solid-svg-icons";
 
 const style = {
   position: "absolute",
@@ -12,8 +9,8 @@ const style = {
   transform: "translate(-50%, -50%)",
 };
 
-export const ModalFiltros = () => {
-  const [open, setOpen] = React.useState(false);
+export const ModalFiltros = ({children, conteudoBotao}) => {
+  const [open, setOpen] = useState(false);
   const handleOpen = (e) => {
     e.preventDefault();
     setOpen(true);}
@@ -25,12 +22,7 @@ export const ModalFiltros = () => {
           className="btn-large secondary-btn filtro__btn filtro--filtrar"
           onClick={handleOpen}
         >
-          {
-            <>
-              <FontAwesomeIcon icon={faFilter} />
-              {"  "}Filtrar
-            </>
-          }
+          {conteudoBotao}
         </button>
         <Modal
           open={open}
@@ -39,7 +31,7 @@ export const ModalFiltros = () => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <CardFiltros />
+            {children}
           </Box>
         </Modal>
     </>

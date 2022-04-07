@@ -6,11 +6,13 @@
     background-color: $white;
     border-radius: .75rem;
     .card__form {
+        
         .btn-limpar {
             position: relative;
             left: 50%;
             transform: translateX(-50%);
             margin: 1rem 0 0;
+            display: block;
             &:last-child {
                 margin-bottom: 1rem;
             }
@@ -31,71 +33,21 @@
     }
 }
 
-
-
-
-@media (min-width: $screen-md-max) {
-    .card__filtros {
-        width: 43.5rem;
-    }
-}
-
 @media (min-width: $screen-lg-max) {
     .card__filtros {
-        width: 26.5rem;
-    }
-    .card__filtros {
-        margin: 1.25rem;
-        border-radius: 0.75rem;
-        border: solid 1px $neutral2;
-        width: 13.5rem;
-        .filtro__title, .filtro__info {
-            padding: 0.5rem 1.25rem;
-        }
-        .filtro__title {
-            border-radius: 0.75rem 0.75rem 0 0;
-            background-color: $neutral2;
-            margin: 0;
-        }
-    }   .filtro__info {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 1rem;
-        .filtro__checkbox {
-            width: 8rem;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            .filtro__input {
-    
-            }
-            .filtro__label {
-                /* background-color: $emphasis; */
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin: 0;
-                padding: 0.5rem;
-                border-radius: 0.5rem;
-                
+        width: 30vw;
+        border: 1px solid $neutral2;
+        margin-bottom: 1.5rem;
+        .card__form {
+            
+            .filtro__title:first-child {
+                margin-top: 0;
             }
         }
     }
 }
-
-/* @media (min-width: $screen-sm-max) {
-
-    .card__filtros {
-        width: 40rem;
-        .card__form {
-            
-        }
-        .filtro__title{
-            width: 40rem;
-        }
-        .filtro__info{
-            width: 40rem;
-        }
+@media (min-width: $screen-xl-max) {
+    .card__filtros{
+        width: 20vw;
     }
-} */
+}

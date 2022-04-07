@@ -1,18 +1,19 @@
-import { Helmet } from 'react-helmet-async'
-import { useAxios } from '../../hooks/useAxios'
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
-import '../assets/disponibilidade.scss';
-import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
-import {CardFiltros} from '../../components/Cards/CardFiltros/';
-import { CardOrdenar } from '../../components/Cards/CardOrdenar';
-import { ButtonHandleClose } from '../../components/Buttons';
-import {ModalFiltros} from '../../components/Modal/ModalFiltros';
-import {ModalOrdenar} from '../../components/Modal/ModalOrdenar';
-import { useWindowDimensions } from '../../hooks/useWindowDimensions';
+import { Helmet } from "react-helmet-async";
+import { useAxios } from "../../hooks/useAxios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "../assets/disponibilidade.scss";
+import { CardDisponibilidade } from "../../components/Cards/CardDisponibilidade";
+import { CardFiltros } from "../../components/Cards/CardFiltros/";
+import { CardOrdenar } from "../../components/Cards/CardOrdenar";
+import { ModalFiltros } from "../../components/Modal/ModalFiltros";
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 /* Font awesome */
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowDownWideShort,
+  faFilter,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const DisponibilidadeCategoria = () => {
   const detalhes = useAxios(`/carro`);
@@ -21,11 +22,10 @@ export const DisponibilidadeCategoria = () => {
   const [detalhe, setDetalhe] = useState();
   const { width } = useWindowDimensions();
 
-
   useEffect(() => {
     setDetalhe(detalhesId);
 
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [detalhesId]);
 
   return (
@@ -33,25 +33,56 @@ export const DisponibilidadeCategoria = () => {
       <Helmet>
         <title>AluCar | Disponibilidade</title>
       </Helmet>
-      <main className='disponibilidade'>
-        {
-          width < 992 ?
-            <>
-              {categorias.filter((item) => item.categoriasId === parseInt(detalhesId)).map((e) => {
+      <main className="disponibilidade">
+        {width < 992 ? (
+          <>
+            {categorias
+              .filter((item) => item.categoriasId === parseInt(detalhesId))
+              .map((e) => {
                 return (
-                  <p className="filtro__cidade__periodo btn-large" key={e.categoriasId}>
+                  <p
+                    className="filtro__cidade__periodo btn-large"
+                    key={e.categoriasId}
+                  >
                     {e.categoriasNome}
                   </p>
-                )
+                );
               })}
-              <div className="disponibilidade__filtros">
-                <ModalOrdenar />
-                <ModalFiltros />
-              </div>
-              <article className="disponibilidade__carro">
-                {detalhes.filter((item) => item.categorias.categoriasId === parseInt(detalhesId)).map((e) => {
+            <div className="disponibilidade__filtros">
+              <ModalFiltros
+                conteudoBotao={
+                  <>
+                    <FontAwesomeIcon icon={faArrowDownWideShort} />
+                    {"  "}Ordenar
+                  </>
+                }
+              >
+                <CardOrdenar />
+              </ModalFiltros>
+              <ModalFiltros
+                conteudoBotao={
+                  <>
+                    <FontAwesomeIcon icon={faFilter} />
+                    {"  "}Filtrar
+                  </>
+                }
+              >
+                <CardFiltros />
+              </ModalFiltros>
+            </div>
+            <article className="disponibilidade__carro">
+              {detalhes
+                .filter(
+                  (item) =>
+                    item.categorias.categoriasId === parseInt(detalhesId)
+                )
+                .map((e) => {
                   return (
-                    <div key={e.carroId} id={e.carroId} className="disponibilidade__card">
+                    <div
+                      key={e.carroId}
+                      id={e.carroId}
+                      className="disponibilidade__card"
+                    >
                       <CardDisponibilidade
                         modelo={e.modelo}
                         categoriasNome={e.categorias.categoriasNome}
@@ -68,26 +99,40 @@ export const DisponibilidadeCategoria = () => {
                     </div>
                   );
                 })}
-              </article>
-            </>
-            :
-            <>
-              <div className="disponibilidade__filtros">
-              <CardFiltros />
+            </article>
+          </>
+        ) : (
+          <>
+            <div className="disponibilidade__filtros">
               <CardOrdenar />
-              </div>
-              <div className="disponibilidade__todosCarros">
-                {categorias.filter((item) => item.categoriasId === parseInt(detalhesId)).map((e) => {
+              <CardFiltros />
+            </div>
+            <div className="disponibilidade__todosCarros">
+              {categorias
+                .filter((item) => item.categoriasId === parseInt(detalhesId))
+                .map((e) => {
                   return (
-                    <p className="filtro__cidade__periodo btn-large" key={e.categoriasId}>
+                    <p
+                      className="filtro__cidade__periodo btn-large"
+                      key={e.categoriasId}
+                    >
                       {e.categoriasNome}
                     </p>
-                  )
+                  );
                 })}
-                <article className="disponibilidade__carro">
-                  {detalhes.filter((item) => item.categorias.categoriasId === parseInt(detalhesId)).map((e) => {
+              <article className="disponibilidade__carro">
+                {detalhes
+                  .filter(
+                    (item) =>
+                      item.categorias.categoriasId === parseInt(detalhesId)
+                  )
+                  .map((e) => {
                     return (
-                      <div key={e.carroId} id={e.carroId} className="disponibilidade__card">
+                      <div
+                        key={e.carroId}
+                        id={e.carroId}
+                        className="disponibilidade__card"
+                      >
                         <CardDisponibilidade
                           modelo={e.modelo}
                           categoriasNome={e.categorias.categoriasNome}
@@ -101,15 +146,14 @@ export const DisponibilidadeCategoria = () => {
                           qtdePorta={e.caracteristicas.qtdePorta}
                           valor={e.valor}
                         />
-
                       </div>
                     );
                   })}
-                </article>
-              </div>
-            </>
-        }
+              </article>
+            </div>
+          </>
+        )}
       </main>
     </>
-  )
-}
+  );
+};

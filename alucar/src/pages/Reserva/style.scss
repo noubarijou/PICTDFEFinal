@@ -1,54 +1,54 @@
 @import "../../index.scss";
 @import "../../root.scss";
-.reserva__carro{
-    .carro__categoria{
-        padding: 0 1.25rem;
-        height: 4.25rem;
-        background-color: $emphasis;
-        display: flex;
-        align-items: center;
-        h1 {
-            color: white;
-        }
+.reserva__carro {
+    margin-bottom: 2.5rem;
+  .reserva__nome {
+    padding: 0 1.25rem;
+    height: 1.75rem;
+    background-color: $emphasis;
+    color: $primary2;
+    border-radius: .5rem .5rem 0 0;
+  }
+  .reserva__categoria {
+    padding: 0 1.25rem;
+    height: 4.25rem;
+    background-color: $primary2;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .reserva__info {
+    border: 1px solid $emphasis;
+    border-top: none;
+    .reserva__img {
+      width: 18.75rem;
+      margin: 0 auto;
+      height: 8rem;
+      padding: 1rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
-    .carro__nome{
-        padding: 0 1.25rem;
-        height: 1.75rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: $emphasis;
-        color: $primary2;
+  }
+  .detalhes__datePicker {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 0;
+  }
+  .detalhe__mapa {
+    padding: 0 1.25rem;
+    width: 90%;
+  }
+  .detalhes__requisitos {
+    padding: 0 1.25rem;
+    .requisitos {
+      border-bottom: 1px solid $grey1;
+      &:last-child {
+        border-bottom: none;
+      }
     }
-    .carro__info{
-        .carro__img{
-            width: 18.75rem;
-            margin: 2rem auto;
-            height: 8rem;
-            img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-    }
-    .detalhes__datePicker{
-        display: flex;
-        justify-content: center;
-        margin: 2.5rem 0;
-
-    }
-    .detalhe__mapa{
-        padding: 0 1.25rem;
-        width: 90%;
-    }
-.detalhes__requisitos{
-        padding: 0 1.25rem;
-        .requisitos{
-            border-bottom: 1px solid $grey1;
-            &:last-child{
-                border-bottom: none;
-            }
-        }
-    }
+  }
 }
