@@ -1,6 +1,11 @@
 import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { FormAddProd } from "../../components/Forms/FormAddProd";
+import { FormDelProd } from "../../components/Forms/FormDelProd";
+import { FormMngUsers } from "../../components/Forms/FormMngUsers";
+import { FormModProd } from "../../components/Forms/FormModProd";
+import { ModalAdmin } from "../../components/Modal/ModalAdmin";
 
 export const Admin = () => {
   return (
@@ -10,45 +15,21 @@ export const Admin = () => {
       </Helmet>
       <main>
         <Typography variant="h5" align="center" margin="dense">
-          Administração dos Recursos
+          Administração de Recursos
         </Typography>
 
-        <Grid container spacing={3} direction="row" alignItems="center">
+        <Grid container spacing={3} direction="column" alignItems="center">
             <Grid item xs>
-          <Box p={4} elevation={4}>
-              <Paper>
-                <Typography variant="h6" align="center" margin="dense">
-                  Remover Produto
-                </Typography>
-              </Paper>
-          </Box>
+            <ModalAdmin conteudoForm={"Adicionar Produto"}><FormAddProd/></ModalAdmin>
             </Grid>
             <Grid item xs>
-          <Box p={4} elevation={4}>
-              <Paper>
-                <Typography variant="h6" align="center" margin="dense">
-                  Modificar Produto
-                </Typography>
-              </Paper>
-          </Box>
+            <ModalAdmin conteudoForm={"Modificar Produto"}><FormModProd /></ModalAdmin>
             </Grid>
             <Grid item xs>
-          <Box p={4} elevation={4}>
-              <Paper>
-                <Typography variant="h6" align="center" margin="dense">
-                  Remover Produto
-                </Typography>
-              </Paper>
-          </Box>
+            <ModalAdmin conteudoForm={"Remover Produto"}><FormDelProd /></ModalAdmin>
             </Grid>
             <Grid item xs>
-          <Box p={4} elevation={4}>
-              <Paper>
-                <Typography variant="h6" align="center" margin="dense">
-                  Gerenciar Usuários
-                </Typography>
-              </Paper>
-          </Box>
+            <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers/></ModalAdmin>
             </Grid>
         </Grid>
       </main>

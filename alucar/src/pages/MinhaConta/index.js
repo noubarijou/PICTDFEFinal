@@ -8,7 +8,6 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-import { Fragment } from "react";
 
 export const MinhaConta = () => {
   const user = {
@@ -101,7 +100,6 @@ export const MinhaConta = () => {
               <Button
                 variant="contained"
                 className="butaum"
-                style={{ backgroundColor: "#FBC02D", color: "black" }}
               >
                 Minhas Reservas
               </Button>

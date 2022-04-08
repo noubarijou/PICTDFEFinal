@@ -50,7 +50,7 @@ export const MinhasReservas = () => {
           <p>Você ainda não fez nenhuma reserva</p>
         )}
         <Link to={`/minhaconta`}>
-          <Button variant="contained" style={{backgroundColor: '#FBC02D', color: 'black'}}>Voltar</Button>
+          <Button variant="contained">Voltar</Button>
         </Link>
       </main>
     </>
