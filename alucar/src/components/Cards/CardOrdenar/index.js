@@ -18,7 +18,7 @@ export const CardOrdenar = () => {
   
   const resetaFiltros = () => {
     setOption('');
-    ordenar(option)
+    ordenar('')
   }
   
   return (
