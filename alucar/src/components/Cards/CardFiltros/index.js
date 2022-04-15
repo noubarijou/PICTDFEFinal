@@ -1,34 +1,67 @@
-import { useState } from "react";
 import './style.scss';
+import { useContext, useEffect, useLayoutEffect } from 'react'
+import { FiltroContext } from "../../../context/FiltroContext";
 
 export const CardFiltros = () => {
-  const [option, setOption] = useState({portas : '', assentos : '', ar : '', combustivel  : '', Cambio : '', tipoMotor : ''})
+
+  const { filtro, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro } = useContext(FiltroContext)
 
   const handleChange = (event) => {
-    switch(event.target.value) {
-      case '2':
-        /* option.portas = '2'; */
-        break;
-      case '4':
-        /* option.portas = '4'; */
-        break;
-      case '5':
-        /* option.assentos = '5'; */
-        break;
-      case '5+':
-        /* option.assentos = '5+'; */
-        break;
-      default:
-        console.log('Não existe esse filtro nessa estrada')
+
+    // Ainda ver o que fazer com isso
+    if (event.button !== undefined) {
+      event.preventDefault();
+    } else {
+      switch (event.target.value) {
+        case '2':
+        case '4':
+          portasFiltro(event.target.value)
+          break;
+
+        case '5':
+        case '5+':
+          assentosFiltro(event.target.value)
+          break;
+
+        case '1':
+        case '0':
+          arFiltro(event.target.value)
+          break;
+
+        case 'gasolina':
+        case 'flex':
+          combustivelFiltro(event.target.value)
+          break;
+
+        case 'automatico':
+        case 'manual':
+          cambioFiltro(event.target.value)
+          break;
+
+        case '1.4':
+        case '1.6':
+        case '1.8':
+        case '2.0':
+          motorFiltro(event.target.value)
+          break;
+
+        default:
+          console.log('Nada nessa estrada')
+      }
     }
-    
   };
-  
 
   const resetaFiltros = () => {
-    setOption('');
+    portasFiltro('');
+    assentosFiltro('');
+    arFiltro('');
+    combustivelFiltro('');
+    cambioFiltro('');
+    motorFiltro('');
   }
+  
   return (
+
     <div className="card__filtros">
       <form className="card__form">
         <h3 className="filtro__title">Quantidade de Portas</h3>
@@ -36,10 +69,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="portas"
-              type="radio"
+              type="checkbox"
               id="2portas"
               value="2"
-              
+              checked={filtro[0].portas === '2'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -48,16 +81,16 @@ export const CardFiltros = () => {
               onChange={handleChange}
               className="filtro__label"
             >
-              2 portas{option}
+              2 portas
             </label>
           </div>
           <div className="filtro__checkbox">
             <input
               name="portas"
-              type="radio"
+              type="checkbox"
               id="4portas"
               value="4"
-              
+              checked={filtro[0].portas === '4'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -75,10 +108,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="assentos"
-              type="radio"
+              type="checkbox"
               id="ate5assentos"
               value="5"
-              
+              checked={filtro[0].assentos === '5'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -93,10 +126,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="assentos"
-              type="radio"
+              type="checkbox"
               id="maisque5"
               value="5+"
-              
+              checked={filtro[0].assentos === '5+'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -114,10 +147,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="ar"
-              type="radio"
+              type="checkbox"
               id="temAr"
-              value="sim"
-              
+              value="1"
+              checked={filtro[0].ar === '1'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -132,10 +165,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="ar"
-              type="radio"
+              type="checkbox"
               id="naoTemAr"
-              value="nao"
-              
+              value="0"
+              checked={filtro[0].ar === '0'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -153,10 +186,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="combustivel"
-              type="radio"
+              type="checkbox"
               id="gasolina"
               value="gasolina"
-              
+              checked={filtro[0].combustivel === 'gasolina'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -171,10 +204,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="combustivel"
-              type="radio"
+              type="checkbox"
               id="flex"
               value="flex"
-              
+              checked={filtro[0].combustivel === 'flex'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -192,10 +225,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="cambio"
-              type="radio"
+              type="checkbox"
               id="automatico"
               value="automatico"
-              
+              checked={filtro[0].cambio === 'automatico'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -210,10 +243,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="cambio"
-              type="radio"
+              type="checkbox"
               id="manual"
               value="manual"
-              
+              checked={filtro[0].cambio === 'manual'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -231,10 +264,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="motor"
-              type="radio"
+              type="checkbox"
               id="1.4"
               value="1.4"
-              
+              checked={filtro[0].motor === '1.4'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -249,10 +282,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="motor"
-              type="radio"
+              type="checkbox"
               id="1.6"
               value="1.6"
-              
+              checked={filtro[0].motor === '1.6'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -267,10 +300,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="motor"
-              type="radio"
+              type="checkbox"
               id="1.8"
               value="1.8"
-              
+              checked={filtro[0].motor === '1.8'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -285,10 +318,10 @@ export const CardFiltros = () => {
           <div className="filtro__checkbox">
             <input
               name="motor"
-              type="radio"
+              type="checkbox"
               id="2.0"
               value="2.0"
-              
+              checked={filtro[0].motor === '2.0'}
               onChange={handleChange}
               className="filtro__input"
             />
@@ -301,8 +334,8 @@ export const CardFiltros = () => {
             </label>
           </div>
         </div>
-        
-      <button className="btn btn-large primary-btn btn-limpar"
+
+        <button className="btn btn-large primary-btn btn-limpar"
           type="reset"
           onClick={handleChange}
         >Aplicar</button>
