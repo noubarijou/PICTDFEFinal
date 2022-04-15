@@ -29,7 +29,7 @@ export const CardOrdenar = () => {
           <div className="filtro__checkbox">
             <input
               name="sla"
-              type="radio"
+              type="checkbox"
               id="maiorpreco"
               value="maiorpreco"
               checked={option === "maiorpreco"}
@@ -47,7 +47,7 @@ export const CardOrdenar = () => {
           <div className="filtro__checkbox">
             <input
               name="sla"
-              type="radio"
+              type="checkbox"
               id="menorpreco"
               value="menorpreco"
               checked={option === "menorpreco"}
@@ -65,7 +65,7 @@ export const CardOrdenar = () => {
           <div className="filtro__checkbox">
             <input
               name="sla"
-              type="radio"
+              type="checkbox"
               id="maiornota"
               value="maiornota"
               checked={option === "maiornota"}
@@ -83,7 +83,7 @@ export const CardOrdenar = () => {
           <div className="filtro__checkbox">
             <input
               name="sla"
-              type="radio"
+              type="checkbox"
               id="menornota"
               value="menornota"
               checked={option === "menornota"}
