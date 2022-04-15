@@ -1,12 +1,12 @@
 import './style.scss'
 import React, { useEffect, useState } from 'react'
-import cambio from "../../../assets/img/cambio.png";
-import arCondicionado from "../../../assets/img/arCondicionado.svg";
-import motor from "../../../assets/img/motor.png";
-import passageiro from "../../../assets/img/passageiros.png";
-import porta from "../../../assets/img/porta.png";
 
 export const CardCaracteristica = ({ icon, carcteristica, carcteristicaDescricao }) => {
+    const cambio = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/cambio.svg";
+    const arCondicionado = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/arCondicionado.svg";
+    const motor = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/motor.svg";
+    const passageiro = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/passageiros.svg";
+    const porta = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/porta.svg";
     const [iconCaracteristica, setIconCaracteristica] = useState("");
 
     useEffect(() => {
