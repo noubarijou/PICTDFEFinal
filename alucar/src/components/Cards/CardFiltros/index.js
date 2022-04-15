@@ -7,47 +7,41 @@ export const CardFiltros = () => {
   const { filtro, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro } = useContext(FiltroContext)
 
   const handleChange = (event) => {
+    switch (event.target.value) {
+      case '2':
+      case '4':
+        portasFiltro(event.target.value)
+        break;
 
-    // Ainda ver o que fazer com isso
-    if (event.button !== undefined) {
-      event.preventDefault();
-    } else {
-      switch (event.target.value) {
-        case '2':
-        case '4':
-          portasFiltro(event.target.value)
-          break;
+      case '5':
+      case '5+':
+        assentosFiltro(event.target.value)
+        break;
 
-        case '5':
-        case '5+':
-          assentosFiltro(event.target.value)
-          break;
+      case '1':
+      case '0':
+        arFiltro(event.target.value)
+        break;
 
-        case '1':
-        case '0':
-          arFiltro(event.target.value)
-          break;
+      case 'gasolina':
+      case 'flex':
+        combustivelFiltro(event.target.value)
+        break;
 
-        case 'gasolina':
-        case 'flex':
-          combustivelFiltro(event.target.value)
-          break;
+      case 'automatico':
+      case 'manual':
+        cambioFiltro(event.target.value)
+        break;
 
-        case 'automatico':
-        case 'manual':
-          cambioFiltro(event.target.value)
-          break;
+      case '1.4':
+      case '1.6':
+      case '1.8':
+      case '2.0':
+        motorFiltro(event.target.value)
+        break;
 
-        case '1.4':
-        case '1.6':
-        case '1.8':
-        case '2.0':
-          motorFiltro(event.target.value)
-          break;
-
-        default:
-          console.log('Nada nessa estrada')
-      }
+      default:
+        console.log('Nada nessa estrada')
     }
   };
 
@@ -59,7 +53,7 @@ export const CardFiltros = () => {
     cambioFiltro('');
     motorFiltro('');
   }
-  
+
   return (
 
     <div className="card__filtros">
@@ -335,10 +329,6 @@ export const CardFiltros = () => {
           </div>
         </div>
 
-        <button className="btn btn-large primary-btn btn-limpar"
-          type="reset"
-          onClick={handleChange}
-        >Aplicar</button>
         <button className="btn btn-large secondary-btn btn-limpar"
           type="reset"
           onClick={resetaFiltros}

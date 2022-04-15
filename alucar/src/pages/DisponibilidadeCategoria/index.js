@@ -18,7 +18,7 @@ import {
 
 export const DisponibilidadeCategoria = () => {
 
-  const { filtro, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro } = useContext(FiltroContext)
+  const { filtro, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro, ordenar } = useContext(FiltroContext)
 
   const detalhes = useAxios(`/carro`);
   const categorias = useAxios(`/categorias`);
@@ -36,6 +36,7 @@ export const DisponibilidadeCategoria = () => {
       combustivelFiltro('')
       cambioFiltro('')
       motorFiltro('')
+      ordenar('')
     }
 
     window.scrollTo(0, 0);
@@ -84,15 +85,6 @@ export const DisponibilidadeCategoria = () => {
               </ModalFiltros>
             </div>
             <article className="disponibilidade__carro">
-              {/* {
-                console.log('Filtro', filtro[0]?.motor)
-              }
-              {
-                console.log('Carro', detalhes[0]?.caracteristicas.motor)
-              }
-              {
-                console.log('Diff', filtro[0]?.motor === `${detalhes[0]?.caracteristicas.motor}`)
-              } */}
               {
                 detalhes
                   .filter(
@@ -123,6 +115,23 @@ export const DisponibilidadeCategoria = () => {
                     (item) =>
                       filtro[0].motor === '' || item.caracteristicas.motor === filtro[0].motor
                   )
+                  .sort((a, b) => {
+                    let valor;
+                    if (filtro[0].ordenar === 'maiorpreco') {
+                      valor = b.valor - a.valor
+                    }
+                    else if (filtro[0].ordenar === 'menorpreco') {
+                      valor = a.valor - b.valor
+                    }
+                    else if (filtro[0].ordenar === 'maiornota') {
+                      valor = b.rating - a.rating
+                    }
+                    else if (filtro[0].ordenar === 'menornota') {
+                      valor = a.rating - b.rating
+                    }
+
+                    return valor;
+                  })
                   .map((e) => {
                     return (
                       <div
@@ -199,6 +208,23 @@ export const DisponibilidadeCategoria = () => {
                     (item) =>
                       filtro[0].motor === '' || item.caracteristicas.motor === filtro[0].motor
                   )
+                  .sort((a, b) => {
+                    let valor;
+                    if (filtro[0].ordenar === 'maiorpreco') {
+                      valor = b.valor - a.valor
+                    }
+                    else if (filtro[0].ordenar === 'menorpreco') {
+                      valor = a.valor - b.valor
+                    }
+                    else if (filtro[0].ordenar === 'maiornota') {
+                      valor = b.rating - a.rating
+                    }
+                    else if (filtro[0].ordenar === 'menornota') {
+                      valor = a.rating - b.rating
+                    }
+
+                    return valor;
+                  })
                   .map((e) => {
                     return (
                       <div

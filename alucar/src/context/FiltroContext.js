@@ -5,7 +5,7 @@ export const FiltroContext = createContext();
 const FiltroContextProvider = ({ children }) => {
     const [filtro, dispatch] = useReducer(Reducer, [], () => {
         const localData = sessionStorage.getItem('filtro');
-        return localData ? JSON.parse(localData) : [{ portas: '', assentos: '', ar: '', combustivel: '', cambio: '', motor: '' }];
+        return localData ? JSON.parse(localData) : [{ portas: '', assentos: '', ar: '', combustivel: '', cambio: '', motor: '', ordenar: '' }];
     });
 
     useEffect(() => {
@@ -40,13 +40,17 @@ const FiltroContextProvider = ({ children }) => {
         dispatch({ type: 'MOTOR', payload: filtro })
     }
 
+    const ordenar = (filtro) => {
+        dispatch({ type: 'ORDENAR', payload: filtro })
+    }
+
     // const removerItem = (filtro) => {
     //     dispatch({ type: 'REMOVER', payload: filtro })
     // }
 
     return (
         <>
-            <FiltroContext.Provider value={{ filtro, adicionarItem, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro }}>
+            <FiltroContext.Provider value={{ filtro, adicionarItem, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro, ordenar }}>
                 {children}
             </FiltroContext.Provider>
         </>

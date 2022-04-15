@@ -131,6 +131,25 @@ export const Reducer = (state, action) => {
 
             return state;
 
+        case 'ORDENAR':
+            const conferirOrdenar = state.filter(filtro => (
+                filtro.ar
+            ))
+
+            // if (!conferirOrdenar.length) {
+            //     console.log(state.ar);
+            //     return [...state, { ar: action.payload }]
+            // }
+
+            if (conferirOrdenar) {
+                return state.map(
+                    (content, i) => i === 0 ? { ...content, ordenar: action.payload }
+                        : content
+                )
+            }
+
+            return state;
+
         case 'REMOVER':
             return state.filter(e => e.id !== action.payload.id)
 
