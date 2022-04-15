@@ -6,3 +6,5 @@ export default function authHeader(){
         return {};
     }
 }
+
+// fetch data from api

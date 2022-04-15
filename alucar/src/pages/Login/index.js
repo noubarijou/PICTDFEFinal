@@ -16,7 +16,7 @@ import {
 
 export const Login = () => {
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
-  const login = useAxios(`/clientes`);
+  /* const login = useAxios(`/clientes`); */
   const navigate = useNavigate();
 
   const validationSchema = Yup.object({

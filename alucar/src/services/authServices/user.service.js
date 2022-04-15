@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authHeader from './auth-header';
-const API_URL = 'http://184.72.115.9:8080/clientes/validarSenha';
+const API_URL = 'http://184.72.115.9:8080/clientes/validarSenha/';
 
 const getPublicContent = () => {
     return axios.get(API_URL + 'all');

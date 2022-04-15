@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 
 export const CriarConta = () => {
-  const cadastro = useAxiosPost(`/clientes`);
+  /* const cadastro = useAxiosPost(`/clientes`); */
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
 
   const navigate = useNavigate();
