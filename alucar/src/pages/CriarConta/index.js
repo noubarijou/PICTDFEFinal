@@ -1,173 +1,230 @@
-import React, { useState, Fragment } from "react";
-import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
-import { useAxiosPost } from "../../hooks/useAxios";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-/* import { TextField } from "../../components/TextField"; */
-import { useForm, Controller } from "react-hook-form";
+import { useState, useRef, useEffect } from "react";
 import {
-  Paper,
-  Box,
-  Grid,
-  TextField,
-  Typography,
-  Button,
-} from "@material-ui/core";
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./style.scss";
+import { Link } from "react-router-dom";
+/* import AuthService from "../../services/authServices/auth.service";*/
+import api  from "../../services/api";
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+/* const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;*/
+const SENHA_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const CriarConta = () => {
-  /* const cadastro = useAxiosPost(`/clientes`); */
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
+  const emailRef = useRef();
+  const errRef = useRef();
 
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
 
-  const validationSchema = Yup.object({
-    firstName: Yup.string().required("Nome obrigatório"),
-    lastName: Yup.string().required("Sobrenome obrigatório"),
-    email: Yup.string()
-      .email("Email inválido [ex: email@email.com]")
-      .required("Email obrigatório"),
-    password: Yup.string()
-      .min(6, "Senha deve conter no mínimo 6 caracteres")
-      .required("Senha obrigatória"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Senha não confere")
-      .required("Confirmação de senha obrigatória"),
-  });
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-  });
-  const onSubmit = (data) => {
-    
-    console.log(JSON.stringify(data, null, 2));
-    if (data) {
-      /* UseAxiosPost(`/cliente`, data) */
-      navigate("/login");
+  const [senha, setSenha] = useState("");
+  const [validSenha, setValidSenha] = useState(false);
+  const [senhaFocus, setSenhaFocus] = useState(false);
+
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [validConfirmaSenha, setValidConfirmaSenha] = useState(false);
+  const [confirmaSenhaFocus, setConfirmaSenhaFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setValidEmail(EMAIL_REGEX.test(email));
+  }, [email]);
+
+  useEffect(() => {
+    setValidSenha(SENHA_REGEX.test(senha));
+    setValidConfirmaSenha(senha === confirmaSenha);
+  }, [senha, confirmaSenha]);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, senha, confirmaSenha]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const v1 = EMAIL_REGEX.test(email);
+    const v2 = SENHA_REGEX.test(senha);
+    if (!v1 || !v2) {
+      setErrMsg("Preencha os campos corretamente");
+      return;
     }
+    try {
+      const response = await api.post(
+        "/clientes/cadastrar",
+        JSON.stringify({
+          email,
+          senha,
+        }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: false,
+        }
+      );
+      console.log(response)
+      setSuccess(true);
+      setEmail('');
+      setSenha('');
+      setConfirmaSenha('');
+    } catch (err) {
+      if(!err?.response) {
+        setErrMsg("Erro de conexão com o servidor");
+      }else if (err.response.status === 409) {
+        setErrMsg("Email já cadastrado");
+      } else {
+        const erro = err.response.status;
+        setErrMsg(erro);
+      }
+      errRef.current.focus();
+    }
+    console.log(success);
   };
+
   return (
     <>
-      <Helmet>
-        <title>AluCar | Criar Conta</title>
-      </Helmet>
-      <main>
-        <Fragment>
-          <Paper elevation={0}>
-            <Box px={3} py={2}>
-              <Typography variant="h6" align="center" margin="dense">
-                Crie sua conta
-              </Typography>
-              <form noValidate>
-                <Grid
-                  container
-                  spacing={1}
-                  direction="column"
-                  alignItems="center"
-                >
-                  <Grid item xs={12} sm={12}>
-                    <TextField
-                      required
-                      variant="outlined"
-                      id="firstName"
-                      name="firstName"
-                      label="Nome"
-                      fullWidth
-                      margin="dense"
-                      {...register("firstName")}
-                      error={errors.firstName ? true : false}
-                    />
-                    <Typography variant="inherit" color="textSecondary">
-                      {errors.firstName?.message}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <TextField
-                      required
-                      variant="outlined"
-                      id="lastName"
-                      name="lastName"
-                      label="Sobrenome"
-                      fullWidth
-                      margin="dense"
-                      {...register("lastName")}
-                      error={errors.lastName ? true : false}
-                    />
-                    <Typography variant="inherit" color="textSecondary">
-                      {errors.lastName?.message}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <TextField
-                      required
-                      variant="outlined"
-                      id="email"
-                      name="email"
-                      label="Email"
-                      fullWidth
-                      margin="dense"
-                      {...register("email")}
-                      error={errors.email ? true : false}
-                    />
-                    <Typography variant="inherit" color="textSecondary">
-                      {errors.email?.message}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <TextField
-                      autoComplete="off"
-                      required
-                      variant="outlined"
-                      id="password"
-                      name="password"
-                      label="Senha"
-                      type="password"
-                      fullWidth
-                      margin="dense"
-                      {...register("password")}
-                      error={errors.password ? true : false}
-                    />
-                    <Typography variant="inherit" color="textSecondary">
-                      {errors.password?.message}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={12}>
-                    <TextField
-                      autoComplete="off"
-                      required
-                      variant="outlined"
-                      id="confirmPassword"
-                      name="confirmPassword"
-                      label="Confirme sua senha"
-                      type="password"
-                      fullWidth
-                      margin="dense"
-                      {...register("confirmPassword")}
-                      error={errors.confirmPassword ? true : false}
-                    />
-                    <Typography variant="inherit" color="textSecondary">
-                      {errors.confirmPassword?.message}
-                    </Typography>
-                  </Grid>
-                  <Box mt={3}>
-                    <Button
-                      variant="contained"
-                      style={{backgroundColor: '#FBC02D', color: 'black'}}
-                      onClick={handleSubmit(onSubmit)}
-                    >
-                      Criar Conta
-                    </Button>
-                  </Box>
-                </Grid>
-              </form>
-            </Box>
-          </Paper>
-        </Fragment>
-      </main>
+      {success ? (
+        <main>
+          <h1>Conta criada com sucesso</h1>
+          <p>
+            <Link to="/lojin">Entrar</Link>
+          </p>
+        </main>
+      ) : (
+        <main>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <h1>Crise sua conta</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">
+              Email
+              <span className={validEmail ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validEmail || !email ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <input
+              type="text"
+              id="email"
+              ref={emailRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-invalid={validEmail ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+            />
+            <p
+              id="uidnote"
+              className={
+                emailFocus && email && !validEmail
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              Email inválido - Ex: email@email.com
+            </p>
+            <label htmlFor="senha">
+              Senha
+              <span className={validSenha ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span className={validSenha || !senha ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <input
+              type="password"
+              id="senha"
+              onChange={(e) => setSenha(e.target.value)}
+              required
+              aria-invalid={validSenha ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setSenhaFocus(true)}
+              onBlur={() => setSenhaFocus(false)}
+            />
+            <p
+              id="pwdnote"
+              className={
+                senhaFocus && !validSenha ? "instructions" : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              Senha deve conter mínimo de 8 dídgitos, 1 letra maiúscula, 1 letra
+              minúscula, 1 número e 1 caractere especial (!@#$%)
+            </p>
+            <label htmlFor="confirmaSenha">
+              Confirmar senha
+              <span
+                className={
+                  validConfirmaSenha && confirmaSenha ? "valid" : "hide"
+                }
+              >
+                <FontAwesomeIcon icon={faCheck} />
+              </span>
+              <span
+                className={
+                  validConfirmaSenha || !confirmaSenha ? "hide" : "invalid"
+                }
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </span>
+            </label>
+            <input
+              type="password"
+              id="confirmaSenha"
+              onChange={(e) => setConfirmaSenha(e.target.value)}
+              required
+              aria-invalid={validConfirmaSenha ? "false" : "true"}
+              aria-describedby="confirmpwdnote"
+              onFocus={() => setConfirmaSenhaFocus(true)}
+              onBlur={() => setConfirmaSenhaFocus(false)}
+            />
+            <p
+              id="confirmpwdnote"
+              className={
+                confirmaSenhaFocus && !validConfirmaSenha
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              Os campos de senha devem ser iguais
+            </p>
+            <button
+              disabled={
+                !validEmail || !validSenha || !validConfirmaSenha ? true : false
+              }
+            >
+              Criar conta
+            </button>
+          </form>
+          <p>
+            Já tem uma conta?
+            <span>
+              <Link to="/login"> Entre aqui</Link>
+            </span>
+          </p>
+        </main>
+      )}
     </>
   );
 };
+

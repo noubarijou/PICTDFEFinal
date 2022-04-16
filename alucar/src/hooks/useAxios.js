@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
+import { useEffect, useState } from "react";
+import api from "../services/api";
 
 export const useAxios = (url) => {
   const [data, setData] = useState([]);
@@ -10,14 +10,14 @@ export const useAxios = (url) => {
         const response = await api.get(url);
         setData(response.data);
       } catch (error) {
-        console.error(error);
+        setData(error.response.status)
       }
     }
     loadData();
   }, [url]);
 
   return data;
-}
+};
 
 export const useAxiosPost = (url) => {
   const [data, setData] = useState([]);
@@ -35,7 +35,7 @@ export const useAxiosPost = (url) => {
   }, [url]);
 
   return data;
-}
+};
 export const useAxiosPut = (url) => {
   const [data, setData] = useState([]);
 
@@ -52,7 +52,7 @@ export const useAxiosPut = (url) => {
   }, [url]);
 
   return data;
-}
+};
 export const useAxiosDelete = (url) => {
   const [data, setData] = useState([]);
 
@@ -69,5 +69,4 @@ export const useAxiosDelete = (url) => {
   }, [url]);
 
   return data;
-}
-
+};

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
-import {useForm } from "react-hook-form";
-import {yupResolver} from '@hookform/resolvers/yup';
-import {useAxios} from "../../hooks/useAxios";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useAxios } from "../../hooks/useAxios";
 import * as Yup from "yup";
 import {
   Paper,
@@ -11,8 +11,8 @@ import {
   Grid,
   TextField,
   Typography,
-  Button
-} from '@material-ui/core';
+  Button,
+} from "@material-ui/core";
 
 export const Login = () => {
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
@@ -37,76 +37,88 @@ export const Login = () => {
       displayname: "DH",
     },
   };
-  const {register, handleSubmit, formState: {errors} } = useForm({resolver:yupResolver(validationSchema)})
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(validationSchema) });
   const onSubmit = (data) => {
     console.log(data);
     localStorage.setItem("credenciais", JSON.stringify(data));
     const formdata = localStorage.getItem("credenciais");
-    if ((
+    if (
       data.email !== credentials.user.username ||
       data.password !== credentials.user.password
-    )) {
+    ) {
       setIsSubmitSuccess(false);
     } else {
       setIsSubmitSuccess(true);
-      navigate("/");
-      window.location.reload();
-      console.log(isSubmitSuccess)
+      navigate(-2);
+     /*  navigate(`/${document.referrer
+        .replace(document.location.protocol, '')
+        .replace(document.location.host, '')
+        .replace(document.location.hostname, '')
+        .replace(/\//g, '')}`); */
+        console.log(document.referrer);
     }
-  }
+  };
   return (
     <>
       <Helmet>
         <title>AluCar | Login</title>
       </Helmet>
       <main>
-          {isSubmitSuccess ? (
-            navigate("/")) : (
-            <Paper>
-              <Box px={3} py={2}>
-                <Typography variant="h4" align="center" margin="dense">
-                  Entre em sua conta
+        <Paper>
+          <Box px={3} py={2}>
+            <Typography variant="h4" align="center" margin="dense">
+              Entre em sua conta
+            </Typography>
+            <Grid container spacing={1} direction="column" alignItems="center">
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  name="email"
+                  label="Email"
+                  id="email"
+                  variant="outlined"
+                  fullWidth
+                  margin="dense"
+                  {...register("email")}
+                  error={errors.fullname ? true : false}
+                />
+                <Typography variant="inherit" color="textSecondary">
+                  {errors.email?.message}
                 </Typography>
-                <Grid container spacing={1} direction="column" alignItems="center">
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                    required
-                      name="email"
-                      label="Email"
-                      id="email"
-                      variant="outlined"
-                      fullWidth
-                      margin="dense"
-                      {...register('email')}
-                      error={errors.fullname?true:false}
-                      />
-                      <Typography variant="inherit" color="textSecondary">{errors.email?.message}</Typography>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      required
-                      name="password"
-                      label="Senha"
-                      id="password"
-                      variant="outlined"
-                      type="password"
-                      fullWidth
-                      margin="dense"
-                      {...register('password')}
-                      error={errors.password?true:false}
-                      />
-                      <Typography variant="inherit" color="textSecondary">{errors.password?.message}</Typography>
-                  </Grid>
-                <Box mt={3}>
-                  <Button
-                    variant="contained"
-                    style={{backgroundColor: '#FBC02D', color: 'black'}}
-                    onClick={handleSubmit(onSubmit)}
-                  >Entrar</Button>
-                </Box>
-                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  name="password"
+                  label="Senha"
+                  id="password"
+                  variant="outlined"
+                  type="password"
+                  fullWidth
+                  margin="dense"
+                  {...register("password")}
+                  error={errors.password ? true : false}
+                />
+                <Typography variant="inherit" color="textSecondary">
+                  {errors.password?.message}
+                </Typography>
+              </Grid>
+              <Box mt={3}>
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "#FBC02D", color: "black" }}
+                  onClick={handleSubmit(onSubmit)}
+                >
+                  Entrar
+                </Button>
               </Box>
-            </Paper>)}
+            </Grid>
+          </Box>
+        </Paper>
       </main>
     </>
   );

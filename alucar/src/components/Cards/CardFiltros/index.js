@@ -1,5 +1,5 @@
 import './style.scss';
-import { useContext, useEffect, useLayoutEffect } from 'react'
+import { useContext} from 'react'
 import { FiltroContext } from "../../../context/FiltroContext";
 
 export const CardFiltros = () => {
