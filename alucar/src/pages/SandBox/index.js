@@ -1,8 +1,8 @@
-import axios from 'axios';
-import React from 'react';
+/* import axios from 'axios';
+ */import React from 'react';
 
 export const SandBox = () => {
-    const [formValue, setformValue] = React.useState({
+/*     const [formValue, setformValue] = React.useState({
         email: '',
         password: ''
       });
@@ -29,10 +29,10 @@ export const SandBox = () => {
           ...formValue,
           [event.target.name]: event.target.value
         });
-      }
+      } */
   return (
       <main>
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
       <p>Login Form</p>
       <input
         type="email"
@@ -54,7 +54,7 @@ export const SandBox = () => {
       >
         Login
       </button>
-    </form>
+    </form> */}
     </main>
   )
 }

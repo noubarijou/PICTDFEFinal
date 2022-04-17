@@ -9,6 +9,7 @@ import "./style.scss";
 import { Link } from "react-router-dom";
 /* import AuthService from "../../services/authServices/auth.service";*/
 import api  from "../../services/api";
+import { Helmet } from "react-helmet-async";
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 /* const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;*/
@@ -81,8 +82,7 @@ export const CriarConta = () => {
       }else if (err.response.status === 409) {
         setErrMsg("Email já cadastrado");
       } else {
-        const erro = err.response.status;
-        setErrMsg(erro);
+        setErrMsg("Infelizmente, você não pôde se registrar. Por favor, tente novamente mais tarde.");
       }
       errRef.current.focus();
     }
@@ -91,11 +91,14 @@ export const CriarConta = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Alucar | Criar Conta</title>
+    </Helmet>
       {success ? (
         <main>
           <h1>Conta criada com sucesso</h1>
           <p>
-            <Link to="/lojin">Entrar</Link>
+            <Link to="/login">Entrar</Link>
           </p>
         </main>
       ) : (

@@ -1,125 +1,108 @@
-import React, { useState } from "react";
+import { useState, useRef, useEffect} from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useAxios } from "../../hooks/useAxios";
-import * as Yup from "yup";
-import {
-  Paper,
-  Box,
-  Grid,
-  TextField,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import useAuth from "../../hooks/useAuth";
+import api from "../../services/api";
+import AuthContext from "../../context/AuthProvider";
+
 
 export const Login = () => {
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState();
-  /* const login = useAxios(`/clientes`); */
-  const navigate = useNavigate();
+  const { setAuth } = useAuth();
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Email inválido [ex: email@email.com]")
-      .required("Email obrigatório"),
-    password: Yup.string()
-      .min(6, "Senha deve conter no mínimo 6 caracteres")
-      .required("Senha obrigatória"),
-  });
-  const credentials = {
-    user: {
-      id: 1,
-      username: "usuario@dh.com.br",
-      password: "umaboasenha",
-      nome: "Digital",
-      sobrenome: "House",
-      displayname: "DH",
-    },
-  };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) });
-  const onSubmit = (data) => {
-    console.log(data);
-    localStorage.setItem("credenciais", JSON.stringify(data));
-    const formdata = localStorage.getItem("credenciais");
-    if (
-      data.email !== credentials.user.username ||
-      data.password !== credentials.user.password
-    ) {
-      setIsSubmitSuccess(false);
-    } else {
-      setIsSubmitSuccess(true);
-      navigate(-2);
-     /*  navigate(`/${document.referrer
-        .replace(document.location.protocol, '')
-        .replace(document.location.host, '')
-        .replace(document.location.hostname, '')
-        .replace(/\//g, '')}`); */
-        console.log(document.referrer);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  
+  const emailRef = useRef();
+  const errRef = useRef();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, senha]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await api.post(
+        "/login",
+        JSON.stringify({
+          email,
+          senha,
+        }),
+
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: false,
+        }
+      );
+
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles;
+      setAuth({ email, senha, roles, accessToken });
+      setEmail("");
+      setSenha("");
+      navigate(from, {replace: true});
+      console.log(accessToken);
+      console.log(roles);
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("Sem resposta do servidor");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Email ou senha não informados");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Email ou senha incorretos");
+      } else {
+        setErrMsg("Acesso não permitido - usuario não encontrado");
+      }
+      errRef.current.focus();
     }
   };
+
   return (
     <>
       <Helmet>
-        <title>AluCar | Login</title>
+        <title>Alucar | Entrar</title>
       </Helmet>
-      <main>
-        <Paper>
-          <Box px={3} py={2}>
-            <Typography variant="h4" align="center" margin="dense">
-              Entre em sua conta
-            </Typography>
-            <Grid container spacing={1} direction="column" alignItems="center">
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  name="email"
-                  label="Email"
-                  id="email"
-                  variant="outlined"
-                  fullWidth
-                  margin="dense"
-                  {...register("email")}
-                  error={errors.fullname ? true : false}
-                />
-                <Typography variant="inherit" color="textSecondary">
-                  {errors.email?.message}
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  name="password"
-                  label="Senha"
-                  id="password"
-                  variant="outlined"
-                  type="password"
-                  fullWidth
-                  margin="dense"
-                  {...register("password")}
-                  error={errors.password ? true : false}
-                />
-                <Typography variant="inherit" color="textSecondary">
-                  {errors.password?.message}
-                </Typography>
-              </Grid>
-              <Box mt={3}>
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: "#FBC02D", color: "black" }}
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  Entrar
-                </Button>
-              </Box>
-            </Grid>
-          </Box>
-        </Paper>
-      </main>
-    </>
+        <main>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <h1>Entrar na conta</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              ref={emailRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              value={email}
+            />
+            <label htmlFor="senha">Senha</label>
+            <input
+              type="password"
+              id="senha"
+              onChange={(e) => setSenha(e.target.value)}
+              required
+              value={senha}
+            />
+            <button>Entrar</button>
+          </form>
+          <p>
+            Não tem uma conta? Crie uma <Link to="/criarconta">aqui.</Link>{" "}
+          </p>
+        </main>
+        </>
   );
 };

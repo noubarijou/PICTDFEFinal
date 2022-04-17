@@ -1,22 +1,21 @@
 import "./style.scss";
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/Rating";
 import { useAxios } from "../../hooks/useAxios";
-import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+/* import { useWindowDimensions } from "../../hooks/useWindowDimensions"; */
 import { ButtonToClick } from "../../components/Buttons";
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
-  faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 
 import CircularProgress from "@mui/material/CircularProgress";
-import { Paper, Box, Grid, TextField, Typography } from "@material-ui/core";
+import {Box, Grid, TextField, Typography } from "@material-ui/core";
 import { SelecionarHorarios } from "../../components/Listas/ListaHorarios";
 import { Calendario } from "../../components/Calendarios";
 import { format } from "date-fns";
@@ -34,7 +33,7 @@ export const Reserva = () => {
   };
   const reserva = useAxios(`/pedido`);
   const loggedInUser = localStorage.getItem("credenciais");
-  const { width } = useWindowDimensions();
+/*   const { width } = useWindowDimensions(); */
   const navigate = useNavigate();
   const cidades = useAxios(`/cidades`);
   const detalhes = useAxios(`/carro`);
@@ -42,7 +41,7 @@ export const Reserva = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   const [cidade, setCidade] = useState();
-  const [dados, setDados] = useState([]);
+  /* const [dados, setDados] = useState([]); */
   const { detalhesId } = useParams();
   const [detalhe, setDetalhe] = useState();
   useEffect(() => {
@@ -51,8 +50,8 @@ export const Reserva = () => {
   }, [detalhesId]);
   console.log(loggedInUser);
 
-  const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
-  const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange"));
+  /* const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
+  const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange")); */
   const pesquisaStartDate = format(
     new Date(JSON.parse(localStorage.getItem("dadosStartDate"))),
     "dd/MM/yyyy"

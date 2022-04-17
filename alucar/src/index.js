@@ -1,15 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import './pages/assets/form.scss';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import "./pages/assets/form.scss";
 /* import "react-datepicker/dist/react-datepicker.css"; */
-import App from './App';
-
-
+import App from "./App";
+import { AuthProvider } from "./context/AuthProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

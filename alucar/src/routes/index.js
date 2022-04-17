@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom"
+import { BrowserRouter, Routes, Route} from "react-router-dom"
 import { HelmetProvider } from 'react-helmet-async'
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -14,14 +14,12 @@ import { DisponibilidadePesquisa } from "../pages/DisponibilidadePesquisa";
 import { MinhaConta } from '../pages/MinhaConta';
 import { Reserva } from "../pages/Reserva";
 import { NotFound } from "../pages/NotFound";
-
 import FiltroContext from "../context/FiltroContext";
-
 import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
-import { Lojin } from '../pages/Teste/Lojin';
-import { Register } from '../pages/Teste/Register';
 import { Admin } from "../pages/Admin";
+import { Unauthorized } from "../pages/Unauthorized";
+import {RequireAuth} from '../services/authServices/RequireAuth';
 
 /* import * as serviceWorker from './serviceWorker'; */
 
@@ -33,25 +31,27 @@ const RouteList = () => {
                 <FiltroContext>
                     <Header />
                     <Routes>
+                        {/* Rotas abertas */}
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/criarconta" element={<CriarConta />} />
                         <Route path="/sobre" element={<Sobre />} />
                         <Route path="/ajuda" element={<Ajuda />} />
                         <Route path="/detalhes/:detalhesId" element={<Produto />} />
-                        <Route path="/minhasreservas" element={<MinhasReservas />} />
                         <Route path="/disponibilidade/:detalhesId" element={<DisponibilidadeCategoria />} />
                         <Route path="/disponibilidade" element={<DisponibilidadePesquisa />} />
-                        <Route path="/minhaconta" element={<MinhaConta />} />
-                        <Route path="/teste" element={<Teste />} />
-                        <Route path="/reserva/:detalhesId" element={<Reserva />} />
-                        <Route path="/admin" element={<Admin />} />
+                        <Route path="/unauthorized" element={<Unauthorized />} />
                         <Route path="*" element={<NotFound />} />
+                        {/* Rotas protegidas por autenticação */}
+                        <Route element={<RequireAuth allowedRoles={{}}/>} >
+                            <Route path="/minhaconta" element={<MinhaConta />} />
+                            <Route path="/minhasreservas" element={<MinhasReservas />} />
+                            <Route path="/reserva/:detalhesId" element={<Reserva />} />
+                            <Route path="/admin" element={<Admin />} />
+                        </Route>
                         {/* Não esquecer de tirar depois */}
-                        <Route path="sandbox" element={<SandBox />} />
-                        <Route path="/lojin" element={<Lojin />} />
-                        <Route path="/register" element={<Register />} />
                         <Route path="/teste" element={<Teste />} />
+                        <Route path="sandbox" element={<SandBox />} />
                     </Routes>
                     <Footer />
                 </FiltroContext>
