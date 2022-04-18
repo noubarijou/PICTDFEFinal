@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
 import AuthContext from "../../context/AuthProvider";
+import './style.scss';
 
 
 export const Login = () => {
@@ -31,19 +32,14 @@ export const Login = () => {
     try {
       const response = await api.post(
         "/login",
-        JSON.stringify({
+        {
           email,
           senha,
-        }),
-
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: false,
         }
       );
-
-      const accessToken = response?.data?.accessToken;
-      const roles = response?.data?.roles;
+      console.log(response);
+      const accessToken = response?.data;
+      const roles = response?.roles;
       setAuth({ email, senha, roles, accessToken });
       setEmail("");
       setSenha("");
@@ -58,7 +54,7 @@ export const Login = () => {
       } else if (err.response?.status === 401) {
         setErrMsg("Email ou senha incorretos");
       } else {
-        setErrMsg("Acesso não permitido - usuario não encontrado");
+        setErrMsg("Infelizmente, você não pôde efetuar login. Por favor, tente novamente mais tarde.");
       }
       errRef.current.focus();
     }

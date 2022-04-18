@@ -43,13 +43,13 @@ const RouteList = () => {
                         <Route path="/unauthorized" element={<Unauthorized />} />
                         <Route path="*" element={<NotFound />} />
                         {/* Rotas protegidas por autenticação */}
-                        <Route element={<RequireAuth allowedRoles={{}}/>} >
-                            <Route path="/minhaconta" element={<MinhaConta />} />
+{/*                         <Route element={<RequireAuth allowedRoles={{}}/>} >
+ */}                            <Route path="/minhaconta" element={<MinhaConta />} />
                             <Route path="/minhasreservas" element={<MinhasReservas />} />
                             <Route path="/reserva/:detalhesId" element={<Reserva />} />
                             <Route path="/admin" element={<Admin />} />
-                        </Route>
-                        {/* Não esquecer de tirar depois */}
+{/*                         </Route>
+ */}                        {/* Não esquecer de tirar depois */}
                         <Route path="/teste" element={<Teste />} />
                         <Route path="sandbox" element={<SandBox />} />
                     </Routes>

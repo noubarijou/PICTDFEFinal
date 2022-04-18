@@ -1,21 +1,26 @@
 import {useState, useEffect} from 'react';
-import api from '../../services/api';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import {useNavigate, useLocation} from 'react-router-dom'
 
 export const Users = () => {
     const [users, setUsers] = useState();
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
         const getUsers = async () => {
             try {
-                const response = await api.get('/clientes', {
+                const response = await axiosPrivate.get('/clientes', {
                     signal: controller.signal
                 });
                 console.log(response.data)
                 isMounted && setUsers(response.data);
             }catch (err) {
                 console.error(err);
+                navigate('/login', {state: {from: location}, replace: true})
             }
         }
         getUsers();
