@@ -2,33 +2,46 @@ import './style.scss';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { useState, useEffect } from 'react';
 import { ModalNav } from '../Modal/ModalNav';
+import {useLogout} from '../../hooks/useLogout';
+import { useNavigate } from 'react-router-dom';
 
 /* icones - font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import useAuth from "../../hooks/useAuth";
 
 
 export const Header = () => {
+    const { auth, setAuth } = useAuth();
+    const loggedInUser = auth?.accessToken;
+
+    const navigate = useNavigate();
+    const logout = useLogout();
+
+    const signOut = async () => {
+        await logout();
+        navigate('/');
+        setAuth({});
+        setSuccess(false);
+    }
+
     const { width } = useWindowDimensions();
-    const [isSubmitSuccess, setIsSubmitSuccess] = useState();
+    const [success, setSuccess] = useState();
     const [showModal, setShowModal] = useState(false);
-    const dados = require("../../assets/jsons/user.json")
+    const dados = require("../../assets/jsons/user.json");
     
     const handleClose = () => {
         setShowModal(!showModal);
     }
+
     useEffect(() => {
-        const loggedInUser = localStorage.getItem('credenciais');
+        
         if (loggedInUser) {
-            setIsSubmitSuccess(true)
+            setSuccess(true)
         }
-    }, []);
-    const handleLogout = () => {
-        setIsSubmitSuccess(false);
-        localStorage.clear();
-        window.location.reload();
-      }
+    },[loggedInUser]);
+
     return (
         <header>
             <div className="header__txt">
@@ -47,7 +60,7 @@ export const Header = () => {
                             <ModalNav>
                                 <div>
                                     <FontAwesomeIcon icon={faXmark} size="2x" style={{ cursor: "pointer" }} onClick={() => handleClose()} />
-                                    {isSubmitSuccess ? (
+                                    {success ? (
                                         <div className="modal__displayname">{dados.map((dado) => {
                                             return (<Link to='/minhaconta' onClick={() => handleClose()}>
                                                 {dado.displayname}
@@ -58,9 +71,8 @@ export const Header = () => {
                             </ModalNav> : null}
                     </nav>
                     :
-                    (isSubmitSuccess) ?
+                    (success) ?
                     <nav>
-                        {console.log(isSubmitSuccess)}
                         <a href="/sobre" className="subtitle">Sobre</a>
                         <a href="/ajuda" className="subtitle">Ajuda</a>
                         <a href="/minhaconta" className="header__btn primary-btn btn-large">Minha Conta</a>
@@ -71,7 +83,7 @@ export const Header = () => {
                                         }
                         )}
                         </div>
-                        <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" style={{ cursor: "pointer" }} onClick={() => handleLogout()} /> 
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" style={{ cursor: "pointer" }} onClick={() => signOut()} /> 
                     </nav>
 
                     :

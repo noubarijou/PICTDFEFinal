@@ -3,8 +3,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
-import AuthContext from "../../context/AuthProvider";
-import './style.scss';
+/* import AuthContext from "../../context/AuthProvider";
+ */import './style.scss';
 
 
 export const Login = () => {
@@ -20,7 +20,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -41,12 +41,11 @@ export const Login = () => {
       );
       console.log(response);
       const accessToken = response?.data;
-/*       const roles = response?.data.funcao;
- */   setAuth({ email, senha, accessToken });
+      // const roles = response?.data.funcao;   
+      setAuth({ email, senha, accessToken });
       setEmail("");
       setSenha("");
       navigate(from, {replace: true});
-      setSuccess(true);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Sem resposta do servidor");
@@ -59,6 +58,7 @@ export const Login = () => {
       }
       errRef.current.focus();
     }
+    setSuccess(true);
     console.log(success);
   };
 

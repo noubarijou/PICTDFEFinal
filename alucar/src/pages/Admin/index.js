@@ -1,11 +1,11 @@
 import { Grid, Typography } from "@material-ui/core";
 import { Helmet } from "react-helmet-async";
-import { FormAddProd } from "../../components/Forms/FormAddProd";
-import { FormDelProd } from "../../components/Forms/FormDelProd";
-import { FormMngUsers } from "../../components/Forms/FormMngUsers";
-import { FormModProd } from "../../components/Forms/FormModProd";
+import { FormAddProd } from "./components/Forms/FormAddProd";
+import { FormDelProd } from "./components/Forms/FormDelProd";
+import { FormMngUsers } from "./components/Forms/FormMngUsers";
+import { FormModProd } from "./components/Forms/FormModProd";
 import { ModalAdmin } from "../../components/Modal/ModalAdmin";
-import {Users} from '../../components/Users';
+import {Users} from './components/Users';
 
 export const Admin = () => {
   return (

@@ -2,25 +2,38 @@ import "./style.scss";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faTwitter, faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {useLogout} from '../../../hooks/useLogout';
+import { useNavigate } from 'react-router-dom';
+import useAuth from "../../../hooks/useAuth";
 
 export const ModalNav = ({ children }) => {
+  const { auth, setAuth } = useAuth();
+  const loggedInUser = auth?.accessToken;
+
+  const navigate = useNavigate();
+  const logout = useLogout();
+
+  const signOut = async () => {
+        await logout();
+        navigate('/');
+        setAuth({});
+        setSuccess(false);
+  }
 
   const dados = require("../../../assets/jsons/user.json");
-  const [isSubmitSuccess, setIsSubmitSuccess] = useState();
+  const [success, setSuccess] = useState();
+
   useEffect(() => {
-    const loggedInUser = localStorage.getItem("credenciais");
+    
     if (loggedInUser) {
-      setIsSubmitSuccess(true);
+      setSuccess(true);
     }
-  }, []);
-  const handleLogout = () => {
-    setIsSubmitSuccess(false);
-    localStorage.clear();
-  }
+  }, [loggedInUser]);
+
   return (
     <div className="modal">
       <div className="menu__title">{children}</div>
-      {isSubmitSuccess ? (
+      {success ? (
         <>
           <div className="linha"></div>
           <p className="subtitle">
@@ -43,7 +56,7 @@ export const ModalNav = ({ children }) => {
             Ajuda
           </a>
           <div className="linha"></div>
-          <a href="/" className="subtitle" onClick={handleLogout}>
+          <a href="/" className="subtitle" onClick={signOut}>
             Sair
           </a>
         </>
