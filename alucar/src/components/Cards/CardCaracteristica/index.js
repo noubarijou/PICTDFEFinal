@@ -2,7 +2,7 @@ import './style.scss'
 import React, { useEffect, useState } from 'react'
 
 export const CardCaracteristica = ({ icon, carcteristica, carcteristicaDescricao }) => {
-    const cambio = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/cambio.svg";
+    const cambio = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/cambio.png";
     const arCondicionado = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/arCondicionado.svg";
     const motor = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/motor.svg";
     const passageiro = "https://alucar-t1-g4.s3.amazonaws.com/caracteristicas/passageiros.svg";

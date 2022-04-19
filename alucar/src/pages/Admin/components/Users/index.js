@@ -39,7 +39,7 @@ export const Users = () => {
                 users?.length
                 ? (
                     <ul>
-                        {users.map((user, i) => <li key={i}>{user?.clienteNome}</li>)}
+                        {users.map((user, i) => <li key={i}>{user?.clienteNome} {user?.funcao}</li>)}
                     </ul>
                 ) : <p>Sem usuários para mostrar</p>
             }

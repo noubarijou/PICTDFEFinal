@@ -3,13 +3,14 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
-/* import AuthContext from "../../context/AuthProvider";
- */
+import { useInput } from "../../hooks/useInput";
+import { useToggle } from "../../hooks/useToggle";
+
 /* import './style.scss'; */
 
 
 export const Login = () => {
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,9 +19,10 @@ export const Login = () => {
   
   const emailRef = useRef();
   const errRef = useRef();
-  const [email, setEmail] = useState("");
+  const [email, resetEmail, attributeObj] =  useInput('email', '');   
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [check, toggleCheck] = useToggle("persist", false);
   const [success, setSuccess] = useState();
 
   useEffect(() => {
@@ -44,7 +46,8 @@ export const Login = () => {
       const accessToken = response?.data;
       // const roles = response?.data.funcao;   
       setAuth({ email, senha, accessToken });
-      setEmail("");
+      // setEmail("");
+      resetEmail();
       setSenha("");
       navigate(from, {replace: true});
     } catch (err) {
@@ -84,9 +87,8 @@ export const Login = () => {
               id="email"
               ref={emailRef}
               autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
+              {...attributeObj}
               required
-              value={email}
             />
             <label htmlFor="senha">Senha</label>
             <input
@@ -97,6 +99,15 @@ export const Login = () => {
               value={senha}
             />
             <button>Entrar</button>
+            <div className="persistCheck">
+              <input
+                type="checkbox"
+                id="persist"
+                onChange={toggleCheck}
+                checked={check}
+              />
+              <label htmlFor="persist">Manter-me conectado</label>
+            </div>
           </form>
           <p>
             Não tem uma conta? Crie uma <Link to="/criarconta">aqui.</Link>{" "}
