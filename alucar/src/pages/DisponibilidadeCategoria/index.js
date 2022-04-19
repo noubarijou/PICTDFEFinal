@@ -1,20 +1,20 @@
-import { FiltroContext } from "../../context/FiltroContext";
-import { Helmet } from "react-helmet-async";
-import { useAxios } from "../../hooks/useAxios";
+import "../assets/disponibilidade.scss";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import "../assets/disponibilidade.scss";
+import { Helmet } from "react-helmet-async";
+
+/* Font awesome */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDownWideShort, faFilter } from "@fortawesome/free-solid-svg-icons";
+
+import { useAxios } from "../../hooks/useAxios";
+import { FiltroContext } from "../../context/FiltroContext";
 import { CardDisponibilidade } from "../../components/Cards/CardDisponibilidade";
 import { CardFiltros } from "../../components/Filtros/CardFiltros/";
 import { CardOrdenar } from "../../components/Filtros/CardOrdenar";
 import { ModalFiltros } from "../../components/Modal/ModalFiltros";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
-/* Font awesome */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowDownWideShort,
-  faFilter,
-} from "@fortawesome/free-solid-svg-icons";
+
 
 export const DisponibilidadeCategoria = () => {
 
@@ -40,18 +40,18 @@ export const DisponibilidadeCategoria = () => {
     }
 
     window.scrollTo(0, 0);
-  }, [detalhesId]);
+  }, [detalhesId, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro, ordenar]);
 
   return (
     <>
       <Helmet>
         <title>AluCar | Disponibilidade</title>
       </Helmet>
-      <main className="disponibilidade">
+      <article className="disponibilidade">
         {width < 992 ? (
           <>
             {categorias
-              .filter((item) => item.categoriasId === parseInt(detalhesId))
+              .filter((item) => item.categoriasId === parseInt(detalhe))
               .map((e) => {
                 return (
                   <p
@@ -252,7 +252,7 @@ export const DisponibilidadeCategoria = () => {
             </div>
           </>
         )}
-      </main>
+      </article>
     </>
   );
 };

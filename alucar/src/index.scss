@@ -8,7 +8,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif !important;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     scroll-behavior: smooth;
     user-select: none;
@@ -48,32 +48,36 @@ body{
     }
 
     /* Font style */
+    .btn-small, .btn-large, .subtitle, .body-small, .body-large{
+        font-family: 'Roboto', sans-serif;
+    }
+    
     .btn-small{
-        font-weight: 500;
+        font-weight: 700;
         font-size: 0.875rem;
         line-height: 1rem;
     }
 
     .btn-large{
-        font-weight: 700;
+        font-weight: 900;
         font-size: 1.25rem;
         line-height: 1.25rem;
     }
 
     .subtitle{
-        font-weight: 500;
+        font-weight: 700;
         font-size: 1.125rem;
         line-height: 1.25rem;
     }
 
     .body-small{
         font-weight: 300;
-        font-size: 0.75rem;
+        font-size: 0.875rem;
         line-height: 0.875rem;
     }
 
     .body-large{
-        font-weight: 300;
+        font-weight: 500;
         font-size: 1.25rem;
         line-height: 1.25rem;
     }

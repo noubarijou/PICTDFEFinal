@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react'
 import '../assets/disponibilidade.scss';
+import React, { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async';
 
 /* DATE-FNS */
 import { format } from 'date-fns'
-import { useAxios } from '../../hooks/useAxios';
-import { Helmet } from 'react-helmet-async';
-import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
-import { ButtonHandleClose } from '../../components/Buttons';
-import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
+
+import { useAxios } from '../../hooks/useAxios';
+import { CardDisponibilidade } from '../../components/Cards/CardDisponibilidade';
+import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { CardFiltros } from '../../components/Filtros/CardFiltros';
 import { CardOrdenar } from '../../components/Filtros/CardOrdenar';
+import { ModalFiltros } from '../../components/Modal/ModalFiltros';
 
 export const DisponibilidadePesquisa = () => {
 
@@ -34,7 +35,7 @@ export const DisponibilidadePesquisa = () => {
             <Helmet>
                 <title>AluCar | Disponibilidade</title>
             </Helmet>
-            <main className='disponibilidade'>
+            <article className='disponibilidade'>
                 {
                     width < 992 ?
                         <>
@@ -42,20 +43,26 @@ export const DisponibilidadePesquisa = () => {
                                 {`${dados.dadosCidade} (${dados.dadosStartDate} -> ${dados.dadosEndDate})`}
                             </p>
                             <div className="disponibilidade__filtros">
-                                <ButtonHandleClose classes="secondary-btn filtro__btn filtro--ordenar">
-                                    {<>
-                                        <FontAwesomeIcon icon={faArrowDownWideShort} />
-                                        {"  "}Ordenar
-                                    </>}
-                                </ButtonHandleClose>
-                                <ButtonHandleClose classes="secondary-btn filtro__btn filtro--filtrar">
-                                    {
+                                <ModalFiltros
+                                    conteudoBotao={
+                                        <>
+                                            <FontAwesomeIcon icon={faArrowDownWideShort} />
+                                            {"  "}Ordenar
+                                        </>
+                                    }
+                                >
+                                    <CardOrdenar />
+                                </ModalFiltros>
+                                <ModalFiltros
+                                    conteudoBotao={
                                         <>
                                             <FontAwesomeIcon icon={faFilter} />
                                             {"  "}Filtrar
                                         </>
                                     }
-                                </ButtonHandleClose>
+                                >
+                                    <CardFiltros />
+                                </ModalFiltros>
                             </div>
                             <article className="disponibilidade__carro">
                                 {detalhes.map((e) => {
@@ -117,7 +124,7 @@ export const DisponibilidadePesquisa = () => {
                             </div>
                         </>
                 }
-            </main>
+            </article>
         </>
     )
 

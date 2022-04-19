@@ -13,6 +13,9 @@ export const ConteudoNav = () => {
     if (authenticated) {
       setNome(dados.nome);
       setSobrenome(dados.sobrenome);
+
+      const initials = (nome.substr(0, 1)) + (sobrenome.substr(0, 1))
+      setDisplayname(initials)
     }
   }, [authenticated, dados, nome, sobrenome])
   return (

@@ -17,7 +17,6 @@ export const Ajuda = () => {
         console.log(JSON.stringify(data, null, 2));
       };
   return (
-      <main>
     <Fragment>
         <Paper>
             <Box p={2}>
@@ -90,6 +89,5 @@ export const Ajuda = () => {
             </Box>
         </Paper>
     </Fragment>
-    </main>
   )
 }

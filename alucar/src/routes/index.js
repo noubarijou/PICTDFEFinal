@@ -26,8 +26,8 @@ const ROLES = {
     'User': "CLIENTE",
     'Editor': "MODERADOR",
     'Admin': "ADMIN"
-  }
-  
+}
+
 const RouteList = () => {
 
     return (
@@ -35,34 +35,36 @@ const RouteList = () => {
             <HelmetProvider>
                 <FiltroContext>
                     <Header />
-                    <Routes>
-                        {/* Rotas abertas */}
-                        <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/criarconta" element={<CriarConta />} />
-                        <Route path="/sobre" element={<Sobre />} />
-                        <Route path="/ajuda" element={<Ajuda />} />
-                        <Route path="/detalhes/:detalhesId" element={<Produto />} />
-                        <Route path="/disponibilidade/:detalhesId" element={<DisponibilidadeCategoria />} />
-                        <Route path="/disponibilidade" element={<DisponibilidadePesquisa />} />
-                        <Route path="/unauthorized" element={<Unauthorized />} />
-                        <Route path="*" element={<NotFound />} />
-                        {/* Rotas protegidas por autenticação */}
-                        {/* <Route element={<PersistLogin />}> */}
-{/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    
-                                    <Route path="/minhaconta" element={<MinhaConta />} />
-                                    <Route path="/minhasreservas" element={<MinhasReservas />} />
-                                    <Route path="/reserva/:detalhesId" element={<Reserva />} />
-                        {/*     </Route>    */}                        
-{/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    
-                                    <Route path="/minhaconta" element={<MinhaConta />} />
-                                    <Route path="/admin" element={<Admin />} />
-                        {/*     </Route>    */}
-                        {/*     </Route>    */}  
-                        {/* Não esquecer de tirar depois */}
-                        <Route path="/teste" element={<Teste />} />
-                        <Route path="sandbox" element={<SandBox />} />
-                    </Routes>
+                    <main>
+                        <Routes>
+                            {/* Rotas abertas */}
+                            <Route path="/" element={<Home />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/criarconta" element={<CriarConta />} />
+                            <Route path="/sobre" element={<Sobre />} />
+                            <Route path="/ajuda" element={<Ajuda />} />
+                            <Route path="/detalhes/:detalhesId" element={<Produto />} />
+                            <Route path="/disponibilidade/:detalhesId" element={<DisponibilidadeCategoria />} />
+                            <Route path="/disponibilidade" element={<DisponibilidadePesquisa />} />
+                            <Route path="/unauthorized" element={<Unauthorized />} />
+                            <Route path="*" element={<NotFound />} />
+                            {/* Rotas protegidas por autenticação */}
+                            {/* <Route element={<PersistLogin />}> */}
+                            {/* <Route element={<RequireAuth allowedRoles={{}}/>} > */}
+                            <Route path="/minhaconta" element={<MinhaConta />} />
+                            <Route path="/minhasreservas" element={<MinhasReservas />} />
+                            <Route path="/reserva/:detalhesId" element={<Reserva />} />
+                            {/*     </Route>    */}
+                            {/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}
+                            <Route path="/minhaconta" element={<MinhaConta />} />
+                            <Route path="/admin" element={<Admin />} />
+                            {/*     </Route>    */}
+                            {/*     </Route>    */}
+                            {/* Não esquecer de tirar depois */}
+                            <Route path="/teste" element={<Teste />} />
+                            <Route path="sandbox" element={<SandBox />} />
+                        </Routes>
+                    </main>
                     <Footer />
                 </FiltroContext>
             </HelmetProvider>

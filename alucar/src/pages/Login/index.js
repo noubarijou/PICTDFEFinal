@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect} from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
@@ -14,12 +14,12 @@ export const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const from = location.state?.from?.pathname || "/";
-  
+
   const emailRef = useRef();
   const errRef = useRef();
-  const [email, resetEmail, attributeObj] =  useInput('email', '');   
+  const [email, resetEmail, attributeObj] = useInput('email', '');
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [check, toggleCheck] = useToggle("persist", false);
@@ -49,7 +49,7 @@ export const Login = () => {
       // setEmail("");
       resetEmail();
       setSenha("");
-      navigate(from, {replace: true});
+      navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Sem resposta do servidor");
@@ -71,48 +71,46 @@ export const Login = () => {
       <Helmet>
         <title>Alucar | Entrar</title>
       </Helmet>
-        <main>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-          <h1>Entrar na conta</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              ref={emailRef}
-              autoComplete="off"
-              {...attributeObj}
-              required
-            />
-            <label htmlFor="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              onChange={(e) => setSenha(e.target.value)}
-              required
-              value={senha}
-            />
-            <button>Entrar</button>
-            <div className="persistCheck">
-              <input
-                type="checkbox"
-                id="persist"
-                onChange={toggleCheck}
-                checked={check}
-              />
-              <label htmlFor="persist">Manter-me conectado</label>
-            </div>
-          </form>
-          <p>
-            Não tem uma conta? Crie uma <Link to="/criarconta">aqui.</Link>{" "}
-          </p>
-        </main>
-        </>
+      <p
+        ref={errRef}
+        className={errMsg ? "errmsg" : "offscreen"}
+        aria-live="assertive"
+      >
+        {errMsg}
+      </p>
+      <h1>Entrar na conta</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          type="text"
+          id="email"
+          ref={emailRef}
+          autoComplete="off"
+          {...attributeObj}
+          required
+        />
+        <label htmlFor="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          onChange={(e) => setSenha(e.target.value)}
+          required
+          value={senha}
+        />
+        <button>Entrar</button>
+        <div className="persistCheck">
+          <input
+            type="checkbox"
+            id="persist"
+            onChange={toggleCheck}
+            checked={check}
+          />
+          <label htmlFor="persist">Manter-me conectado</label>
+        </div>
+      </form>
+      <p>
+        Não tem uma conta? <Link to="/criarconta">Crie uma conta.</Link>
+      </p>
+    </>
   );
 };

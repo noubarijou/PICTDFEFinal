@@ -5,7 +5,7 @@ import { FormDelProd } from "./components/Forms/FormDelProd";
 import { FormMngUsers } from "./components/Forms/FormMngUsers";
 import { FormModProd } from "./components/Forms/FormModProd";
 import { ModalAdmin } from "../../components/Modal/ModalAdmin";
-import {Users} from './components/Users';
+import { Users } from './components/Users';
 
 export const Admin = () => {
   return (
@@ -13,27 +13,25 @@ export const Admin = () => {
       <Helmet>
         <title>Alucar | Admin</title>
       </Helmet>
-      <main>
-        <Typography variant="h5" align="center" margin="dense">
-          Administração de Recursos
-        </Typography>
-        <Users />
+      <Typography variant="h5" align="center" margin="dense">
+        Administração de Recursos
+      </Typography>
+      <Users />
 
-        <Grid container spacing={3} direction="column" alignItems="center">
-            <Grid item xs>
-            <ModalAdmin conteudoForm={"Adicionar Produto"}><FormAddProd/></ModalAdmin>
-            </Grid>
-            <Grid item xs>
-            <ModalAdmin conteudoForm={"Modificar Produto"}><FormModProd /></ModalAdmin>
-            </Grid>
-            <Grid item xs>
-            <ModalAdmin conteudoForm={"Remover Produto"}><FormDelProd /></ModalAdmin>
-            </Grid>
-            <Grid item xs>
-            <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers/></ModalAdmin>
-            </Grid>
+      <Grid container spacing={3} direction="column" alignItems="center">
+        <Grid item xs>
+          <ModalAdmin conteudoForm={"Adicionar Produto"}><FormAddProd /></ModalAdmin>
         </Grid>
-      </main>
+        <Grid item xs>
+          <ModalAdmin conteudoForm={"Modificar Produto"}><FormModProd /></ModalAdmin>
+        </Grid>
+        <Grid item xs>
+          <ModalAdmin conteudoForm={"Remover Produto"}><FormDelProd /></ModalAdmin>
+        </Grid>
+        <Grid item xs>
+          <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers /></ModalAdmin>
+        </Grid>
+      </Grid>
     </>
   );
 };
