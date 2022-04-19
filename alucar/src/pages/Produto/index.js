@@ -11,7 +11,7 @@ import { Requisitos } from "../../components/Requisitos";
 import { CardCaracteristica } from "../../components/Cards/CardCaracteristica";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { useAxios } from "../../hooks/useAxios";
-import { Calendario } from "../../components/Calendarios";
+import { CalendarStatic } from "../../components/Calendarios";
 
 const location = {
   address: 'Av. Domingos Odália Filho, 301 - Centro, Osasco',
@@ -135,7 +135,7 @@ export const Produto = () => {
             </>
           ) : (null)}
           <div className="detalhes__datePicker">
-            <Calendario value={dateRange} setValue={setDateRange} />
+            <CalendarStatic value={dateRange} setValue={setDateRange} />
           </div>
           <ButtonToClick classes={"success-btn detalhe__btn"} urlTo={`/reserva/${detalhesId}`}>Reservar</ButtonToClick>
           <div className="detalhe__mapa">

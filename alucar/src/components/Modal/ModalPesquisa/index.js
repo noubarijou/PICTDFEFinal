@@ -4,9 +4,8 @@ import { useAxios } from '../../../hooks/useAxios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Calendar } from "./components/Calendar";
+import { Calendar } from "../../Calendarios";
 import { useNavigate } from "react-router-dom";
-import { ButtonSubmit } from "../../Buttons"
 
 export const ModalPesquisa = () => {
   const cidades = useAxios(`/cidades`);
@@ -62,7 +61,7 @@ export const ModalPesquisa = () => {
         <div className="pesquisa__div">
           <Calendar value={dateRange} setValue={setDateRange} />
         </div>
-        <ButtonSubmit classes={"btn-pesquiar secondary-btn"}>Pesquisar</ButtonSubmit>
+        <button type="submit" className="btn btn-large btn-pesquisar secondary-btn">Pesquisar</button>
       </form>
     </div>
   );

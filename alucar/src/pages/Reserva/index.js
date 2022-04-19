@@ -17,7 +17,7 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 import {Box, Grid, TextField, Typography } from "@material-ui/core";
 import { SelecionarHorarios } from "../../components/Listas/ListaHorarios";
-import { Calendario } from "../../components/Calendarios";
+import { CalendarStatic } from "../../components/Calendarios";
 import { format } from "date-fns";
 
 export const Reserva = () => {
@@ -134,7 +134,7 @@ export const Reserva = () => {
                 </datalist>
               </Grid>
               <SelecionarHorarios />
-              <Calendario value={dateRange} setValue={setDateRange} />
+              <CalendarStatic value={dateRange} setValue={setDateRange} />
               <CardAdicionais
                 id={1}
                 title="Proteção Básica"

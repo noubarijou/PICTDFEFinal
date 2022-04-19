@@ -5,7 +5,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./style.scss";
+/* import "./style.scss"; */
 import { Link } from "react-router-dom";
 /* import AuthService from "../../services/authServices/auth.service";*/
 import api  from "../../services/api";

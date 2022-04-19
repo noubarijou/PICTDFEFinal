@@ -1,134 +1,137 @@
 @import "./assets/style/root.scss";
 
-body {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  scroll-behavior: smooth;
-  user-select: none;
-  color: $primary2;
+/* Estilo universal, para todos os elementos */
+*{
+    box-sizing: border-box;
+}
 
-  /* li {
-    list-style: none;
-  } */
-  
-  main{
-    margin-top: 116px;
-    min-height: calc(100vh - 180px);
-    margin-bottom: 10px;
-  }
-  
-  a{
-    text-decoration: none;
-    &:hover{
-      text-decoration: underline;
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    user-select: none;
+    color: $primary2;
+
+    main{
+        margin-top: 7.25rem;
+        min-height: calc(100vh - 11.25rem);
+        margin-bottom: 1rem;
     }
-  }
 
-  label, a, button{
-    cursor: pointer;
-  }
-}
+    a{
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 
-/* font-size */
-.btn-large{
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-}
+    label, a, button{
+        cursor: pointer;
+    }
 
-.btn-small{
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-}
+    .input, .textarea{
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        background-color: $white;
+        height: 2.5rem;
+        text-align: center;
+        &::placeholder{
+            color: $grey4;
+            line-height: 1.25rem;
+        }
+        &:focus{
+            border-color: $secundary3;
+            outline: none;
+        }
+    }
 
-.subtitle{
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 21px;
-};
+    /* Font style */
+    .btn-small{
+        font-weight: 500;
+        font-size: 0.875rem;
+        line-height: 1rem;
+    }
 
-.body-small{
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 14px;
-}
+    .btn-large{
+        font-weight: 700;
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
 
-.body-large{
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
+    .subtitle{
+        font-weight: 500;
+        font-size: 1.125rem;
+        line-height: 1.25rem;
+    }
+
+    .body-small{
+        font-weight: 300;
+        font-size: 0.75rem;
+        line-height: 0.875rem;
+    }
+
+    .body-large{
+        font-weight: 300;
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
+
+    /* Linha */
+    .linha{
+        width: 273px;
+        height: 2px;
+        background-color: $grey2;
+        margin: 12px auto;
+        text-align: center;
+    }
 }
 
 /* Buttons */
 .btn{
-  width: 201px;
-  height: 40px;
-  border-radius: 6px;
+    width: 201px;
+    height: 40px;
+    border-radius: 6px;
 }
 .primary-btn{
-  background-color: $emphasis;
-  color: $primary2;
-  border: none;
-  transition: ease .2s;
-  
-  &:hover{
-    background-color: $secundary1;
-  }
+    background-color: $emphasis;
+    color: $primary2;
+    border: none;
+    transition: ease .2s;
+    
+    &:hover{
+        background-color: $secundary1;
+    }
 }
 
 .secondary-btn{
-  background-color: $primary2;
-  color: $white;
-  border-color: transparent;
-  &:hover{
-    background-color: $emphasis;
-    border: 3px $grey4 solid;
-    color: $primary2;
-  }
+    background-color: $primary2;
+    color: $white;
+    border-color: transparent;
+    &:hover{
+        background-color: $emphasis;
+        border: 3px $grey4 solid;
+        color: $primary2;
+    }
 }
 
 .tertiary-btn{
-  background-color: $white;
-  color: $emphasis;
-  border: 3px solid $emphasis;
-  &:hover{
-    background-color: $secundary1;
-    color: $white ;
-  }
+    background-color: $white;
+    color: $emphasis;
+    border: 3px solid $emphasis;
+    &:hover{
+        background-color: $secundary1;
+        color: $white ;
+    }
 }
 
 .success-btn{
-  background-color: $green;
-  color: $primary2;
-  border: none;
-  transition: ease .2s;
-  &:hover{
-    background-color: $secundary3;
-  }
-}
-
-/* label, .error{
-  display: block;
-} */
-
-.input, .textarea{
-    border-radius: 0.5rem;
-    border: none; 
-    background-color: $white;
-    height: 2.5rem;
+    background-color: $green;
     color: $primary2;
     border: none;
-    text-align: center;
-    
-    &::placeholder{
-        color: $grey4;
-        line-height: 1.25rem;
-    }
-    &:focus{
-        border: none;
-        outline: none;
+    transition: ease .2s;
+    &:hover{
+        background-color: $secundary3;
     }
 }

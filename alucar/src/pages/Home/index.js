@@ -7,8 +7,6 @@ import { useAxios } from '../../hooks/useAxios';
 import { CardCarro } from '../../components/Cards/CardCarro';
 import { CardMontadora } from '../../components/Cards/CardMontadora';
 import { CardRegioes } from '../../components/Cards/CardRegioes';
-/* import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; */
 
 
 
@@ -17,14 +15,10 @@ export const Home = () => {
     const categorias = useAxios(`/categorias`);
 
     const modelos = useAxios(`/carro`);
-    /* const montadoras = useAxios(`/imagens`); */
-    /* const modelo = require("../../assets/detalhes.json");*/
     const montadoras = require("../../assets/jsons/montadora.json");
-    /* const regioes = require("../../assets/cidades.json"); */
 
     if (!categorias || !categorias.length) return null;
     if (!modelos || !modelos.length) return null;
-    /* if (!montadoras || !montadoras.length) return null; */
 
     return (
         <>

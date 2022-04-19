@@ -4,12 +4,10 @@
     width: 100%;
     text-align: center;
     background-color: $emphasis;
-    padding: 20px 0;
+    padding: 1.25rem 0;
 
     .pesquisa__form{
         text-align: left;
-        font-size: 14px;
-        line-height: 21px;
         display: flex;
         justify-content: center;
         .local__pesquisa{
@@ -48,7 +46,7 @@
 
 @media (min-width: $screen-lg-max) {
     .pesquisa__form{
-        align-items: flex-end;
+        align-items: center;
 
         .pesquisa__div{
             .local__pesquisa{

@@ -4,7 +4,8 @@ import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
 /* import AuthContext from "../../context/AuthProvider";
- */import './style.scss';
+ */
+/* import './style.scss'; */
 
 
 export const Login = () => {
