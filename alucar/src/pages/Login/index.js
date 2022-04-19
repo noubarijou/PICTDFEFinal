@@ -71,46 +71,48 @@ export const Login = () => {
       <Helmet>
         <title>Alucar | Entrar</title>
       </Helmet>
-      <p
-        ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
-      <h1>Entrar na conta</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          ref={emailRef}
-          autoComplete="off"
-          {...attributeObj}
-          required
-        />
-        <label htmlFor="senha">Senha</label>
-        <input
-          type="password"
-          id="senha"
-          onChange={(e) => setSenha(e.target.value)}
-          required
-          value={senha}
-        />
-        <button>Entrar</button>
-        <div className="persistCheck">
+      <>
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
+        <h1>Entrar na conta</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email</label>
           <input
-            type="checkbox"
-            id="persist"
-            onChange={toggleCheck}
-            checked={check}
+            type="text"
+            id="email"
+            ref={emailRef}
+            autoComplete="off"
+            {...attributeObj}
+            required
           />
-          <label htmlFor="persist">Manter-me conectado</label>
-        </div>
-      </form>
-      <p>
-        Não tem uma conta? <Link to="/criarconta">Crie uma conta.</Link>
-      </p>
+          <label htmlFor="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            onChange={(e) => setSenha(e.target.value)}
+            required
+            value={senha}
+          />
+          <button>Entrar</button>
+          <div className="persistCheck">
+            <input
+              type="checkbox"
+              id="persist"
+              onChange={toggleCheck}
+              checked={check}
+            />
+            <label htmlFor="persist">Manter-me conectado</label>
+          </div>
+        </form>
+        <p>
+          Não tem uma conta? <Link to="/criarconta">Crie uma conta.</Link>
+        </p>
+      </>
     </>
   );
 };

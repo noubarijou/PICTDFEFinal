@@ -1,22 +1,23 @@
 import React from 'react'
-import {Helmet} from 'react-helmet-async'
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 
 export const ReservaFeita = () => {
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Alucar | Reserva feita</title>
-    </Helmet>
-    <main>
+      </Helmet>
+      <>
         <div><img src="../../public/carro-logo.png" alt="logo" /></div>
         <div>
-            <p>Reserva efetuada com sucesso!</p>
-            <div>Card da reserva feita</div>
-        </div><Link to="/">
-        <button>Voltar</button>
+          <p>Reserva efetuada com sucesso!</p>
+          <div>Card da reserva feita</div>
+        </div>
+        <Link to="/">
+          <button>Voltar</button>
         </Link>
-    </main>
+      </>
     </>
   )
 }

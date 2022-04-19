@@ -18,39 +18,41 @@ export const MinhasReservas = () => {
       <Helmet>
         <title>Alucar | Minhas Reservas</title>
       </Helmet>
-      <Typography variant="h6" align="center" margin="dense">
-        Minhas Reservas
-      </Typography>
-      {reserva ? (
-        <Box p={2}>
-          <Grid container spacing={3}>
-            {pedidos.map(pedido => (
-              <>
-                <Grid item xs={12} sm={6}>
-                  <Paper >
-                    <Box p={2} elevation={4}>
-                      <Typography variant="h6" align="center" margin="dense">
-                        {pedido.carro.modelo}
-                      </Typography>
-                      <Box>
-                        <img src={pedido.carro.imagens.urlImagem} alt={pedido.carro.modelo}></img>
+      <>
+        <Typography variant="h6" align="center" margin="dense">
+          Minhas Reservas
+        </Typography>
+        {reserva ? (
+          <Box p={2}>
+            <Grid container spacing={3}>
+              {pedidos.map(pedido => (
+                <>
+                  <Grid item xs={12} sm={6}>
+                    <Paper >
+                      <Box p={2} elevation={4}>
+                        <Typography variant="h6" align="center" margin="dense">
+                          {pedido.carro.modelo}
+                        </Typography>
+                        <Box>
+                          <img src={pedido.carro.imagens.urlImagem} alt={pedido.carro.modelo}></img>
+                        </Box>
+                        <Typography variant="inherit" color="textSecondary">
+                          R$ {pedido.carro.categorias.preco},00
+                        </Typography>
                       </Box>
-                      <Typography variant="inherit" color="textSecondary">
-                        R$ {pedido.carro.categorias.preco},00
-                      </Typography>
-                    </Box>
-                  </Paper>
-                </Grid>
-              </>
-            ))}
-          </Grid>
-        </Box>
-      ) : (
-        <p className="btn-large">Você ainda não fez nenhuma reserva</p>
-      )}
-      <Link to={`/minhaconta`}>
-        <Button variant="contained">Voltar</Button>
-      </Link>
+                    </Paper>
+                  </Grid>
+                </>
+              ))}
+            </Grid>
+          </Box>
+        ) : (
+          <p className="btn-large">Você ainda não fez nenhuma reserva</p>
+        )}
+        <Link to={`/minhaconta`}>
+          <Button variant="contained">Voltar</Button>
+        </Link>
+      </>
     </>
   );
 };

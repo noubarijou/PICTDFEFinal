@@ -99,14 +99,14 @@ export const CriarConta = () => {
       <title>Alucar | Criar Conta</title>
     </Helmet>
       {success ? (
-        <main>
+        <>
           <h1>Conta criada com sucesso</h1>
           <p>
             <Link to="/login">Entrar</Link>
           </p>
-        </main>
+          </>
       ) : (
-        <main>
+        <>
           <p
             ref={errRef}
             className={errMsg ? "errmsg" : "offscreen"}
@@ -229,7 +229,7 @@ export const CriarConta = () => {
               <Link to="/login"> Entre aqui</Link>
             </span>
           </p>
-        </main>
+        </>
       )}
     </>
   );

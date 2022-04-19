@@ -9,11 +9,11 @@ export const Unauthorized = () => {
     <Helmet>
         <title>Alucar | Não autorizado</title>
     </Helmet>
-    <main>
+    <>
         <h1>Acesso não autorizado</h1>
         <p>Você não tem permissão para acessar esta página.</p>
         <button onClick={goBack}>Voltar</button>
-    </main>
+    </>
     </>
   )
 }

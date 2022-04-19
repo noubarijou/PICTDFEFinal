@@ -25,7 +25,7 @@ export const Home = () => {
             <Helmet>
                 <title>AluCar | Home</title>
             </Helmet>
-            <main>
+            <>
                 <ModalPesquisa />
                 <article className='container__categoria' id='container__categoria'>
                     <h2>Principais Categorias</h2>
@@ -75,7 +75,7 @@ export const Home = () => {
                         <CardMontadora slides={montadoras} />
                     </div>
                 </article>
-            </main>
+            </>
 
         </>
     )
