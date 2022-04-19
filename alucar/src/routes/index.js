@@ -19,13 +19,8 @@ import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
 import { Admin } from "../pages/Admin";
 import { Unauthorized } from "../pages/Unauthorized";
-<<<<<<< Updated upstream
-import { RequireAuth } from '../services/authServices/RequireAuth';
-
-=======
 /* import {RequireAuth} from '../services/authServices/RequireAuth';*/
 /* import {PersistLogin} from '../services/authServices/PersistLogin'; */
->>>>>>> Stashed changes
 /* import * as serviceWorker from './serviceWorker'; */
 const ROLES = {
     'User': "CLIENTE",
@@ -53,24 +48,17 @@ const RouteList = () => {
                         <Route path="/unauthorized" element={<Unauthorized />} />
                         <Route path="*" element={<NotFound />} />
                         {/* Rotas protegidas por autenticação */}
-<<<<<<< Updated upstream
-                        {/* <Route element={<RequireAuth allowedRoles={{}}/>} > */}
-                        <Route path="/minhaconta" element={<MinhaConta />} />
-                        <Route path="/minhasreservas" element={<MinhasReservas />} />
-                        <Route path="/reserva/:detalhesId" element={<Reserva />} />
-                        <Route path="/admin" element={<Admin />} />
-                        {/* </Route> */}
-=======
                         {/* <Route element={<PersistLogin />}> */}
-{/*                         <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    <Route path="/minhaconta" element={<MinhaConta />} />
-                        <Route path="/minhasreservas" element={<MinhasReservas />} />
-                        <Route path="/reserva/:detalhesId" element={<Reserva />} />
-                        {/*                     </Route>    */}                        
-{/*                     <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    <Route path="/minhaconta" element={<MinhaConta />} />
-                        <Route path="/admin" element={<Admin />} />
-                        {/*                     </Route>    */}
-                        {/*                     </Route>    */}  
->>>>>>> Stashed changes
+{/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    
+                                    <Route path="/minhaconta" element={<MinhaConta />} />
+                                    <Route path="/minhasreservas" element={<MinhasReservas />} />
+                                    <Route path="/reserva/:detalhesId" element={<Reserva />} />
+                        {/*     </Route>    */}                        
+{/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}                    
+                                    <Route path="/minhaconta" element={<MinhaConta />} />
+                                    <Route path="/admin" element={<Admin />} />
+                        {/*     </Route>    */}
+                        {/*     </Route>    */}  
                         {/* Não esquecer de tirar depois */}
                         <Route path="/teste" element={<Teste />} />
                         <Route path="sandbox" element={<SandBox />} />

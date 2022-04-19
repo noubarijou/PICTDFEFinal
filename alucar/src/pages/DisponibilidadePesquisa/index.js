@@ -11,8 +11,8 @@ import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 /* Font awesome */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort, faFilter } from '@fortawesome/free-solid-svg-icons';
-import { CardFiltros } from '../../components/Cards/CardFiltros';
-import { CardOrdenar } from '../../components/Cards/CardOrdenar';
+import { CardFiltros } from '../../components/Filtros/CardFiltros';
+import { CardOrdenar } from '../../components/Filtros/CardOrdenar';
 
 export const DisponibilidadePesquisa = () => {
 

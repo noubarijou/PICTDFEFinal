@@ -5,8 +5,8 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "../assets/disponibilidade.scss";
 import { CardDisponibilidade } from "../../components/Cards/CardDisponibilidade";
-import { CardFiltros } from "../../components/Cards/CardFiltros/";
-import { CardOrdenar } from "../../components/Cards/CardOrdenar";
+import { CardFiltros } from "../../components/Filtros/CardFiltros/";
+import { CardOrdenar } from "../../components/Filtros/CardOrdenar";
 import { ModalFiltros } from "../../components/Modal/ModalFiltros";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 /* Font awesome */
