@@ -3,9 +3,9 @@ import { useAxios } from "../../../hooks/useAxios";
 import "./style.scss";
 
 export const CardRegioes = ({ imagem, regiaoBR }) => {
-    const regioesJson = useAxios(`/cidades`);
-
-    const regioesBR = regioesJson.filter((regiaoPais, index) => (regiaoPais.regiao === regiaoBR))
+    const regioes = useAxios(`/cidades`);
+    
+    const regioesBR = regioes.filter((regiaoPais, index) => (regiaoPais.regiao === regiaoBR))
 
     return (
         <>
@@ -20,8 +20,8 @@ export const CardRegioes = ({ imagem, regiaoBR }) => {
                         {
                             regioesBR.map((regiao) => {
                                 return (
-                                    <Link to={`/disponibilidade`} key={regiao.id}>
-                                        <li className="btn-small">{regiao.cidade}</li>
+                                    <Link to={`/disponibilidade`} onClick={()=>{localStorage.setItem("dadosCidade", JSON.stringify(regiao.cidadesNome + ", " + regiao.estado))}} key={regiao.cidadesId}>
+                                        <li className="btn-small">{`${regiao.cidadesNome}, ${regiao.estado}`}</li>
                                     </Link>
                                 )
                             })
