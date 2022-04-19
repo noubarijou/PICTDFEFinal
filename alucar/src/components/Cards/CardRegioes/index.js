@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAxios } from "../../../hooks/useAxios";
 import "./style.scss";
 
 export const CardRegioes = ({ imagem, regiaoBR }) => {
-    const regioesJson = require("../../../assets/cidades.json");
+    const regioesJson = useAxios(`/cidades`);
 
     const regioesBR = regioesJson.filter((regiaoPais, index) => (regiaoPais.regiao === regiaoBR))
 

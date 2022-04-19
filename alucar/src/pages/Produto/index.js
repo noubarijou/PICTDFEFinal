@@ -22,7 +22,7 @@ export const Produto = () => {
   /* verifica o tamanho da tela */
   const { width } = useWindowDimensions();
   /* AXIOS */
-  const regras = require("../../assets/regras.json");
+  const regras = require("../../assets/jsons/regras.json");
   const detalhes = useAxios(`/carro`);
 
   /* Variável para guardar as datas recebidas */

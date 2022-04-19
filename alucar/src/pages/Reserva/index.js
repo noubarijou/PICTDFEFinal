@@ -37,7 +37,7 @@ export const Reserva = () => {
   const navigate = useNavigate();
   const cidades = useAxios(`/cidades`);
   const detalhes = useAxios(`/carro`);
-  const regras = require("../../assets/regras.json");
+  const regras = require("../../assets/jsons/regras.json");
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   const [cidade, setCidade] = useState();

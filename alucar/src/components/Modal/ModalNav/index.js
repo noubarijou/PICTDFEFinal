@@ -5,7 +5,7 @@ import { faFacebook, faTwitter, faLinkedin, faInstagram } from "@fortawesome/fre
 
 export const ModalNav = ({ children }) => {
 
-  const dados = require("../../../assets/user.json");
+  const dados = require("../../../assets/jsons/user.json");
   const [isSubmitSuccess, setIsSubmitSuccess] = useState();
   useEffect(() => {
     const loggedInUser = localStorage.getItem("credenciais");

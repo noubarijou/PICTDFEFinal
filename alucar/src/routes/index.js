@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { HelmetProvider } from 'react-helmet-async'
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -19,7 +19,7 @@ import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
 import { Admin } from "../pages/Admin";
 import { Unauthorized } from "../pages/Unauthorized";
-import {RequireAuth} from '../services/authServices/RequireAuth';
+import { RequireAuth } from '../services/authServices/RequireAuth';
 
 /* import * as serviceWorker from './serviceWorker'; */
 
@@ -43,13 +43,13 @@ const RouteList = () => {
                         <Route path="/unauthorized" element={<Unauthorized />} />
                         <Route path="*" element={<NotFound />} />
                         {/* Rotas protegidas por autenticação */}
-{/*                         <Route element={<RequireAuth allowedRoles={{}}/>} >
- */}                            <Route path="/minhaconta" element={<MinhaConta />} />
-                            <Route path="/minhasreservas" element={<MinhasReservas />} />
-                            <Route path="/reserva/:detalhesId" element={<Reserva />} />
-                            <Route path="/admin" element={<Admin />} />
-{/*                         </Route>
- */}                        {/* Não esquecer de tirar depois */}
+                        {/* <Route element={<RequireAuth allowedRoles={{}}/>} > */}
+                        <Route path="/minhaconta" element={<MinhaConta />} />
+                        <Route path="/minhasreservas" element={<MinhasReservas />} />
+                        <Route path="/reserva/:detalhesId" element={<Reserva />} />
+                        <Route path="/admin" element={<Admin />} />
+                        {/* </Route> */}
+                        {/* Não esquecer de tirar depois */}
                         <Route path="/teste" element={<Teste />} />
                         <Route path="sandbox" element={<SandBox />} />
                     </Routes>

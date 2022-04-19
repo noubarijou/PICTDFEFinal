@@ -19,7 +19,7 @@ export const Home = () => {
     const modelos = useAxios(`/carro`);
     /* const montadoras = useAxios(`/imagens`); */
     /* const modelo = require("../../assets/detalhes.json");*/
-    const montadoras = require("../../assets/montadora.json");
+    const montadoras = require("../../assets/jsons/montadora.json");
     /* const regioes = require("../../assets/cidades.json"); */
 
     if (!categorias || !categorias.length) return null;
