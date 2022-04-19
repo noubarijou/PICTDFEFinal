@@ -3,13 +3,14 @@ import {useState, useEffect} from 'react';
 import useRefreshToken from '../../hooks/useRefreshToken';
 import useAuth from '../../hooks/useAuth';
 
-const PersistLogin = () => {
+export const PersistLogin = () => {
     const [isLoading, setIsLoading] = useState(true);
     const refresh = useRefreshToken();
-    const {auth} = useAuth();
+    const {auth, persist} = useAuth();
 
 
     useEffect(() => {
+        let isMounted = true;
         const verifyRefreshtoken = async () => {
         try{
             await refresh();
@@ -17,10 +18,10 @@ const PersistLogin = () => {
             console.error(err);
         }
         finally {
-            setIsLoading(false);
+            isMounted && setIsLoading(false);
         }
     }
-    !auth?.accessToken ? verifyRefreshtoken() : setIsLoading(false);
+    !auth?.accessToken && persist ? verifyRefreshtoken() : setIsLoading(false);
 }, []);
         return (
             <>

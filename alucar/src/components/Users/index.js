@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivate';
 import {useNavigate, useLocation} from 'react-router-dom'
+/* import api from '../../services/api';*/
 
 export const Users = () => {
     const [users, setUsers] = useState();
@@ -38,7 +39,7 @@ export const Users = () => {
                 users?.length
                 ? (
                     <ul>
-                        {users.map((user, i) => <li key={i}>{user?.username}</li>)}
+                        {users.map((user, i) => <li key={i}>{user?.clienteNome}</li>)}
                     </ul>
                 ) : <p>Sem usuários para mostrar</p>
             }

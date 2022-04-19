@@ -8,10 +8,11 @@ import './style.scss';
 
 
 export const Login = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
+  
   const from = location.state?.from?.pathname || "/";
   
   const emailRef = useRef();
@@ -19,6 +20,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     emailRef.current.focus();
@@ -39,13 +41,12 @@ export const Login = () => {
       );
       console.log(response);
       const accessToken = response?.data;
-      const roles = response?.roles;
-      setAuth({ email, senha, roles, accessToken });
+/*       const roles = response?.data.funcao;
+ */   setAuth({ email, senha, accessToken });
       setEmail("");
       setSenha("");
       navigate(from, {replace: true});
-      console.log(accessToken);
-      console.log(roles);
+      setSuccess(true);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Sem resposta do servidor");
@@ -58,6 +59,7 @@ export const Login = () => {
       }
       errRef.current.focus();
     }
+    console.log(success);
   };
 
   return (

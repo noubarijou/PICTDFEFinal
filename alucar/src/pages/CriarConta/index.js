@@ -10,12 +10,15 @@ import { Link } from "react-router-dom";
 /* import AuthService from "../../services/authServices/auth.service";*/
 import api  from "../../services/api";
 import { Helmet } from "react-helmet-async";
+
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 /* const NAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;*/
 const SENHA_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const CriarConta = () => {
+  
+
   const emailRef = useRef();
   const errRef = useRef();
 
@@ -68,10 +71,12 @@ export const CriarConta = () => {
         }),
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: false,
+          
         }
       );
       console.log(response)
+      const roles = response?.data.funcao;
+      console.log(roles);
       setSuccess(true);
       setEmail('');
       setSenha('');
@@ -86,7 +91,6 @@ export const CriarConta = () => {
       }
       errRef.current.focus();
     }
-    console.log(success);
   };
 
   return (
