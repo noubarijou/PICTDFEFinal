@@ -22,13 +22,19 @@ export const DisponibilidadePesquisa = () => {
     const detalhes = useAxios(`/carro`);
 
     useEffect(() => {
-        setDados({
-            dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")),
-            dadosRange: JSON.parse(localStorage.getItem("dadosRange")),
-            dadosStartDate: format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy"),
-            dadosEndDate: format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy")
-        })
-    }, [])
+        if (localStorage.getItem("dadosCidade")) {
+            setDados({ dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")) })
+        }
+        if (localStorage.getItem("dadosRange")) {
+            dados.push({ dadosRange: JSON.parse(localStorage.getItem("dadosRange")) })
+        }
+        if (localStorage.getItem("dadosStartDate")) {
+            dados.push({ dadosStartDate: format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy") })
+        }
+        if (localStorage.getItem("dadosEndDate")) {
+            dados.push({ dadosEndDate: format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy") })
+        }
+    }, [dados])
 
     return (
         <>
@@ -40,7 +46,7 @@ export const DisponibilidadePesquisa = () => {
                     width < 992 ?
                         <>
                             <p className="filtro__cidade__periodo btn-small">
-                                {`${dados.dadosCidade} (${dados.dadosStartDate} -> ${dados.dadosEndDate})`}
+                                {`${dados.dadosCidade}`} {(dados.dadosStartDate || dados.dadosEndDate) ? (` (${dados.dadosStartDate} -> ${dados.dadosEndDate})`) : (null)}
                             </p>
                             <div className="disponibilidade__filtros">
                                 <ModalFiltros
