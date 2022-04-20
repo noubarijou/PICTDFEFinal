@@ -40,7 +40,7 @@ export const DisponibilidadeCategoria = () => {
     }
 
     window.scrollTo(0, 0);
-  }, [detalhesId, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro, ordenar]);
+  }, [detalhesId]);
 
   return (
     <>

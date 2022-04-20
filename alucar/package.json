@@ -34,7 +34,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "react-validation": "^3.0.7",
-    "sass": "^1.49.11",
+    "sass": "^1.50.1",
     "sweetalert2": "^11.4.4",
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4",
@@ -64,8 +64,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "node-sass": "^7.0.1"
   }
 }

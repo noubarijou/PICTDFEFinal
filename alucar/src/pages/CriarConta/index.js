@@ -1,14 +1,10 @@
+import "../assets/form.scss";
 import { useState, useRef, useEffect } from "react";
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-/* import "./style.scss";
- */import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 /* import AuthService from "../../services/authServices/auth.service";*/
-import api  from "../../services/api";
+import api from "../../services/api";
 import { Helmet } from "react-helmet-async";
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -24,15 +20,12 @@ export const CriarConta = () => {
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
-  const [emailFocus, setEmailFocus] = useState(false);
 
   const [senha, setSenha] = useState("");
   const [validSenha, setValidSenha] = useState(false);
-  const [senhaFocus, setSenhaFocus] = useState(false);
 
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [validConfirmaSenha, setValidConfirmaSenha] = useState(false);
-  const [confirmaSenhaFocus, setConfirmaSenhaFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -71,7 +64,7 @@ export const CriarConta = () => {
         }),
         {
           headers: { "Content-Type": "application/json" },
-          
+
         }
       );
       console.log(response)
@@ -82,9 +75,9 @@ export const CriarConta = () => {
       setSenha('');
       setConfirmaSenha('');
     } catch (err) {
-      if(!err?.response) {
+      if (!err?.response) {
         setErrMsg("Erro de conexão com o servidor");
-      }else if (err.response.status === 409) {
+      } else if (err.response.status === 409) {
         setErrMsg("Email já cadastrado");
       } else {
         setErrMsg("Infelizmente, você não pôde se registrar. Por favor, tente novamente mais tarde.");
@@ -95,142 +88,109 @@ export const CriarConta = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Alucar | Criar Conta</title>
-    </Helmet>
+      <Helmet>
+        <title>Alucar | Criar Conta</title>
+      </Helmet>
       {success ? (
-        <>
-        <img src={sucesso} alt="Sucesso" className="sucesso"/>
-        <h1 className="sucesso-msg">Cadastro realizado com sucesso!</h1>
-          <p>
-            <Link to="/login">Entrar</Link>
-          </p>
-          </>
+        <article className="cadastro__container">
+          <figure>
+            <img src={sucesso} alt="Sucesso" className="sucesso" />
+          </figure>
+          <h1 className="form__title">Cadastro realizado com sucesso!</h1>
+          <Link to="/login" className="btn-cadastro btn-large primary-btn">Entrar</Link>
+        </article>
       ) : (
-        <>
+        <article className="cadastro__container">
           <p
             ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
+            className={`btn-large ${errMsg ? "errmsg" : "offscreen"}`}
             aria-live="assertive"
           >
             {errMsg}
           </p>
-          <h1>Crise sua conta</h1>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email">
+          <h1 className="form__title">Crie sua conta</h1>
+          <form className="cadastro__form" onSubmit={handleSubmit}>
+            <label htmlFor="email" className="form__label">
               Email
-              <span className={validEmail ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validEmail || !email ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validEmail || !email ? "hide" : "invalid"} />
             </label>
             <input
               type="text"
               id="email"
+              className="input"
               ref={emailRef}
               autoComplete="off"
               onChange={(e) => setEmail(e.target.value)}
               required
               aria-invalid={validEmail ? "false" : "true"}
               aria-describedby="uidnote"
-              onFocus={() => setEmailFocus(true)}
-              onBlur={() => setEmailFocus(false)}
             />
             <p
               id="uidnote"
-              className={
-                emailFocus && email && !validEmail
-                  ? "instructions"
-                  : "offscreen"
-              }
+              className={`subtitle ${email && !validEmail
+                ? "instructions" : "offscreen"
+                }`}
             >
               <FontAwesomeIcon icon={faInfoCircle} />
               Email inválido - Ex: email@email.com
             </p>
-            <label htmlFor="senha">
+            <label htmlFor="senha" className="form__label">
               Senha
-              <span className={validSenha ? "valid" : "hide"}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span className={validSenha || !senha ? "hide" : "invalid"}>
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <FontAwesomeIcon icon={faCheck} className={validSenha ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validSenha || !senha ? "hide" : "invalid"} />
             </label>
             <input
               type="password"
               id="senha"
+              className="input"
               onChange={(e) => setSenha(e.target.value)}
               required
               aria-invalid={validSenha ? "false" : "true"}
               aria-describedby="pwdnote"
-              onFocus={() => setSenhaFocus(true)}
-              onBlur={() => setSenhaFocus(false)}
             />
             <p
               id="pwdnote"
-              className={
-                senhaFocus && !validSenha ? "instructions" : "offscreen"
-              }
+              className={`subtitle ${senha && !validSenha
+                ? "instructions" : "offscreen"}
+              `}
             >
               <FontAwesomeIcon icon={faInfoCircle} />
               Senha deve conter mínimo de 8 dídgitos, 1 letra maiúscula, 1 letra
               minúscula, 1 número e 1 caractere especial (!@#$%)
             </p>
-            <label htmlFor="confirmaSenha">
+            <label htmlFor="confirmaSenha" className="form__label">
               Confirmar senha
-              <span
-                className={
-                  validConfirmaSenha && confirmaSenha ? "valid" : "hide"
-                }
-              >
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span
-                className={
-                  validConfirmaSenha || !confirmaSenha ? "hide" : "invalid"
-                }
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <FontAwesomeIcon icon={faCheck} className={validConfirmaSenha && confirmaSenha ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validConfirmaSenha || !confirmaSenha ? "hide" : "invalid"} />
             </label>
             <input
               type="password"
               id="confirmaSenha"
+              className="input"
               onChange={(e) => setConfirmaSenha(e.target.value)}
               required
               aria-invalid={validConfirmaSenha ? "false" : "true"}
               aria-describedby="confirmpwdnote"
-              onFocus={() => setConfirmaSenhaFocus(true)}
-              onBlur={() => setConfirmaSenhaFocus(false)}
             />
             <p
               id="confirmpwdnote"
-              className={
-                confirmaSenhaFocus && !validConfirmaSenha
-                  ? "instructions"
-                  : "offscreen"
-              }
+              className={`subtitle ${confirmaSenha && !validConfirmaSenha
+                ? "instructions" : "offscreen"}
+              `}
             >
-              <FontAwesomeIcon icon={faInfoCircle} />
+              <FontAwesomeIcon icon={faInfoCircle} className="form__icon" />
               Os campos de senha devem ser iguais
             </p>
-            <button
-              disabled={
-                !validEmail || !validSenha || !validConfirmaSenha ? true : false
-              }
-            >
+            <button className="btn primary-btn btn-large">
               Criar conta
             </button>
           </form>
-          <p>
+          <p className="subtitle">
             Já tem uma conta?
-            <span>
-              <Link to="/login"> Entre aqui</Link>
-            </span>
+            <Link to="/login" className="span subtitle">Acesse sua conta</Link>
           </p>
-        </>
+        </article>
       )}
     </>
   );
