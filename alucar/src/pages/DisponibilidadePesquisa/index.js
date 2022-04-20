@@ -26,6 +26,17 @@ export const DisponibilidadePesquisa = () => {
     const detalhes = useAxios(`/carro`);
 
     useEffect(() => {
+
+        if (window.location.pathname.includes('disponibilidade')) {
+            portasFiltro('')
+            assentosFiltro('')
+            arFiltro('')
+            combustivelFiltro('')
+            cambioFiltro('')
+            motorFiltro('')
+            ordenar('')
+        }
+
         if (localStorage.getItem("dadosCidade")) {
             setDados({ dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")) })
         }
