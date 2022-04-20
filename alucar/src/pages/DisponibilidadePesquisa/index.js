@@ -20,7 +20,6 @@ export const DisponibilidadePesquisa = () => {
 
     const { filtro, portasFiltro, assentosFiltro, arFiltro, combustivelFiltro, cambioFiltro, motorFiltro, ordenar } = useContext(FiltroContext)
 
-
     const { width } = useWindowDimensions();
     const [dados, setDados] = useState([]);
     const detalhes = useAxios(`/carro`);
@@ -37,19 +36,16 @@ export const DisponibilidadePesquisa = () => {
             ordenar('')
         }
 
-        if (localStorage.getItem("dadosCidade")) {
-            setDados({ dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")) })
-        }
-        if (localStorage.getItem("dadosRange")) {
-            dados.push({ dadosRange: JSON.parse(localStorage.getItem("dadosRange")) })
-        }
-        if (localStorage.getItem("dadosStartDate")) {
-            dados.push({ dadosStartDate: format(new Date(JSON.parse(localStorage.getItem("dadosStartDate"))), "dd/MM/yyyy") })
-        }
-        if (localStorage.getItem("dadosEndDate")) {
-            dados.push({ dadosEndDate: format(new Date(JSON.parse(localStorage.getItem("dadosEndDate"))), "dd/MM/yyyy") })
-        }
-    }, [dados])
+        setDados({
+            dadosCidade: JSON.parse(localStorage.getItem("dadosCidade")),
+            dadosRange: JSON.parse(localStorage.getItem("dadosRange")),
+            dadosStartDate: JSON.parse(localStorage.getItem("dadosStartDate")),
+            dadosEndDate: JSON.parse(localStorage.getItem("dadosEndDate"))
+        })
+
+    }, [])
+    
+    console.log(dados)
 
     return (
         <>
@@ -61,7 +57,7 @@ export const DisponibilidadePesquisa = () => {
                     width < 992 ?
                         <>
                             <p className="filtro__cidade__periodo btn-small">
-                                {`${dados.dadosCidade}`} {(dados.dadosStartDate || dados.dadosEndDate) ? (` (${dados.dadosStartDate} -> ${dados.dadosEndDate})`) : (null)}
+                                {`${dados.dadosCidade}`} {(dados.dadosStartDate && dados.dadosEndDate) ? (` (${format(new Date(dados.dadosStartDate), "dd/MM/yyyy")} -> ${format(new Date(dados.dadosEndDate), "dd/MM/yyyy")})`) : (null)}
                             </p>
                             <div className="disponibilidade__filtros">
                                 <ModalFiltros
