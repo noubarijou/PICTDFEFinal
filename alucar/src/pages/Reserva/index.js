@@ -95,11 +95,11 @@ export const Reserva = () => {
 
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
   const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
-  const handleClick = (e) => {
+ /*  const handleClick = (e) => {
     e.preventDefault();
     setSuccess(true);
 
-  }
+  } */
   return (
     <>
       <Helmet>

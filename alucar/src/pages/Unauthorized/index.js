@@ -1,4 +1,4 @@
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import { Helmet } from 'react-helmet-async'
 
 export const Unauthorized = () => {
@@ -11,7 +11,7 @@ export const Unauthorized = () => {
     </Helmet>
     <>
         <h1>Acesso não autorizado</h1>
-        <p>Você não tem permissão para acessar esta página.</p>
+        <p>Você não tem permissão para acessar esta página ou é neccessário fazer<Link to="/login"> login.</Link></p>
         <button onClick={goBack}>Voltar</button>
     </>
     </>

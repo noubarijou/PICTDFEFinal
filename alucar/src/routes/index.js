@@ -19,6 +19,7 @@ import { Teste } from '../pages/Teste';
 import { SandBox } from "../pages/SandBox";
 import { Admin } from "../pages/Admin";
 import { Unauthorized } from "../pages/Unauthorized";
+import { FormAddProd } from "../pages/Admin/components/Forms/FormAddProd";
 /* import {RequireAuth} from '../services/authServices/RequireAuth';*/
 /* import {PersistLogin} from '../services/authServices/PersistLogin'; */
 /* import * as serviceWorker from './serviceWorker'; */
@@ -58,6 +59,7 @@ const RouteList = () => {
                             {/*                             <Route element={<RequireAuth allowedRoles={{}}/>} > */}
                             <Route path="/minhaconta" element={<MinhaConta />} />
                             <Route path="/admin" element={<Admin />} />
+                            <Route path="admin/addprod" element={<FormAddProd />} />
                             {/*     </Route>    */}
                             {/*     </Route>    */}
                             {/* Não esquecer de tirar depois */}

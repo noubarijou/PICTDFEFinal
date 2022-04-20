@@ -6,6 +6,7 @@ import { FormMngUsers } from "./components/Forms/FormMngUsers";
 import { FormModProd } from "./components/Forms/FormModProd";
 import { ModalAdmin } from "../../components/Modal/ModalAdmin";
 import { Users } from './components/Users';
+import {Link} from 'react-router-dom';
 
 export const Admin = () => {
   return (
@@ -20,16 +21,20 @@ export const Admin = () => {
 
       <Grid container spacing={3} direction="column" alignItems="center">
         <Grid item xs>
-          <ModalAdmin conteudoForm={"Adicionar Produto"}><FormAddProd /></ModalAdmin>
+          <Link to="/admin/addprod"><button>Adicionar Produto</button></Link>
+          {/* <ModalAdmin conteudoForm={"Adicionar Produto"}><FormAddProd /></ModalAdmin> */}
         </Grid>
         <Grid item xs>
-          <ModalAdmin conteudoForm={"Modificar Produto"}><FormModProd /></ModalAdmin>
+        <Link to="/admin/modprod"><button>Modificar Produto</button></Link>
+          {/* <ModalAdmin conteudoForm={"Modificar Produto"}><FormModProd /></ModalAdmin> */}
         </Grid>
         <Grid item xs>
-          <ModalAdmin conteudoForm={"Remover Produto"}><FormDelProd /></ModalAdmin>
+        <Link to="/admin/delprod"><button>Remover Produto</button></Link>
+          {/* <ModalAdmin conteudoForm={"Remover Produto"}><FormDelProd /></ModalAdmin> */}
         </Grid>
         <Grid item xs>
-          <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers /></ModalAdmin>
+        <Link to="/admin/mngusers"><button>Gerenciar Usuarios</button></Link>
+          {/* <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers /></ModalAdmin> */}
         </Grid>
       </Grid>
     </>

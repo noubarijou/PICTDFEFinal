@@ -10,7 +10,7 @@ import { useToggle } from "../../hooks/useToggle";
 
 
 export const Login = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ export const Login = () => {
       const accessToken = response?.data;
       // const roles = response?.data.funcao;   
       setAuth({ email, senha, accessToken });
-      // setEmail("");
+      (accessToken) ? localStorage.setItem("logado", true) : localStorage.setItem("logado", false);
       resetEmail();
       setSenha("");
       navigate(from, { replace: true });
@@ -57,13 +57,14 @@ export const Login = () => {
         setErrMsg("Email ou senha não informados");
       } else if (err.response?.status === 401) {
         setErrMsg("Email ou senha incorretos");
+      } else if (err.response?.status === 403) {
+        setErrMsg("Email ou senha incorretos");
       } else {
         setErrMsg("Infelizmente, você não pôde efetuar login. Por favor, tente novamente mais tarde.");
       }
       errRef.current.focus();
     }
-    setSuccess(true);
-    console.log(success);
+    // setSuccess(true);
   };
 
   return (

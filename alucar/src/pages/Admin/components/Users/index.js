@@ -24,16 +24,16 @@ export const Users = () => {
                 navigate('/login', {state: {from: location}, replace: true})
             }
         }
-        getUsers();
+        //getUsers();
         return () => {
             isMounted = false;
             controller.abort();
         }
-    }, [axiosPrivate, navigate, location]);
+    }, []);
 
   return (
     <>
-        <main>
+       {/*  <main>
             <h2>Users List</h2>
             {
                 users?.length
@@ -43,7 +43,7 @@ export const Users = () => {
                     </ul>
                 ) : <p>Sem usuários para mostrar</p>
             }
-        </main>
+        </main> */}
     </>
   )
 }

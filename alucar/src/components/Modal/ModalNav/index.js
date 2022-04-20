@@ -9,6 +9,8 @@ import useAuth from "../../../hooks/useAuth";
 export const ModalNav = ({ children }) => {
   const { auth, setAuth } = useAuth();
   const loggedInUser = auth?.accessToken;
+  const userId = auth?.email;
+  console.log(userId);
 
   const navigate = useNavigate();
   const logout = useLogout();
