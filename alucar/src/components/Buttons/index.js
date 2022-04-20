@@ -28,6 +28,26 @@ export const ButtonToClick = ({ children, urlTo, classes }) => {
     <button className={`btn btn-large ${classes}`} onClick={((e)=>{Click(e)})}>{children}</button>
   )
 }
+export const ButtonToOrder = ({ children, urlTo, classes }) => {
+  const navigation = useNavigate();
+  const [ navigate, setNavigate] = useState();
+  const [success, setSuccess] = useState();
+
+  
+  useEffect(()=>{
+    setNavigate(urlTo)
+  },[urlTo])
+  
+  const Click = (e) => {
+    e.preventDefault();
+    navigation(navigate);
+    setSuccess(true);
+  }
+
+  return (
+    <button className={`btn btn-large ${classes}`} onClick={((e)=>{Click(e)})}>{children}</button>
+  )
+}
 
 /* NÃO TESTADO AINDA */
 /* Abrir e fechar modal nas páginas, sem submit (preventDefault) */

@@ -10,7 +10,7 @@ import { useToggle } from "../../hooks/useToggle";
 
 
 export const Login = () => {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,6 +46,7 @@ export const Login = () => {
       const accessToken = response?.data;
       // const roles = response?.data.funcao;   
       setAuth({ email, senha, accessToken });
+      console.log(auth)
       // setEmail("");
       resetEmail();
       setSenha("");

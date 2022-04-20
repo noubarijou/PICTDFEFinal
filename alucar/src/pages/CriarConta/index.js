@@ -5,8 +5,8 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-/* import "./style.scss"; */
-import { Link } from "react-router-dom";
+/* import "./style.scss";
+ */import { Link } from "react-router-dom";
 /* import AuthService from "../../services/authServices/auth.service";*/
 import api  from "../../services/api";
 import { Helmet } from "react-helmet-async";
@@ -17,7 +17,7 @@ const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))
 const SENHA_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const CriarConta = () => {
-  
+  const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
 
   const emailRef = useRef();
   const errRef = useRef();
@@ -100,7 +100,8 @@ export const CriarConta = () => {
     </Helmet>
       {success ? (
         <>
-          <h1>Conta criada com sucesso</h1>
+        <img src={sucesso} alt="Sucesso" className="sucesso"/>
+        <h1 className="sucesso-msg">Cadastro realizado com sucesso!</h1>
           <p>
             <Link to="/login">Entrar</Link>
           </p>

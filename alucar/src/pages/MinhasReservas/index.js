@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Paper,
   Box,
@@ -11,8 +11,15 @@ import {
 import { useAxios } from "../../hooks/useAxios";
 
 export const MinhasReservas = () => {
+  const navigate = useNavigate();
   const [reserva, setReserva] = useState(true);
   const pedidos = useAxios('/pedido');
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const handleNavigate = () => {
+    navigate(from, { replace: true })
+  }
+  
   return (
     <>
       <Helmet>
@@ -25,12 +32,12 @@ export const MinhasReservas = () => {
         {reserva ? (
           <Box p={2}>
             <Grid container spacing={3}>
-              {pedidos.map(pedido => (
+              {pedidos.map((pedido, i) => (
                 <>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={12} sm={6} >
                     <Paper >
-                      <Box p={2} elevation={4}>
-                        <Typography variant="h6" align="center" margin="dense">
+                      <Box p={2} elevation={4} key={i}>
+                        <Typography variant="h6" align="center" margin="dense" >
                           {pedido.carro.modelo}
                         </Typography>
                         <Box>
@@ -49,9 +56,9 @@ export const MinhasReservas = () => {
         ) : (
           <p className="btn-large">Você ainda não fez nenhuma reserva</p>
         )}
-        <Link to={`/minhaconta`}>
-          <Button variant="contained">Voltar</Button>
-        </Link>
+        {/* <Link to={navigate(from, { replace: true })}> */}
+          <Button onClick={handleNavigate} variant="contained">Voltar</Button>
+        {/* </Link> */}
       </>
     </>
   );

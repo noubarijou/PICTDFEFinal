@@ -1,13 +1,13 @@
 import "./style.scss";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Requisitos } from "../../components/Requisitos";
 import { CardAdicionais } from "../../components/Cards/CardAdicionais";
 import { Rating } from "../../components/Rating";
 import { useAxios } from "../../hooks/useAxios";
 /* import { useWindowDimensions } from "../../hooks/useWindowDimensions"; */
-import { ButtonToClick } from "../../components/Buttons";
+import { ButtonToClick, ButtonToOrder } from "../../components/Buttons";
 /* icones - font awesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,8 +19,36 @@ import { Box, Grid, TextField, Typography } from "@material-ui/core";
 import { SelecionarHorarios } from "../../components/Listas/ListaHorarios";
 import { CalendarStatic } from "../../components/Calendarios";
 import { format } from "date-fns";
+import useAxiosPrivate from '../../hooks/useAxiosPrivate';
+import  useAuth  from '../../hooks/useAuth';
 
 export const Reserva = () => {
+  const location = useLocation();
+  const axiosPrivate = useAxiosPrivate();
+  const [users, setUsers] = useState();
+  
+/*   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    const getUsers = async () => {
+        try {
+            const response = await axiosPrivate.get('/clientes', {
+                signal: controller.signal
+            });
+            console.log(response.data)
+            isMounted && setUsers(response.data);
+        }catch (err) {
+            console.error(err);
+            navigate('/login', {state: {from: location}, replace: true})
+        }
+    }
+    getUsers();
+    return () => {
+        isMounted = false;
+        controller.abort();
+    }
+}, []); */
+
   const user = {
     user: {
       id: 1,
@@ -31,8 +59,10 @@ export const Reserva = () => {
       displayname: "DH",
     },
   };
+
   const reserva = useAxios(`/pedido`);
-  const loggedInUser = localStorage.getItem("credenciais");
+  const { auth } = useAuth();
+  const loggedInUser = auth?.accessToken;;
   /*   const { width } = useWindowDimensions(); */
   const navigate = useNavigate();
   const cidades = useAxios(`/cidades`);
@@ -40,6 +70,7 @@ export const Reserva = () => {
   const regras = require("../../assets/jsons/regras.json");
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+  const [success, setSuccess] = useState();
   const [cidade, setCidade] = useState();
   /* const [dados, setDados] = useState([]); */
   const { detalhesId } = useParams();
@@ -49,6 +80,7 @@ export const Reserva = () => {
     window.scrollTo(0, 0);
   }, [detalhesId]);
   console.log(loggedInUser);
+  console.log(detalhesId);
 
   /* const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
   const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange")); */
@@ -62,16 +94,30 @@ export const Reserva = () => {
   );
 
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
+  const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
+  const handleClick = (e) => {
+    e.preventDefault();
+    setSuccess(true);
 
+  }
   return (
     <>
       <Helmet>
         <title>Alucar|Reserva</title>
       </Helmet>
       <>
-        {reserva === 403 || reserva === 401 ? (
+        {!auth?.accessToken ? (
           navigate("/login")
-        ) : (
+        ) : success ? (
+        <main>
+          <img src={sucesso} alt="Sucesso" className="sucesso"/>
+        <h1 className="sucesso-msg">Cadastro realizado com sucesso!</h1>
+          <p>
+            <Link to="/">Voltar para página inicial</Link>
+            <Link to="/minhasreservas">Ir para minhas reservas</Link>
+          </p>
+        </main>
+          ) :  (
           <>
             <Box p={3}>
               <Typography variant="h5" align="center" margin="dense">
@@ -83,7 +129,7 @@ export const Reserva = () => {
                 <TextField
                   disabled
                   id="nome"
-                  label={user.user.nome}
+                  label={auth?.clienteNome}
                   type="text"
                   placeholder="Digite seu nome"
                 />
@@ -92,7 +138,7 @@ export const Reserva = () => {
                 <TextField
                   required
                   id="sobrenome"
-                  label="Sobrenome"
+                  label={auth?.clienteSobrenome}
                   type="text"
                   placeholder="Digite seu sobrenome"
                 />
@@ -101,7 +147,7 @@ export const Reserva = () => {
                 <TextField
                   disabled
                   id="email"
-                  label={user.user.username}
+                  label={auth?.email}
                   type="email"
                   placeholder="Digite seu email"
                 />
@@ -205,9 +251,9 @@ export const Reserva = () => {
                   <CircularProgress />
                 )}
               </article>
-              <ButtonToClick classes={"success-btn"} urlTo={`/minhasreservas/`}>
+              <ButtonToOrder classes={"success-btn"} urlTo={`/minhasreservas/`}>
                 Reservar
-              </ButtonToClick>
+              </ButtonToOrder>
               <article className="detalhes__requisitos">
                 <h2>Requisitos para Alugar</h2>
                 {regras.map((regra) => {
