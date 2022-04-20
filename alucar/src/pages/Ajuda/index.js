@@ -1,93 +1,113 @@
-import React, {Fragment} from 'react'
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import { Paper, Box, Grid, TextField, Typography, Button} from '@material-ui/core';
-import '../../index.scss';
+import '../assets/form.scss';
+import React, { useEffect, useRef, useState } from 'react'
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+
+/* FontAwesome */
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const Ajuda = () => {
-    const validationSchema = Yup.object().shape({
-        firstName: Yup.string().required("Nome obrigatório"),
-        lastName: Yup.string().required("Sobrenome obrigatório"),
-        email: Yup.string().email("Email inválido [ex: email@email.com]").required("Email obrigatório"),
-        mensagem: Yup.string().required("Mensagem obrigatória")
-    });
-    const {register, handleSubmit, formState:{errors}} = useForm({ resolver: yupResolver(validationSchema) });
-    const onSubmit = data => {
-        console.log(JSON.stringify(data, null, 2));
-      };
-  return (
-    <Fragment>
-        <Paper>
-            <Box p={2}>
-                <Typography variant="h6" align="center" margin="dense">Entre em contato</Typography>
-                <Grid container spacing={2} direction="column" alignItems="center">
-                    <Grid item xs={12} sm={12}>
-                        <TextField
-                        variant="outlined"
-                            name="firstName"
-                            label="Nome"
-                            id="firstName"
+    const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
+
+    const [success, setSuccess] = useState();
+
+    const emailRef = useRef();
+    const [email, setEmail] = useState("");
+    const [validEmail, setValidEmail] = useState(false);
+
+    const [nome, setNome] = useState("");
+    const [sobrenome, setSobrenome] = useState("");
+
+    const [mensagem, setMensagem] = useState("");
+
+    useEffect(() => {
+        setValidEmail(EMAIL_REGEX.test(email));
+    }, [email]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSuccess(true);
+
+        setEmail("");
+        setNome("");
+        setSobrenome("");
+        setMensagem("");
+    };
+
+    return (
+        <>
+            <Helmet>
+                <title>Alucar | Ajuda</title>
+            </Helmet>
+            {success ? (
+                <article className="cadastro__container">
+                    <figure>
+                        <img src={sucesso} alt="Sucesso" className="sucesso" />
+                    </figure>
+                    <h1 className="form__title">Mensagem enviada com sucesso!</h1>
+                    <Link to="/" className="btn-cadastro btn-large primary-btn">Home</Link>
+                </article>
+            ) : (
+                <article className="login__container">
+                    <h1 className="form__title">Entre em contato</h1>
+                    <form className="cadastro__form" onSubmit={handleSubmit}>
+                        <label className="form__label" htmlFor="nome">Nome</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            className='input'
+                            onChange={(e) => setNome(e.target.value)}
                             required
-                            fullWidth
-                            margin="dense"
-                            {...register('firstName')}
-                            error={errors.firstName ? true : false}
-                            />
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <TextField
-                        variant="outlined"
-                        name="lastName"
-                        label="Sobrenome"
-                        id="lastName"
-                        required
-                        fullWidth
-                        margin="dense"
-                        {...register('lastName')}
-                        error={errors.lastName ? true : false}
+                            value={nome}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <TextField
-                        variant="outlined"
-                        name="email"
-                        label="Email"
-                        id="email"
-                        required
-                        fullWidth
-                        margin="dense"
-                        {...register('email')}
-                        error={errors.email ? true : false}
+                        <label className="form__label" htmlFor="sobrenome">Sobrenome</label>
+                        <input
+                            type="text"
+                            id="sobrenome"
+                            className='input'
+                            onChange={(e) => setSobrenome(e.target.value)}
+                            required
+                            value={sobrenome}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12}>
-                        <TextField
-                        variant="outlined"
-                        name="mensagem"
-                        label="Mensagem"
-                        id="mensagem"
-                        required
-                        fullWidth
-                        margin="dense"
-                        {...register('mensagem')}
-                        error={errors.mensagem ? true : false}
-                        rows={6}
-                        multiline
+                        <label htmlFor="email" className="form__label">Email</label>
+                        <input
+                            type="text"
+                            id="email"
+                            className="input"
+                            ref={emailRef}
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            aria-invalid={validEmail ? "false" : "true"}
+                            aria-describedby="uidnote"
                         />
-                    </Grid>
-                <Box mt={3}>
-            <Button
-              variant="contained"
-              style={{backgroundColor: '#FBC02D', color: 'black'}}
-              onClick={handleSubmit(onSubmit)}
-            >
-              Enviar
-            </Button>
-          </Box>
-                </Grid>
-            </Box>
-        </Paper>
-    </Fragment>
-  )
+                        <p
+                            id="uidnote"
+                            className={`subtitle ${email && !validEmail
+                                ? "instructions" : "offscreen"
+                                }`}
+                        >
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            Email inválido - Ex: email@email.com
+                        </p>
+                        <label className="form__label" htmlFor="mensagem">Mensagem</label>
+                        <textarea
+                            type="text"
+                            id="mensagem"
+                            className='textarea'
+                            onChange={(e) => setMensagem(e.target.value)}
+                            required
+                            value={mensagem}
+                        />
+                        <button className="btn primary-btn btn-large">Enviar</button>
+                    </form>
+
+                </article>
+            )}
+        </>
+    )
 }

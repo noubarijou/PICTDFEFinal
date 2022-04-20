@@ -15,9 +15,9 @@ const SENHA_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 export const CriarConta = () => {
   const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
 
-  const emailRef = useRef();
   const errRef = useRef();
 
+  const emailRef = useRef();
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
 
@@ -27,12 +27,15 @@ export const CriarConta = () => {
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [validConfirmaSenha, setValidConfirmaSenha] = useState(false);
 
+  const [nome, setNome] = useState("");
+  const [sobrenome, setSobrenome] = useState("");
+
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     emailRef.current.focus();
-  }, []);
+  }, []); */
 
   useEffect(() => {
     setValidEmail(EMAIL_REGEX.test(email));
@@ -61,6 +64,8 @@ export const CriarConta = () => {
         JSON.stringify({
           email,
           senha,
+          nome,
+          sobrenome,
         }),
         {
           headers: { "Content-Type": "application/json" },
@@ -74,6 +79,8 @@ export const CriarConta = () => {
       setEmail('');
       setSenha('');
       setConfirmaSenha('');
+      setNome('');
+      setSobrenome('');
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Erro de conexão com o servidor");
@@ -110,6 +117,24 @@ export const CriarConta = () => {
           </p>
           <h1 className="form__title">Crie sua conta</h1>
           <form className="cadastro__form" onSubmit={handleSubmit}>
+            <label className="form__label" htmlFor="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              className='input'
+              onChange={(e) => setNome(e.target.value)}
+              required
+              value={nome}
+            />
+            <label className="form__label" htmlFor="sobrenome">Sobrenome</label>
+            <input
+              type="text"
+              id="sobrenome"
+              className='input'
+              onChange={(e) => setSobrenome(e.target.value)}
+              required
+              value={sobrenome}
+            />
             <label htmlFor="email" className="form__label">
               Email
               <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />

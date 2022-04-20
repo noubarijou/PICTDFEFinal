@@ -35,8 +35,8 @@ body{
         border-radius: 0.5rem;
         border: 1px solid transparent;
         background-color: $white;
-        height: 2.5rem;
-        text-align: center;
+        text-align: left;
+        padding: 0 1rem;
         &::placeholder{
             color: $grey4;
             line-height: 1.25rem;
@@ -45,6 +45,15 @@ body{
             border-color: $secundary3;
             outline: none;
         }
+    }
+
+    .input{
+        height: 2.5rem;
+    }
+
+    .textarea{
+        resize: none;
+        height: 10rem;
     }
 
     /* Font style */
