@@ -44,7 +44,7 @@ export const Login = () => {
       );
       console.log(response);
       const accessToken = response?.data;
-      // const roles = response?.data.funcao;   
+      // const roles = response?.data.funcao;
       setAuth({ email, senha, accessToken });
       (accessToken) ? localStorage.setItem("logado", true) : localStorage.setItem("logado", false);
       resetEmail();
