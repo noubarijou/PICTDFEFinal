@@ -100,7 +100,7 @@ header{
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: $screen-md-max) {
     header{
         .header__txt {
         p{

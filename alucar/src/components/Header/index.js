@@ -45,7 +45,7 @@ export const Header = () => {
     return (
         <header>
             <div className="header__txt">
-                <p className={width < 1000 ? "body-small" : "btn-small"}>Carros assegurados em todo território nacional l Parcele seu aluguel em até 12x e saia dirigindo com segurança e conforto</p>
+                <p className={width < 992 ? "body-small" : "btn-small"}>Carros assegurados em todo território nacional l Parcele seu aluguel em até 12x e saia dirigindo com segurança e conforto</p>
             </div>
             <div className="header__nav">
                 <Link to='/' className="header__logo">
