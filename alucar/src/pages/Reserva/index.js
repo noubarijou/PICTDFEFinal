@@ -79,8 +79,6 @@ export const Reserva = () => {
     setDetalhe(detalhesId);
     window.scrollTo(0, 0);
   }, [detalhesId]);
-  console.log(loggedInUser);
-  console.log(detalhesId);
 
   /* const pesquisaCidade = JSON.parse(localStorage.getItem("dadosCidade"));
   const pesquisaRange = JSON.parse(localStorage.getItem("dadosRange")); */
@@ -95,11 +93,11 @@ export const Reserva = () => {
 
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
   const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
- /*  const handleClick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     setSuccess(true);
 
-  } */
+  }
  
   return (
     <>
@@ -252,7 +250,7 @@ export const Reserva = () => {
                   <CircularProgress />
                 )}
               </article>
-              <ButtonToOrder classes={"success-btn"} urlTo={`/minhasreservas/`}>
+              <ButtonToOrder classes={"success-btn"} onClick={handleClick} /* urlTo={`/minhasreservas/`} */>
                 Reservar
               </ButtonToOrder>
               <article className="detalhes__requisitos">

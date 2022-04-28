@@ -5,12 +5,12 @@ import { faFacebook, faTwitter, faLinkedin, faInstagram } from "@fortawesome/fre
 import {useLogout} from '../../../hooks/useLogout';
 import { useNavigate } from 'react-router-dom';
 import useAuth from "../../../hooks/useAuth";
+import {useAxios} from "../../../hooks/useAxios";
 
 export const ModalNav = ({ children }) => {
   const { auth, setAuth } = useAuth();
   const loggedInUser = auth?.accessToken;
-  const userId = auth?.email;
-  console.log(userId);
+  const username = auth?.email;
 
   const navigate = useNavigate();
   const logout = useLogout();
@@ -23,6 +23,9 @@ export const ModalNav = ({ children }) => {
   }
 
   const dados = require("../../../assets/jsons/user.json");
+  const dadosnovos = useAxios('/clientes');
+  console.log(dadosnovos);
+  
   const [success, setSuccess] = useState();
 
   useEffect(() => {
