@@ -3,24 +3,25 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import api from "../../services/api";
-import { useInput } from "../../hooks/useInput";
 import { useToggle } from "../../hooks/useToggle";
 import jwt_decode from 'jwt-decode';
+import  useAuth  from "../../hooks/useAuth";
 
 
 
 
 export const Login = () => {
+  const {auth, setAuth} = useAuth();
   
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = /* location.state?.from?.pathname ||  */"/";
+  const from = location.state?.from?.pathname || "/";
 
   const emailRef = useRef();
   const errRef = useRef();
-  const [email, resetEmail, attributeObj] = useInput('email', '');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [check, toggleCheck] = useToggle("persist", false);
@@ -48,10 +49,11 @@ export const Login = () => {
       let decoded = jwt_decode(accessToken);
       const roles = decoded.sub;
       localStorage.setItem("funcao", roles);
-      console.log(roles);
-      // setAuth({ email, senha, roles, accessToken });
+      localStorage.setItem('email', email);
+      setAuth({ email, senha, roles, accessToken });
+      console.log(auth?.email);
       (accessToken) ? localStorage.setItem("logado", true) : localStorage.setItem("logado", false);
-      resetEmail();
+      setEmail("");
       setSenha("");
       navigate(from, { replace: true });
     } catch (err) {
@@ -93,7 +95,8 @@ export const Login = () => {
             className="input"
             ref={emailRef}
             autoComplete="off"
-            {...attributeObj}
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             required
           />
           <label className="form__label" htmlFor="senha">Senha</label>

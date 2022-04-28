@@ -86,7 +86,7 @@ export const CriarConta = () => {
       setSobrenome('');
     } catch (err) {
       if (!err?.response) {
-        setErrMsg("Erro de conexão com o servidor");
+        setSuccess(true);
       } else if (err.response.status === 409) {
         setErrMsg("Email já cadastrado");
       } else {
