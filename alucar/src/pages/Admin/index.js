@@ -18,7 +18,6 @@ export const Admin = () => {
         Administração de Recursos
       </Typography>
       <Users />
-
       <Grid container spacing={3} direction="column" alignItems="center">
         <Grid item xs>
           <Link to="/admin/addprod"><button>Adicionar Produto</button></Link>

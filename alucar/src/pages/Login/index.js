@@ -2,20 +2,21 @@ import '../assets/form.scss';
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import useAuth from "../../hooks/useAuth";
 import api from "../../services/api";
 import { useInput } from "../../hooks/useInput";
 import { useToggle } from "../../hooks/useToggle";
+import jwt_decode from 'jwt-decode';
+
 
 
 
 export const Login = () => {
-  const { auth, setAuth } = useAuth();
+  
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = /* location.state?.from?.pathname ||  */"/";
 
   const emailRef = useRef();
   const errRef = useRef();
@@ -23,7 +24,6 @@ export const Login = () => {
   const [senha, setSenha] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [check, toggleCheck] = useToggle("persist", false);
-  const [success, setSuccess] = useState();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -42,10 +42,14 @@ export const Login = () => {
           senha,
         }
       );
-      console.log(response);
+      
       const accessToken = response?.data;
-      // const roles = response?.data.funcao;
-      setAuth({ email, senha, accessToken });
+      localStorage.setItem("tolkien", accessToken);
+      let decoded = jwt_decode(accessToken);
+      const roles = decoded.sub;
+      localStorage.setItem("funcao", roles);
+      console.log(roles);
+      // setAuth({ email, senha, roles, accessToken });
       (accessToken) ? localStorage.setItem("logado", true) : localStorage.setItem("logado", false);
       resetEmail();
       setSenha("");
@@ -64,8 +68,8 @@ export const Login = () => {
       }
       errRef.current.focus();
     }
-    // setSuccess(true);
   };
+
 
   return (
     <>

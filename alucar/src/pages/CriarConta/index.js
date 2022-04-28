@@ -64,8 +64,11 @@ export const CriarConta = () => {
         JSON.stringify({
           email,
           senha,
-          nome,
-          sobrenome,
+          clienteNome: nome,
+          clienteSobrenome: sobrenome,
+          funcao: {
+            funcaoId: 3
+          },
         }),
         {
           headers: { "Content-Type": "application/json" },

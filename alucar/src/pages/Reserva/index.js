@@ -49,7 +49,7 @@ export const Reserva = () => {
     }
 }, []); */
 
-  const user = {
+/*   const user = {
     user: {
       id: 1,
       username: "usuario@dh.com.br",
@@ -58,7 +58,7 @@ export const Reserva = () => {
       sobrenome: "House",
       displayname: "DH",
     },
-  };
+  }; */
 
   const reserva = useAxios(`/pedido`);
   const { auth } = useAuth();
@@ -100,6 +100,7 @@ export const Reserva = () => {
     setSuccess(true);
 
   } */
+ 
   return (
     <>
       <Helmet>

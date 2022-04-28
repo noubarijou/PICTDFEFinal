@@ -23,7 +23,11 @@ import { FormAddProd } from "../pages/Admin/components/Forms/FormAddProd";
 /* import {RequireAuth} from '../services/authServices/RequireAuth';*/
 /* import {PersistLogin} from '../services/authServices/PersistLogin'; */
 /* import * as serviceWorker from './serviceWorker'; */
-
+const ROLES = {
+    'User': "CLIENTE",
+    'Editor': "MODERADOR",
+    'Admin': "ADMIN"
+}
 
 const RouteList = () => {
 
