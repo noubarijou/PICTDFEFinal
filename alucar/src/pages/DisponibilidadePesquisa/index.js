@@ -132,6 +132,7 @@ export const DisponibilidadePesquisa = () => {
                                                         modelo={e.modelo}
                                                         categoriasNome={e.categorias.categoriasNome}
                                                         rating={e.rating}
+                                                        urlTo={`/reserva/${e.carroId}`}
                                                         urlImagem={e.imagens.urlImagem}
                                                         cambio={e.caracteristicas.cambio}
                                                         arCondicionado={e.caracteristicas.arCondicionado}
