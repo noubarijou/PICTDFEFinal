@@ -42,6 +42,7 @@ export const ButtonToOrder = ({ children, urlTo, classes }) => {
     e.preventDefault();
     navigation(navigate);
     setSuccess(true);
+    localStorage.setItem('success', true);
   }
 
   return (

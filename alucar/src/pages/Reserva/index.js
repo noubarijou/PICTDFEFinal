@@ -49,7 +49,7 @@ export const Reserva = () => {
     }
 }, []); */
 
-/*   const user = {
+  const user = {
     user: {
       id: 1,
       username: "usuario@dh.com.br",
@@ -58,7 +58,7 @@ export const Reserva = () => {
       sobrenome: "House",
       displayname: "DH",
     },
-  }; */
+  };
 
   const reserva = useAxios(`/pedido`);
   const { auth } = useAuth();
@@ -92,12 +92,11 @@ export const Reserva = () => {
   );
 
   const valorTotal = parseFloat(localStorage.getItem("adicionais"));
-  const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
-  const handleClick = (e) => {
+  /* const handleClick = (e) => {
     e.preventDefault();
     setSuccess(true);
 
-  }
+  } */
  
   return (
     <>
@@ -105,18 +104,9 @@ export const Reserva = () => {
         <title>Alucar|Reserva</title>
       </Helmet>
       <>
-        {!auth?.accessToken ? (
+        {!loggedInUser ? (
           navigate("/login")
-        ) : success ? (
-        <main>
-          <img src={sucesso} alt="Sucesso" className="sucesso"/>
-        <h1 className="sucesso-msg">Cadastro realizado com sucesso!</h1>
-          <p>
-            <Link to="/">Voltar para página inicial</Link>
-            <Link to="/minhasreservas">Ir para minhas reservas</Link>
-          </p>
-        </main>
-          ) :  (
+        ) :  (
           <>
             <Box p={3}>
               <Typography variant="h5" align="center" margin="dense">
@@ -128,7 +118,7 @@ export const Reserva = () => {
                 <TextField
                   disabled
                   id="nome"
-                  label={auth?.clienteNome}
+                  label={"Digital"}
                   type="text"
                   placeholder="Digite seu nome"
                 />
@@ -137,7 +127,7 @@ export const Reserva = () => {
                 <TextField
                   required
                   id="sobrenome"
-                  label={auth?.clienteSobrenome}
+                  label={""}
                   type="text"
                   placeholder="Digite seu sobrenome"
                 />
@@ -250,7 +240,7 @@ export const Reserva = () => {
                   <CircularProgress />
                 )}
               </article>
-              <ButtonToOrder classes={"success-btn"} onClick={handleClick} /* urlTo={`/minhasreservas/`} */>
+              <ButtonToOrder classes={"success-btn"}  urlTo={`/minhasreservas/`}>
                 Reservar
               </ButtonToOrder>
               <article className="detalhes__requisitos">
