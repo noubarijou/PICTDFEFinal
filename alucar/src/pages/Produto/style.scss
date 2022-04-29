@@ -9,14 +9,19 @@
         align-items: center;
     }
     .detalhe__nome{
-        padding: 0 1.25rem;
-        height: 1.75rem;
+        padding: 0.5rem 1.25rem;
+        min-height: 1.75rem;
         border-radius: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: $primary2;
         color: white;
+        p{
+            color: $white;
+            margin: 0;
+            width: 50%;
+        }
     }
     .detalhe__info{
         margin: 2.5rem 0;
@@ -107,9 +112,9 @@
 
 @media (min-width: $screen-lg-max){
     .detalhes__carro{
-        .detalhe__categoria, .detalhe__nome{
+        /* .detalhe__categoria, .detalhe__nome{
             padding: 0 5rem;
-        }
+        } */
         .detalhe__info{
             .info__principal{
                 padding: 0 4.25rem;
