@@ -1,23 +1,30 @@
 import { Grid, Typography } from "@material-ui/core";
 import { Helmet } from "react-helmet-async";
-import { FormAddProd } from "./components/Forms/FormAddProd";
+/* import { FormAddProd } from "./components/Forms/FormAddProd";
 import { FormDelProd } from "./components/Forms/FormDelProd";
 import { FormMngUsers } from "./components/Forms/FormMngUsers";
 import { FormModProd } from "./components/Forms/FormModProd";
 import { ModalAdmin } from "../../components/Modal/ModalAdmin";
-import { Users } from './components/Users';
-import {Link} from 'react-router-dom';
+import { Users } from './components/Users'; */
+import {Link, useNavigate} from 'react-router-dom';
+import useAuth from '../../hooks/useAuth'
 
 export const Admin = () => {
+  const {auth, setAuth} = useAuth();
+  const navigate = useNavigate();
+  console.log(auth?.roles)
   return (
     <>
       <Helmet>
         <title>Alucar | Admin</title>
       </Helmet>
-      <Typography variant="h5" align="center" margin="dense">
+     {/*  {auth?.roles !== "ADMIN" ? (
+        navigate("/unauthorized")
+      ) : (
+        <> */}
+        <Typography variant="h5" align="center" margin="dense">
         Administração de Recursos
       </Typography>
-      <Users />
       <Grid container spacing={3} direction="column" alignItems="center">
         <Grid item xs>
           <Link to="/admin/addprod"><button>Adicionar Produto</button></Link>
@@ -36,6 +43,8 @@ export const Admin = () => {
           {/* <ModalAdmin conteudoForm={"Gerenciar Usuários"}><FormMngUsers /></ModalAdmin> */}
         </Grid>
       </Grid>
-    </>
+        </>
+     /*    )}
+    </> */
   );
 };

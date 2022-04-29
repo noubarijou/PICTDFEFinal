@@ -13,19 +13,21 @@ import { useAxios } from "../../hooks/useAxios";
 export const MinhasReservas = () => {
   const navigate = useNavigate();
   const pedidos = useAxios('/pedido');
-  console.log(pedidos)
   const handleNavigate = () => {
     navigate(-1);
   }
   const sucesso = 'https://alucar-t1-g4.s3.amazonaws.com/success-vector.svg';
-  const [success, setSuccess] = useState(localStorage.getItem('success'));
+  
+  const success = localStorage.getItem('success')
   
   console.log(success);
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     window.location.reload();
-    setSuccess(false);
-    console.log(success);  
+    localStorage.setItem('success', false);
+    console.log(success)
   }
+  console.log(success);  
 
   
   return (
@@ -33,13 +35,14 @@ export const MinhasReservas = () => {
       <Helmet>
         <title>Alucar | Minhas Reservas</title>
       </Helmet>
-      {success ? (
+      {console.log(success)}
+      {success !== true ? (
         <>
       <img src={sucesso} alt="sucesso" className="sucesso"/>
       <h1 className="sucesso-msg">Reserva realizada com Sucesso</h1>
       <p>
-        <Link to="/"><Button onClick={handleClick} variant="contained">Voltar para a página incial</Button></Link><br /> <br />
-        <Link to="/minhasreservas"><Button variant="contained">Ver minhas reservas</Button></Link>
+        <Link to="/"><Button  variant="contained">Voltar para a página incial</Button></Link><br /> <br />
+        <Link to="/minhasreservas"><Button onClick={handleClick} variant="contained">Ver minhas reservas</Button></Link>
       </p>
         </>
       ) : (

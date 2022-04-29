@@ -71,7 +71,23 @@ export const Header = () => {
                             </ModalNav> : null}
                     </nav>
                     :
-                    (success) ?
+                    (success && auth?.roles === "ADMIN") ?
+                    <nav>
+                        <a href="/sobre" className="subtitle">Sobre</a>
+                        <a href="/ajuda" className="subtitle">Ajuda</a>
+                        <a href="/minhaconta" className="header__btn primary-btn btn-large">Minha Conta</a>
+                        <a href="/admin" className="header__btn primary-btn btn-large">Admin</a>
+                        <div className="modal__displaynameDesktop">{dados.map((dado) => {
+                                            return (
+                                                dado.displayname
+                                            )
+                                        }
+                        )}
+                        </div>
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" style={{ cursor: "pointer" }} onClick={() => signOut()} /> 
+                    </nav>
+
+                    : success && auth?.roles === "CLIENTE" ?
                     <nav>
                         <a href="/sobre" className="subtitle">Sobre</a>
                         <a href="/ajuda" className="subtitle">Ajuda</a>
@@ -85,8 +101,7 @@ export const Header = () => {
                         </div>
                         <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" style={{ cursor: "pointer" }} onClick={() => signOut()} /> 
                     </nav>
-
-                    :
+                        :
                     <nav>
                         <a href="/sobre" className="subtitle">Sobre</a>
                         <a href="/ajuda" className="subtitle">Ajuda</a>
